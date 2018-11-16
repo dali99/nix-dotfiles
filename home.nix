@@ -171,7 +171,8 @@
     
     pkgs.dolphin
     pkgs.gnome3.gedit
-    pkgs.git
+
+    pkgs.kile
     
     pkgs.gimp
     pkgs.krita
@@ -193,6 +194,12 @@
     plugins = [pkgs.obs-linuxbrowser];
   };
 
+
+  programs.git = {
+    enable = true;
+    userEmail = "daniel@dodsorf.as";
+    userName = "Daniel Løvbrøtte Olsen";
+  };
 
 #  programs.htop = {
 
