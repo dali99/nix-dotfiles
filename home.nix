@@ -95,7 +95,7 @@
     };
     oh-my-zsh = {
       enable = true;
-      custom = "\$HOME/.config/nixpkgs/dotfiles/zsh/oh-my-zsh-custom";
+      custom = "\$HOME/.config/nixpkgs/nix-dotfiles/zsh/oh-my-zsh-custom";
       plugins = [
         "git"
         "sudo"
