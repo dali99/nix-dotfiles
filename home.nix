@@ -2,10 +2,10 @@
 
 {
 
-  home.file.nixoverlays = {
-    source = ./overlays;
-    target = ".config/nixpkgs/overlays";
-  };
+  #home.file.nixoverlays = {
+  #  source = ./overlays;
+  #  target = ".config/nixpkgs/overlays";
+  #};
 
   home.keyboard = {
     layout = "no-latin1";
@@ -147,6 +147,11 @@
 
   home.packages = [
     pkgs.gnome3.gnome-terminal
+    
+    pkgs.pavucontrol
+
+    pkgs.libguestfs
+    pkgs.virtmanager
 
     pkgs.nerdfonts
     pkgs.dejavu_fonts
