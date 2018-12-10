@@ -42,7 +42,7 @@
           "${modifier}+b" = "exec firefox";
           "${modifier}+t" = "exec gedit";
 
-          "${modifier}+Return" = "exec i3-sensible-terminal -e zsh";
+          "${modifier}+Return" = lib.mkForce "exec i3-sensible-terminal -e zsh";
           "${modifier}+Shift+Return" = "exec i3-sensible-terminal -e ssh daniel@adam";
         };
       };
@@ -145,6 +145,8 @@
     enable = true;
   };
 
+  services.nextcloud-client.enable = true;
+
   home.packages = [
     pkgs.gnome3.gnome-terminal
     
@@ -175,13 +177,16 @@
     pkgs.mumble
     
     pkgs.dolphin
-    pkgs.gnome3.gedit
 
+    pkgs.gnome3.gedit
+    pkgs.libreoffice-fresh
+    pkgs.texlive.combined.scheme-full
     pkgs.kile
     
     pkgs.gimp
     pkgs.krita
     pkgs.inkscape
+    pkgs.godot
     pkgs.blender
     pkgs.audacity
     pkgs.mixxx
