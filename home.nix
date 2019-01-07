@@ -127,7 +127,7 @@
 
 
       eval "$(ntfy shell-integration)"
-      AUTO_NTFY_DONE_IGNORE="vim nano screen tmux"
+      AUTO_NTFY_DONE_IGNORE="vim nano screen tmux man"
     '';
   };
 
@@ -175,13 +175,16 @@
     pkgs.mumble
     
     pkgs.dolphin
-    pkgs.gnome3.gedit
+    pkgs.unzip
 
+    pkgs.gnome3.gedit
     pkgs.kile
+    pkgs.libreoffice-unwrapped
     
     pkgs.gimp
     pkgs.krita
     pkgs.inkscape
+    pkgs.godot
     pkgs.blender
     pkgs.audacity
     pkgs.mixxx
