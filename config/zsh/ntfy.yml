@@ -1,6 +1,7 @@
 ---
 backends:
     - matrix
+    - linux
 matrix:
     url: "https://matrix.dodsorf.as"
     roomId: "***REMOVED***"

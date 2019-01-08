@@ -1,7 +1,0 @@
----
-backends:
-    - matrix
-matrix:
-    url: "https://matrix.dodsorf.as"
-    roomId: "***REMOVED***"
-    token: "AAAbbBBCC"
