@@ -1,3 +1,0 @@
-[submodule "zsh/oh-my-zsh-custom/powerlevel9k"]
-	path = config/xsession/zsh/oh-my-zsh-custom/powerlevel9k
-	url = https://github.com/bhilburn/powerlevel9k
