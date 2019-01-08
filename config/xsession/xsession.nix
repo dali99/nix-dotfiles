@@ -53,6 +53,7 @@
 
   home.packages = [
     pkgs.xorg.xbacklight
+    pkgs.pavucontrol
 
     pkgs.dunst
     pkgs.libnotify
@@ -60,6 +61,8 @@
     pkgs.dmenu
 
     pkgs.scrot
+
+    pkgs.dejavu_fonts
   ];
 }
 

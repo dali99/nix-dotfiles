@@ -10,15 +10,8 @@
   imports = [ ./config/xsession/xsession.nix ];
 
   home.packages = [
-    pkgs.gnome3.gnome-terminal
-    pkgs.kitty
-    
-    pkgs.pavucontrol
-
     pkgs.libguestfs
     pkgs.virtmanager
-
-    pkgs.dejavu_fonts
 
     pkgs.steam
     pkgs.dolphinEmuMaster
