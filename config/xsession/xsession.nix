@@ -1,5 +1,8 @@
 {pkgs, config, lib, ...}:
 {
+
+  imports = [ ./dunstrc.nix ./terminal.nix ];
+
   home.keyboard = {
     layout = "no-latin1";
   };
@@ -36,8 +39,8 @@
           "${modifier}+b" = "exec firefox";
           "${modifier}+t" = "exec gedit";
 
-          "${modifier}+Return" = lib.mkForce "exec i3-sensible-terminal";
-          "${modifier}+Shift+Return" = "exec i3-sensible-terminal -e ssh daniel@adam";
+          "${modifier}+Return" = lib.mkForce "exec kitty";
+          "${modifier}+Shift+Return" = "exec kitty -e ssh daniel@adam";
         };
       };
     };
@@ -49,10 +52,14 @@
   };
 
   home.packages = [
+    pkgs.xorg.xbacklight
+
     pkgs.dunst
     pkgs.libnotify
 
     pkgs.dmenu
+
+    pkgs.scrot
   ];
 }
 
