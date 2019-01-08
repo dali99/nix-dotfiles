@@ -31,7 +31,7 @@ home.file.dunst = {
     sort = yes
 
     idle_threshold = 120
-    font = Monospace 12
+    font = Monospace 11
     line_height = 0
     markup = full
 
@@ -76,7 +76,7 @@ home.file.dunst = {
 [shortcuts]
     close = ctrl+space
     close_all = ctrl+shift+space
-    history = ctrl+grave
+    history = ctrl+bar
     context = ctrl+shift+period
 
 [urgency_low]
