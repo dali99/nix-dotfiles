@@ -20,6 +20,7 @@
         keybindings = let modifier = "Mod4"; #xsession.windowManager.i3.config.modifier;
         in lib.mkOptionDefault {
           "${modifier}+0" = "workspace 10";
+          "${modifier}+Shift+0" = "move container to workspace 10";
 
           "${modifier}+Tab" = "workspace next";
           "${modifier}+Shift+Tab" = "workspace prev";
