@@ -9,6 +9,15 @@
 
   xsession = {
     enable = true;
+
+
+    initExtra = ''
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_PLUGIN_PATH=$HOME/.kde4/lib/kde4/plugins/:/usr/lib/kde4/plugins/
+XDG_CURRENT_DESKTOP=KDE
+export DESKTOP_SESSION=kde
+    '';
+
     windowManager = {
       i3.enable = true;
       i3.config = {
@@ -49,6 +58,24 @@
   services.compton = {
     enable = true;
     backend = "xrender";
+  };
+
+
+  gtk = {
+    enable = true;
+    theme = {
+      package = pkgs.breeze-gtk;
+      name = "Breeze-Dark";
+    };
+    iconTheme = {
+      package = pkgs.breeze-icons;
+      name = "Breeze Dark";
+    };
+  };
+
+  qt = {
+    enable = true;
+    useGtkTheme = true;
   };
 
   home.packages = [

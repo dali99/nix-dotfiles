@@ -22,6 +22,7 @@
     
     pkgs.firefox
     pkgs.mpv
+    pkgs.sxiv
     pkgs.spotify
     
     pkgs.mumble
