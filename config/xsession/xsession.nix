@@ -90,6 +90,8 @@ export DESKTOP_SESSION=kde
     pkgs.scrot
 
     pkgs.dejavu_fonts
+
+    pkgs.qt5ct
   ];
 }
 

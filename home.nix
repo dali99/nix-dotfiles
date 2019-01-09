@@ -45,6 +45,8 @@
     pkgs.mixxx
     pkgs.ardour
     pkgs.kdenlive
+    pkgs.frei0r
+    pkgs.ffplay
     
     pkgs.mkvtoolnix
     pkgs.ffmpeg
