@@ -12,6 +12,8 @@
   home.packages = [
     pkgs.libguestfs
     pkgs.virtmanager
+    pkgs.ansible
+    pkgs.ldns
 
     pkgs.steam
     pkgs.dolphinEmuMaster
@@ -46,10 +48,9 @@
     pkgs.ardour
     pkgs.kdenlive
     pkgs.frei0r
-    pkgs.ffplay
     
     pkgs.mkvtoolnix
-    pkgs.ffmpeg
+    pkgs.ffmpeg-full
     
     pkgs.geogebra
   ];
