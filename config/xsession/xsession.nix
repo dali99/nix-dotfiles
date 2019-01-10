@@ -12,9 +12,8 @@
 
 
     initExtra = ''
-export QT_QPA_PLATFORMTHEME="qt5ct"
-export QT_PLUGIN_PATH=$HOME/.kde4/lib/kde4/plugins/:/usr/lib/kde4/plugins/
-XDG_CURRENT_DESKTOP=KDE
+export QT_QPA_PLATFORMTHEME="gtk2"
+export XDG_CURRENT_DESKTOP=kde
 export DESKTOP_SESSION=kde
     '';
 
@@ -65,11 +64,11 @@ export DESKTOP_SESSION=kde
     enable = true;
     theme = {
       package = pkgs.breeze-gtk;
-      name = "Breeze-Dark";
+      name = "Breeze";
     };
     iconTheme = {
       package = pkgs.breeze-icons;
-      name = "Breeze Dark";
+      name = "breeze";
     };
   };
 
@@ -91,7 +90,8 @@ export DESKTOP_SESSION=kde
 
     pkgs.dejavu_fonts
 
-    pkgs.qt5ct
+    pkgs.breeze-qt5
+    pkgs.breeze-icons
   ];
 }
 

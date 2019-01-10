@@ -30,10 +30,16 @@
     pkgs.mumble
     
     pkgs.dolphin
+    pkgs.kdeApplications.dolphin-plugins
+    pkgs.ffmpegthumbs
+    pkgs.kdeApplications.kdegraphics-thumbnailers
+    pkgs.kdeFrameworks.kded
+    pkgs.kdeFrameworks.kio
+    pkgs.kdeApplications.kio-extras
+
     pkgs.unzip
 
     pkgs.gnome3.gedit
-    pkgs.libreoffice-fresh
     pkgs.texlive.combined.scheme-full
     pkgs.kile
     pkgs.libreoffice-unwrapped
