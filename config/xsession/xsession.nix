@@ -12,9 +12,10 @@
 
 
     initExtra = ''
-export QT_QPA_PLATFORMTHEME="gtk2"
 export XDG_CURRENT_DESKTOP=kde
 export DESKTOP_SESSION=kde
+
+export QT_STYLE_OVERRIDE="breeze"
     '';
 
     windowManager = {
