@@ -42,6 +42,7 @@ export QT_STYLE_OVERRIDE="breeze"
 
           "Print" = "exec scrot %Y-%m-%d_$wx$h_scrot.png -z -e 'mv $f /home/daniel/Pictures/screenshots/'";
           "${modifier}+Print" = "exec scrot /home/daniel/Pictures/Screenshots/%Y-%m-%d_$wx$h_scrot.png -z";
+          "${modifier}+Shift+U" = "exec /home/daniel/.config/nixpkgs/nix-dotfiles/scripts/dmenuunicode";
 
 
           "${modifier}+n" = "exec dolphin";
@@ -88,6 +89,7 @@ export QT_STYLE_OVERRIDE="breeze"
     pkgs.dmenu
 
     pkgs.scrot
+    pkgs.xclip
 
     pkgs.dejavu_fonts
 
