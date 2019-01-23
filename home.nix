@@ -40,6 +40,7 @@
     pkgs.unzip
 
     pkgs.gnome3.gedit
+    pkgs.vscode
     pkgs.texlive.combined.scheme-full
     pkgs.kile
     pkgs.libreoffice-unwrapped
