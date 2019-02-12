@@ -38,6 +38,8 @@
     pkgs.kdeApplications.kio-extras
 
     pkgs.unzip
+    pkgs.parallel
+    pkgs.sshfs
 
     pkgs.gnome3.gedit
     pkgs.vscode
