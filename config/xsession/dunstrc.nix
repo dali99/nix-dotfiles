@@ -74,10 +74,11 @@ home.file.dunst = {
     per_monitor_dpi = false
 
 [shortcuts]
-    close = ctrl+space
-    close_all = ctrl+shift+space
-    history = ctrl+bar
-    context = ctrl+shift+period
+    # Needs to change to alt/super
+    close = mod1+space
+    close_all = mod1+shift+space
+    history = mod1+bar
+    context = mod1+period
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
