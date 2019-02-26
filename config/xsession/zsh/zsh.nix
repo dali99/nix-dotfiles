@@ -42,6 +42,10 @@ POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="↱"
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳ "
 
 
+MATRIXDEV_HOMESERVER="https://matrix.dodsorf.as"
+***REMOVED***
+
+
 eval "$(ntfy shell-integration)"
 AUTO_NTFY_DONE_IGNORE="vim nano screen tmux man mpv"
     '';
