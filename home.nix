@@ -13,6 +13,7 @@
     pkgs.libguestfs
     pkgs.virtmanager
     pkgs.ansible
+    pkgs.nixops
     pkgs.ldns
 
     pkgs.steam
@@ -21,6 +22,7 @@
     pkgs.multimc
     pkgs.superTuxKart
 #    pkgs.warsow
+    pkgs.minetest
     
     pkgs.firefox
     pkgs.mpv
