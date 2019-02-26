@@ -30,6 +30,7 @@
     pkgs.mumble
     
     pkgs.dolphin
+    pkgs.krename
     pkgs.kdeApplications.dolphin-plugins
     pkgs.ffmpegthumbs
     pkgs.kdeApplications.kdegraphics-thumbnailers
