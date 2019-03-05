@@ -14,6 +14,8 @@
     pkgs.virtmanager
     pkgs.ansible
     pkgs.nixops
+    pkgs.kubectl
+    pkgs.kubernetes-helm
     pkgs.ldns
 
     pkgs.steam
