@@ -15,6 +15,8 @@
     pkgs.virt-viewer
     pkgs.ansible
     pkgs.nixops
+    pkgs.kubectl
+    pkgs.kubernetes-helm
     pkgs.ldns
 
     pkgs.steam
