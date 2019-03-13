@@ -12,9 +12,11 @@
   home.packages = [
     pkgs.libguestfs
     pkgs.virtmanager
+    pkgs.virt-viewer
     pkgs.ansible
     pkgs.nixops
     pkgs.ldns
+    pkgs.jq
 
     pkgs.steam
     pkgs.dolphinEmuMaster

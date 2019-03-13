@@ -84,6 +84,7 @@ export QT_STYLE_OVERRIDE="breeze"
   home.packages = [
     pkgs.xorg.xbacklight
     pkgs.pavucontrol
+    pkgs.xorg.xkill
 
     pkgs.dunst
     pkgs.libnotify
