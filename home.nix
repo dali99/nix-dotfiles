@@ -14,8 +14,6 @@
     pkgs.virtmanager
     pkgs.ansible
     pkgs.nixops
-    pkgs.kubectl
-    pkgs.kubernetes-helm
     pkgs.ldns
 
     pkgs.steam
@@ -64,6 +62,7 @@
     pkgs.frei0r
     
     pkgs.mkvtoolnix
+    pkgs.youtubeDL
     pkgs.ffmpeg-full
     
     pkgs.geogebra

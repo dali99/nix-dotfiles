@@ -12,6 +12,8 @@
 
 
     initExtra = ''
+export PATH="$HOME/.config/nixpkgs/nix-dotfiles/bin:$PATH"
+
 export XDG_CURRENT_DESKTOP=kde
 export DESKTOP_SESSION=kde
 
