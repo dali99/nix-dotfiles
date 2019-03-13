@@ -18,6 +18,7 @@
     pkgs.kubectl
     pkgs.kubernetes-helm
     pkgs.ldns
+    pkgs.jq
 
     pkgs.steam
     pkgs.dolphinEmuMaster

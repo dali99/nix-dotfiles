@@ -46,6 +46,10 @@ export MATRIXDEV_HOMESERVER="https://matrix.dodsorf.as"
 export ***REMOVED***
 
 
+export FV_KUBECONFIG="$HOME/.kube/config-fv"
+
+
+
 eval "$(ntfy shell-integration)"
 AUTO_NTFY_DONE_IGNORE="vim nano screen tmux man mpv nmtui"
     '';
