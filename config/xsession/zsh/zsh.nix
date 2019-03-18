@@ -46,10 +46,10 @@ export ***REMOVED***
 
 export FV_KUBECONFIG="$HOME/.kube/config-fv"
 
-
-export FV_KUBECONFIG="$HOME/.kube/config-fv"
-
-
+export FV_ARM_SUBSCRIPTION_ID="***REMOVED***"
+export FV_ARM_CLIENT_ID="***REMOVED***"
+export FV_ARM_TENANT_ID="***REMOVED***"
+export FV_ARM_ENVIRONMENT="public"
 
 eval "$(ntfy shell-integration)"
 AUTO_NTFY_DONE_IGNORE="vim nano screen tmux man mpv nmtui"
