@@ -78,7 +78,8 @@ export QT_STYLE_OVERRIDE="breeze"
 
   qt = {
     enable = true;
-    useGtkTheme = true;
+    #useGtkTheme = true;
+    platformTheme = "gtk";
   };
 
   home.packages = [
