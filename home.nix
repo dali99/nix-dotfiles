@@ -16,7 +16,6 @@
     pkgs.ansible
     pkgs.nixops
     pkgs.ldns
-    pkgs.jq
 
     pkgs.steam
     pkgs.dolphinEmuMaster
@@ -43,8 +42,10 @@
     pkgs.kdeApplications.kio-extras
 
     pkgs.unzip
+    pkgs.p7zip
     pkgs.parallel
     pkgs.sshfs
+    pkgs.jq
 
     pkgs.gnome3.gedit
     pkgs.vscode
@@ -64,7 +65,7 @@
     pkgs.frei0r
     
     pkgs.mkvtoolnix
-    pkgs.youtubeDL
+    #pkgs.unstable.youtubeDL
     pkgs.ffmpeg-full
     
     pkgs.geogebra
@@ -99,6 +100,6 @@
 
   programs.home-manager = {
     enable = true;
-    path = "https://github.com/rycee/home-manager/archive/master.tar.gz";
+    path = "https://github.com/rycee/home-manager/archive/release-18.09.tar.gz";
   };
 }

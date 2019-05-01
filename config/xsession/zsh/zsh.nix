@@ -45,6 +45,7 @@ export MATRIXDEV_HOMESERVER="https://matrix.dodsorf.as"
 export ***REMOVED***
 
 export FV_KUBECONFIG="$HOME/.kube/config-fv"
+export FV_KUBECONFIG="$HOME/.kube/config-fv-prod"
 
 export FV_ARM_SUBSCRIPTION_ID="***REMOVED***"
 export FV_ARM_CLIENT_ID="***REMOVED***"
