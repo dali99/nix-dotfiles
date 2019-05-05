@@ -1,7 +1,9 @@
 { pkgs, config, lib, ...}:
 
+let
+  unstable = import <nixos-unstable> {};
+in
 {
-
   #home.file.nixoverlays = {
   #  source = ./overlays;
   #  target = ".config/nixpkgs/overlays";
@@ -48,7 +50,7 @@
     pkgs.jq
 
     pkgs.gnome3.gedit
-    pkgs.vscode
+    unstable.vscode
     pkgs.texlive.combined.scheme-full
     pkgs.kile
     pkgs.libreoffice-unwrapped
@@ -65,7 +67,7 @@
     pkgs.frei0r
     
     pkgs.mkvtoolnix
-    #pkgs.unstable.youtubeDL
+    unstable.youtubeDL
     pkgs.ffmpeg-full
     
     pkgs.geogebra
