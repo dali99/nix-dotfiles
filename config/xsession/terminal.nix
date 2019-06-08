@@ -7,6 +7,7 @@
   home.file.kitty = {
     target = ".config/kitty/kitty.conf";
     text = ''
+term			xterm-256color
 font_family		monospace
 font_size		12.0
 background_opacity	0.7

@@ -83,9 +83,10 @@ export QT_STYLE_OVERRIDE="breeze"
   };
 
   home.packages = [
-    pkgs.xorg.xbacklight
+    pkgs.acpilight
     pkgs.pavucontrol
     pkgs.xorg.xkill
+    pkgs.arandr
 
     pkgs.dunst
     pkgs.libnotify
