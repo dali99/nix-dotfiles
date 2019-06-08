@@ -1,7 +1,7 @@
 {pkgs, config, lib, ...}:
 {
 
-  imports = [ ./dunstrc.nix ./terminal.nix ];
+  imports = [ ./dunstrc.nix ./terminal.nix ./audio.nix ];
 
   home.keyboard = {
     layout = "no-latin1";

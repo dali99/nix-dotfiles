@@ -55,6 +55,7 @@
     pkgs.gimp
     pkgs.krita
     pkgs.inkscape
+    pkgs.digikam
     pkgs.godot
     pkgs.blender
     pkgs.audacity
