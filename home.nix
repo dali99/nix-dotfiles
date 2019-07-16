@@ -27,7 +27,6 @@ in
 #    pkgs.warsow
     pkgs.minetest
     
-    pkgs.firefox
     pkgs.mpv
     pkgs.sxiv
     pkgs.spotify
@@ -73,6 +72,11 @@ in
     
     pkgs.geogebra
   ];
+
+  programs.firefox = {
+    enable = true;
+    enableAdobeFlash = true;
+  };
 
   programs.obs-studio = {
     enable = true;
