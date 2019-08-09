@@ -9,7 +9,7 @@ in
   #  target = ".config/nixpkgs/overlays";
   #};
 
-  imports = [ ./config/xsession/xsession.nix ];
+  imports = [ ./config/xsession/xsession.nix ./config/computer/laptop.nix];
 
   home.packages = [
     pkgs.libguestfs
@@ -75,7 +75,7 @@ in
 
   programs.firefox = {
     enable = true;
-    enableAdobeFlash = true;
+    enableAdobeFlash = false;
   };
 
   programs.obs-studio = {
