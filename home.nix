@@ -20,10 +20,7 @@ in
     pkgs.ldns
 
     pkgs.steam
-    pkgs.dolphinEmuMaster
-    pkgs.dwarf-fortress-packages.dwarf-fortress-full
     pkgs.multimc
-    pkgs.superTuxKart
 #    pkgs.warsow
     pkgs.minetest
     
@@ -75,7 +72,6 @@ in
 
   programs.firefox = {
     enable = true;
-    enableAdobeFlash = false;
   };
 
   programs.obs-studio = {
@@ -89,13 +85,6 @@ in
     userEmail = "daniel@dodsorf.as";
     userName = "Daniel Løvbrøtte Olsen";
   };
-
-
-  services.kdeconnect = {
-    enable = true;
-    indicator = true;
-  };
-
 
   services.gpg-agent = {
     enable = true;
