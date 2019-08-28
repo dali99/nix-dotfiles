@@ -42,16 +42,7 @@ POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="↱"
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳ "
 
 export MATRIXDEV_HOMESERVER="https://matrix.dodsorf.as"
-export ***REMOVED***
-
-export FV_KUBECONFIG="$HOME/.kube/config-fv"
-export FV_KUBECONFIG="$HOME/.kube/config-fv-prod"
-
-export FV_ARM_SUBSCRIPTION_ID="***REMOVED***"
-export FV_ARM_CLIENT_ID="***REMOVED***"
-export FV_ARM_CLIENT_SECRET="***REMOVED***"
-export FV_ARM_TENANT_ID="***REMOVED***"
-export FV_ARM_ENVIRONMENT="public"
+export ***REMOVED***"
 
 eval "$(ntfy shell-integration)"
 AUTO_NTFY_DONE_IGNORE="vim nano screen tmux man mpv nmtui"
