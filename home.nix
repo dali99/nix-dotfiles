@@ -6,7 +6,12 @@
   #  target = ".config/nixpkgs/overlays";
   #};
 
-  imports = [ ./config/xsession/xsession.nix ./config/computer/laptop.nix];
+  imports = [ 
+    ./config/xsession/xsession.nix
+    ./config/computer/laptop.nix
+
+    ./config/packages/rank_photos.nix
+  ];
 
   home.packages = with pkgs; [
     libguestfs
