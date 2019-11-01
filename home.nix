@@ -1,8 +1,5 @@
 { pkgs, config, lib, ...}:
 
-let
-  unstable = import <nixos-unstable> {};
-in
 {
   #home.file.nixoverlays = {
   #  source = ./overlays;
@@ -11,66 +8,66 @@ in
 
   imports = [ ./config/xsession/xsession.nix ./config/computer/laptop.nix];
 
-  home.packages = [
-    pkgs.libguestfs
-    pkgs.virtmanager
-    pkgs.virt-viewer
-    pkgs.ansible
-    pkgs.nixops
-    pkgs.ldns
+  home.packages = with pkgs; [
+    libguestfs
+    virtmanager
+    virt-viewer
+    ansible
+    nixops
+    ldns
 
-    pkgs.steam
-    pkgs.dolphinEmuMaster
-    pkgs.dwarf-fortress-packages.dwarf-fortress-full
-    pkgs.multimc
-    pkgs.superTuxKart
-#    pkgs.warsow
-    pkgs.minetest
+    steam
+    dolphinEmuMaster
+    dwarf-fortress-packages.dwarf-fortress-full
+    multimc
+    superTuxKart
+#    warsow
+    minetest
     
-    pkgs.mpv
-    pkgs.sxiv
-    pkgs.spotify
+    mpv
+    sxiv
+    spotify
     
-    pkgs.mumble
+    mumble
     
-    pkgs.dolphin
-    pkgs.krename
-    pkgs.kdeApplications.dolphin-plugins
-    pkgs.ffmpegthumbs
-    pkgs.kdeApplications.kdegraphics-thumbnailers
-    pkgs.kdeFrameworks.kded
-    pkgs.kdeFrameworks.kio
-    pkgs.kdeApplications.kio-extras
-
-    pkgs.unzip
-    pkgs.p7zip
-    pkgs.parallel
-    pkgs.sshfs
-    pkgs.jq
-
-    pkgs.gnome3.gedit
+    dolphin
+    krename
+    kdeApplications.dolphin-plugins
+    ffmpegthumbs
+    kdeApplications.kdegraphics-thumbnailers
+    kdeFrameworks.kded
+    kdeFrameworks.kio
+    kdeApplications.kio-extras
+    
+    unzip
+    p7zip
+    parallel
+    sshfs
+    jq
+    
+    gnome3.gedit
     unstable.vscode
-    pkgs.texlive.combined.scheme-full
-    pkgs.kile
-    pkgs.libreoffice-unwrapped
+    texlive.combined.scheme-full
+    kile
+    libreoffice-unwrapped
     
-    pkgs.gimp
-    pkgs.krita
-    pkgs.inkscape
-    pkgs.digikam
-    pkgs.godot
-    pkgs.blender
-    pkgs.audacity
-    pkgs.mixxx
-    pkgs.ardour
-    pkgs.kdenlive
-    pkgs.frei0r
+    gimp
+    krita
+    inkscape
+    digikam
+    godot
+    blender
+    audacity
+    mixxx
+    ardour
+    kdenlive
+    frei0r
     
-    pkgs.mkvtoolnix
+    mkvtoolnix
     unstable.youtubeDL
-    pkgs.ffmpeg-full
+    ffmpeg-full
     
-    pkgs.geogebra
+    geogebra
   ];
 
   programs.firefox = {
