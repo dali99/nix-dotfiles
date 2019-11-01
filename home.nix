@@ -9,8 +9,6 @@
   imports = [ 
     ./config/xsession/xsession.nix
     ./config/computer/laptop.nix
-
-    ./config/packages/rank_photos.nix
   ];
 
   home.packages = with pkgs; [
@@ -50,6 +48,8 @@
     sshfs
     jq
     
+    dan.rank_photos
+
     gnome3.gedit
     unstable.vscode
     texlive.combined.scheme-full
