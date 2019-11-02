@@ -50,6 +50,8 @@
     
     dan.rank_photos
 
+    ***REMOVED***
+
     gnome3.gedit
     unstable.vscode
     texlive.combined.scheme-full
