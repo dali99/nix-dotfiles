@@ -12,6 +12,7 @@
   ];
 
   home.packages = with pkgs; [
+    #firefox-beta-bin
     libguestfs
     virtmanager
     virt-viewer
@@ -47,10 +48,15 @@
     parallel
     sshfs
     jq
+
+    ncdu
+
+    bat
+    ripgrep
     
     dan.rank_photos
 
-    ***REMOVED***
+    #***REMOVED***
 
     gnome3.gedit
     unstable.vscode
@@ -79,12 +85,15 @@
 
   programs.firefox = {
     enable = true;
+
+    package = pkgs.firefox.override { extraNativeMessagingHosts = [ pkgs.dan.radical-native ]; };    
+
     enableAdobeFlash = false;
   };
 
   programs.obs-studio = {
     enable = true;
-    plugins = [pkgs.obs-linuxbrowser];
+    # plugins = [pkgs.obs-linuxbrowser];
   };
 
 
