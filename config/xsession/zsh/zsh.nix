@@ -37,7 +37,7 @@
         POWERLEVEL9K_SHORTEN_DELIMITER = "..";
         
         POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX = "↱";
-        POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX = "↳ ";
+        POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX = "↳";
     }
     initExtra = ''
       export MATRIXDEV_HOMESERVER="https://matrix.dodsorf.as"
