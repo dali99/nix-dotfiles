@@ -1,8 +1,6 @@
 let unstable = import <nixos-unstable> { }; in
 {
   allowUnfree = true;
-  oraclejdk.accept_license = true;
-
  
   packageOverrides = pkgs: {
     unstable = unstable;

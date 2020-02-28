@@ -88,8 +88,6 @@
     enable = true;
 
     package = pkgs.firefox.override { extraNativeMessagingHosts = [ pkgs.dan.radical-native ]; };    
-
-    enableAdobeFlash = false;
   };
 
   programs.obs-studio = {
@@ -120,6 +118,6 @@
 
   programs.home-manager = {
     enable = true;
-    path = "https://github.com/rycee/home-manager/archive/release-19.03.tar.gz";
+    path = "https://github.com/rycee/home-manager/archive/release-19.09.tar.gz";
   };
 }
