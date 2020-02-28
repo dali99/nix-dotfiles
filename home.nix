@@ -12,7 +12,6 @@
   ];
 
   home.packages = with pkgs; [
-    #firefox-beta-bin
     libguestfs
     virtmanager
     virt-viewer
@@ -56,7 +55,9 @@
     
     dan.rank_photos
 
-    #***REMOVED***
+    ***REMOVED***
+
+    dan.photini
 
     gnome3.gedit
     unstable.vscode
