@@ -19,7 +19,7 @@
     nixops
     ldns
 
-    steam
+    unstable.steam
     dolphinEmuMaster
     dwarf-fortress-packages.dwarf-fortress-full
     multimc
@@ -94,7 +94,6 @@
 
   programs.obs-studio = {
     enable = true;
-    # plugins = [pkgs.obs-linuxbrowser];
   };
 
 
