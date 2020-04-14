@@ -19,6 +19,8 @@
     nixops
     ldns
 
+    dan.mangohud
+
     unstable.steam
     dolphinEmuMaster
     dwarf-fortress-packages.dwarf-fortress-full
@@ -55,7 +57,7 @@
     
     dan.rank_photos
 
-    ***REMOVED***
+#    ***REMOVED***
 
     dan.photini
 
@@ -102,10 +104,10 @@
   };
 
 
-  services.kdeconnect = {
-    enable = true;
-    indicator = true;
-  };
+#  services.kdeconnect = {
+#    enable = true;
+#    indicator = true;
+#  };
 
 
   services.gpg-agent = {
