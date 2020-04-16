@@ -19,7 +19,7 @@
     nixops
     ldns
 
-    dan.mangohud
+    danstable.mangohud
 
     unstable.steam
     dolphinEmuMaster

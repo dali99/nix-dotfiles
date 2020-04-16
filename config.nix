@@ -1,4 +1,7 @@
-let unstable = import <nixos-unstable> { }; in
+let
+  unstable = import <nixos-unstable> { }; 
+  stable = import <nixos> {};
+in
 {
   allowUnfree = true;
  
@@ -9,6 +12,9 @@ let unstable = import <nixos-unstable> { }; in
     };
     dan = import (builtins.fetchTarball "https://git.dodsorf.as/Dandellion/NUR/-/archive/master/NUR-master.tar.gz") {
       pkgs = unstable;
+    };
+    danstable = import (builtins.fetchTarball "https://git.dodsorf.as/Dandellion/NUR/-/archive/master/NUR-master.tar.gz") {
+      pkgs = stable;
     };
   };
 }
