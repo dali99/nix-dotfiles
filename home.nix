@@ -19,6 +19,9 @@
     nixops
     ldns
 
+    file
+    tmux
+
     danstable.mangohud
 
     unstable.steam
