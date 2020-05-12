@@ -19,7 +19,10 @@
     nixops
     ldns
 
-#    danstable.mangohud
+    file
+    tmux
+
+    #danstable.mangohud
 
     unstable.steam
     dolphinEmuMaster
