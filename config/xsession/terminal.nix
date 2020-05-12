@@ -4,9 +4,9 @@
   imports = [ ./zsh/zsh.nix ];
 
 
-  home.file.kitty = {
-    target = ".config/kitty/kitty.conf";
-    text = ''
+  programs.kitty = {
+    enable = true;
+    settings = ''
       #term			xterm-256color
       font_family		monospace
       font_size		12.0
@@ -24,10 +24,9 @@
     '';
   };
 
-
- home.packages = [
-    pkgs.gnome3.gnome-terminal
-    pkgs.kitty
+  home.packages = with pkgs; [
+    gnome3.gnome-terminal
+    kitty
     pkgs.ncurses.dev
   ];
 }

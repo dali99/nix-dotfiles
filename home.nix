@@ -102,8 +102,11 @@
 
   programs.git = {
     enable = true;
-    userEmail = "daniel@dodsorf.as";
-    userName = "Daniel Løvbrøtte Olsen";
+    userEmail = "daniel.olsen99@gmail.com";
+    userName = "Daniel Olsen";
+
+#    delta.enable = true;
+    
   };
 
 
@@ -123,6 +126,6 @@
 
   programs.home-manager = {
     enable = true;
-    path = "https://github.com/rycee/home-manager/archive/release-19.09.tar.gz";
+    path = "https://github.com/rycee/home-manager/archive/release-20.03.tar.gz";
   };
 }
