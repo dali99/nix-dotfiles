@@ -24,7 +24,7 @@
 
     #danstable.mangohud
 
-    unstable.steam
+    steam
     dolphinEmuMaster
     dwarf-fortress-packages.dwarf-fortress-full
     multimc
