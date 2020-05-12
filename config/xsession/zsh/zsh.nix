@@ -72,7 +72,7 @@
 
   home.packages = [
     pkgs.nerdfonts
-    pkgs.ntfy
+    #pkgs.ntfy
   ];
 
 }
