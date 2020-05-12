@@ -12,12 +12,12 @@
 
 
     initExtra = ''
-export PATH="$HOME/.config/nixpkgs/nix-dotfiles/bin:$PATH"
+      export PATH="$HOME/.config/nixpkgs/nix-dotfiles/bin:$PATH"
 
-export XDG_CURRENT_DESKTOP=kde
-export DESKTOP_SESSION=kde
+      export XDG_CURRENT_DESKTOP=kde
+      export DESKTOP_SESSION=kde
 
-export QT_STYLE_OVERRIDE="breeze"
+      export QT_STYLE_OVERRIDE="breeze"
     '';
 
     windowManager = {
