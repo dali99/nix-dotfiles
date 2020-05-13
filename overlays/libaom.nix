@@ -1,11 +1,11 @@
 self: super:
 {
   mylibaom = super.libaom.overrideAttrs (old: rec {
-    version = "1.0.0-g33e9b7fb1";
+    version = "1.0.0-fdca7c6440";
     src = super.fetchgit {
       url = "https://aomedia.googlesource.com/aom";
-      rev = "e6a12489069fdf7188963950cdec8ef7ef333f1d";
-      sha256 = "1ncvn5l8zczkjxfmld2ppcwqkc80pm38y1qaf1yil1llfx85xvhh";
+      rev = "fdca7c64406efeb3a5f9012801bf122b06d2045a";
+      sha256 = "00f7cvmcj094sdw0i35633yn1ng9w38wl761k1fx6ns8w0byirv1";
     };
 
 

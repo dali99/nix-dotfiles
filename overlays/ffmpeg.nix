@@ -1,22 +1,21 @@
 self: super:
 {
   ffmpeggit = super.ffmpeg-full.overrideAttrs (old: rec {
-    version = "4.2.2";
+    version = "4.2.2-04pkq2y2";
     src = super.fetchurl {
       url = "http://www.ffmpeg.org/releases/ffmpeg-snapshot-git.tar.bz2";
-      sha256 = "1lj7spgmv2kqiz25dpy2gzbciqdsm7j3q1s1j4csnal5jyq6a28m";
+      sha256 = "04pkq2y245l09kyd1hb9b4qb9l2liq8k4q6yr613wy6b1bj8pb81";
     };
     configureFlags = [
       "--enable-gpl"
       "--enable-version3"
-      "--enable-static"
       "--disable-debug"
+      "--enable-static"
       "--disable-ffplay"
       "--disable-indev=sndio"
       "--disable-outdev=sndio"
       "--cc=gcc"
       "--enable-fontconfig"
-      "--enable-frei0r"
       "--enable-gnutls"
       "--enable-gmp"
       "--enable-libgme"
@@ -24,25 +23,16 @@ self: super:
       "--enable-libaom"
       "--enable-libfribidi"
       "--enable-libass"
-      "--enable-libvmaf"
       "--enable-libfreetype"
-      "--enable-libmp3lame"
       "--enable-libopencore-amrnb"
       "--enable-libopencore-amrwb"
-      "--enable-libopenjpeg"
       "--enable-libsoxr"
-      "--enable-libspeex"
-      "--enable-libvorbis"
       "--enable-libopus"
       "--enable-libtheora"
-      "--enable-libvidstab"
       "--enable-libvo-amrwbenc"
-      "--enable-libvpx"
       "--enable-libwebp"
       "--enable-libx264"
-      "--enable-libx265"
       "--enable-libdav1d"
-      "--enable-libxvid"
     ];
     patches = [];
   });
