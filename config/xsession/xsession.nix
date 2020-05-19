@@ -51,7 +51,7 @@
           "${modifier}+t" = "exec gedit";
 
           "${modifier}+Return" = lib.mkForce "exec kitty";
-          "${modifier}+Shift+Return" = "exec kitty -e ssh daniel@adam";
+          "${modifier}+Shift+Return" = "exec kitty -e ssh dandellion@lilith";
         };
       };
     };
