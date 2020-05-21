@@ -56,14 +56,7 @@
       export FV_ARM_TENANT_ID="***REMOVED***"
       export FV_ARM_ENVIRONMENT="public"
 
-      eval "$(ntfy shell-integration)"
-      AUTO_NTFY_DONE_IGNORE="vim nano screen tmux man mpv nmtui"
     '';
-  };
-
-  home.file.ntfy = {
-    source = ./ntfy.yml;
-    target = ".config/ntfy/ntfy.yml";
   };
 
   programs.direnv = {
@@ -72,7 +65,6 @@
 
   home.packages = [
     pkgs.nerdfonts
-    #pkgs.ntfy
   ];
 
 }
