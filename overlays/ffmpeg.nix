@@ -4,7 +4,7 @@ self: super:
     version = "4.2.2-04pkq2y2";
     src = super.fetchurl {
       url = "http://www.ffmpeg.org/releases/ffmpeg-snapshot-git.tar.bz2";
-      sha256 = "04pkq2y245l09kyd1hb9b4qb9l2liq8k4q6yr613wy6b1bj8pb81";
+      sha256 = "14pjy4w7a9g5dn5mssd5lzfl6pz5g8wgqz9fd4cb26dbrfb97i1b";
     };
     configureFlags = [
       "--enable-gpl"
