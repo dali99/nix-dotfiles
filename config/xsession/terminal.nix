@@ -8,8 +8,8 @@
     target = ".config/kitty/kitty.conf";
     text = ''
       #term			xterm-256color
-      font_family		monospace
-      font_size		12.0
+      font_family		MesloLGS NF
+      font_size			12.0
       background_opacity	0.7
 
       clear_all_shortcuts yes

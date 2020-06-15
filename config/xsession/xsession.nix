@@ -7,6 +7,24 @@
     layout = "no-latin1";
   };
 
+  services.random-background = {
+    enable = true;
+    imageDirectory = "%h/wallpapers";
+    interval = "30m";
+  };
+
+   wayland.windowManager.sway = {
+     enable = true;
+     config = {
+       terminal = "kitty";
+       bars = [
+         {
+           command = "${pkgs.waybar}/bin/waybar";
+         }
+       ];
+     };
+   };
+
   xsession = {
     enable = true;
 
@@ -37,8 +55,8 @@
           "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute 0 toggle";
           "XF86AudioMicMute" = "exec --no-startup-id pactl set-source-mute 1 toggle";
 
-          "XF86MonBrightnessUp" = "exec --no-startup-id xbacklight -inc 5";
-          "XF86MonBrightnessDown" = "exec --no-startup-id xbacklight -dec 5";
+          "XF86MonBrightnessUp" = "exec --no-startup-id brightnessctl set +5%";
+          "XF86MonBrightnessDown" = "exec --no-startup-id brightnessctl set 5%-";
 
           "XF86Display" = "exec arandr";
 
@@ -74,7 +92,6 @@
       name = "breeze";
     };
   };
-
   qt = {
     enable = true;
     #useGtkTheme = true;
@@ -82,7 +99,7 @@
   };
 
   home.packages = [
-    pkgs.acpilight
+    pkgs.brightnessctl
     pkgs.pavucontrol
     pkgs.xorg.xkill
     pkgs.arandr
@@ -101,7 +118,3 @@
     pkgs.breeze-icons
   ];
 }
-
- 
-
-
