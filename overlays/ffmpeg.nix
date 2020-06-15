@@ -1,10 +1,10 @@
 self: super:
 {
   ffmpeggit = super.ffmpeg-full.overrideAttrs (old: rec {
-    version = "4.2.2-04pkq2y2";
+    version = "4.2.2-0vhi3x2irg";
     src = super.fetchurl {
       url = "http://www.ffmpeg.org/releases/ffmpeg-snapshot-git.tar.bz2";
-      sha256 = "04pkq2y245l09kyd1hb9b4qb9l2liq8k4q6yr613wy6b1bj8pb81";
+      sha256 = "0vhi3x2irgxi9v04m09pawi0dq7gkvq909pk7psk1cypbbv1nlf7";
     };
     configureFlags = [
       "--enable-gpl"
