@@ -14,7 +14,7 @@
     };
     initExtra = ''
       source ${pkgs.unstable.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme 
-      source "$HOME/.config/nixpkgs/nix-dotfiles/config/zsh/.p10k.zsh"
+      source "$HOME/.config/nixpkgs/nix-dotfiles/config/xsession/zsh/.p10k.zsh"
 
       ZLE_RPROMPT_INDENT=0
 
@@ -39,6 +39,7 @@
 
   home.packages = [
   #  pkgs.nerdfonts
+     pkgs.dan.mesloNFp10k
   ];
 
 }
