@@ -7,6 +7,12 @@
     layout = "no-latin1";
   };
 
+  services.random-background = {
+    enable = true;
+    imageDirectory = "%h/wallpapers";
+    interval = "30m";
+  };
+
    wayland.windowManager.sway = {
      enable = true;
      config = {

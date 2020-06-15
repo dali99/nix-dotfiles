@@ -1,4 +1,4 @@
-{pkgs, config, lib, ...}:
+{ pkgs, config, lib, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -9,40 +9,14 @@
       expireDuplicatesFirst = true;
       ignoreDups = true;
     };
-    oh-my-zsh = {
-      enable = true;
-      custom = "\$HOME/.config/nixpkgs/nix-dotfiles/config/xsession/zsh/oh-my-zsh-custom";
-      plugins = [
-        "git"
-        "sudo"
-      ];
-      theme = "powerlevel9k/powerlevel9k";
-    };
     shellAliases = {
       mpvav1 = "mpv --vd-queue-enable=yes --ad-queue-enable=yes --vd-queue-max-bytes=4000MiB --vd-queue-max-samples=2000000 --vd-queue-max-secs=50";
     };
     initExtra = ''
-      POWERLEVEL9K_MODE='nerdfont-complete'
+      source ${pkgs.unstable.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme 
+      source "$HOME/.config/nixpkgs/nix-dotfiles/config/zsh/.p10k.zsh"
 
-      POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir newline vcs)
-      POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
-
-      POWERLEVEL9K_OS_ICON_BACKGROUND="white"
-      POWERLEVEL9K_OS_ICON_FOREGROUND="blue"
-
-      POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="green"
-      POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="white"
-      POWERLEVEL9K_CONTEXT_SUDO_BACKGROUND="red"
-      POWERLEVEL9K_CONTEXT_SUDO_FOREGROUND="white"
-
-      POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
-      POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
-      POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
-      POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-      POWERLEVEL9K_SHORTEN_DELIMITER=".."
-
-      POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="↱"
-      POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳"
+      ZLE_RPROMPT_INDENT=0
 
       export MATRIXDEV_HOMESERVER="https://matrix.dodsorf.as"
       export ***REMOVED***
@@ -64,7 +38,7 @@
   };
 
   home.packages = [
-    pkgs.nerdfonts
+  #  pkgs.nerdfonts
   ];
 
 }
