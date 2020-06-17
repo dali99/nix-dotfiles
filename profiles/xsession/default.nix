@@ -242,7 +242,7 @@ in
           type = "internal/date";
           internal = 5;
           date = "%Y-%m-%d";
-          time = "%H:%M";
+          time = "%H:%M:%S";
           label = "%date% %time%";
         };
       };
