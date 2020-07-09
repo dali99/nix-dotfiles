@@ -18,10 +18,10 @@ in {
   config = lib.mkIf cfg.enable {
 
     home.packages = with pkgs; [
-      libguestfs
-      virtmanager
-      virt-viewer
-      ansible
+      #libguestfs
+      #virtmanager
+      #virt-viewer
+      #ansible
       nixops
       ldns
 
@@ -33,12 +33,12 @@ in {
 #      danstable.mangohud
 
       steam
-      dolphinEmuMaster
-      dwarf-fortress-packages.dwarf-fortress-full
+#      dolphinEmuMaster
+      #dwarf-fortress-packages.dwarf-fortress-full
       multimc
-      superTuxKart
+      #superTuxKart
 #      warsow
-      minetest
+#      minetest
     
       mpv
       sxiv
@@ -70,28 +70,28 @@ in {
 
 #      ***REMOVED***
 
-      dan.photini
+#      dan.photini
 
       gnome3.gedit
       unstable.vscode
-      texlive.combined.scheme-full
-      kile
+#      texlive.combined.scheme-full
+#      kile
       libreoffice-unwrapped
     
       gimp
-      krita
-      inkscape
-      digikam
-      godot
-      blender
-      audacity
-      mixxx
-      ardour
+#      krita
+#      inkscape
+#      digikam
+#      godot
+#      blender
+#      audacity
+      #mixxx
+#      ardour
       kdenlive
       frei0r
     
       mkvtoolnix
-      unstable.youtubeDL
+#      unstable.youtubeDL
       ffmpeg-full
     
       geogebra
