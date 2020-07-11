@@ -18,7 +18,7 @@ in
 
     services.random-background = {
       enable = true;
-      imageDirectory = "%h/wallpapers";
+      imageDirectory = "${pkgs.dan.wallpapers}";
       interval = "30m";
     };
 
