@@ -1,1 +1,1 @@
-{ imports = [ ./base ./xsession ./zsh ]; }
+{ imports = [ ./base ./xsession ./zsh ./gui.nix ./games ]; }

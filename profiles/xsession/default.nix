@@ -12,6 +12,8 @@ in
 
 
   config = lib.mkIf cfg.enable {
+    profiles.gui.enable = true;
+
     home.keyboard = {
       layout = "no-latin1";
     };
@@ -102,7 +104,6 @@ in
 
     home.packages = [
       pkgs.brightnessctl
-      pkgs.pavucontrol
       pkgs.xorg.xkill
       pkgs.arandr
 
