@@ -19,41 +19,16 @@ in {
 
     home.packages = with pkgs; [
       #libguestfs
-      #virtmanager
-      #virt-viewer
       #ansible
-      nixops
+      #nixops
       ldns
+
+      lsof
 
       htop
 
       file
       tmux
-
-#      danstable.mangohud
-
-      steam
-#      dolphinEmuMaster
-      #dwarf-fortress-packages.dwarf-fortress-full
-      multimc
-      #superTuxKart
-#      warsow
-#      minetest
-    
-      mpv
-      sxiv
-      spotify
-    
-      mumble
-    
-      dolphin
-      krename
-      kdeApplications.dolphin-plugins
-      ffmpegthumbs
-      kdeApplications.kdegraphics-thumbnailers
-      kdeFrameworks.kded
-      kdeFrameworks.kio
-      kdeApplications.kio-extras
     
       unzip
       p7zip
@@ -66,11 +41,33 @@ in {
       bat
       ripgrep
     
+      mkvtoolnix
+#      unstable.youtubeDL
+      ffmpeg-full
+    
+    ] ++ lib.optionals config.profiles.gui.enable [
+#      virtmanager
+#      virt-viewer
+
+      mpv
+      sxiv
+      spotify
+    
+      mumble
+    
+      dolphin
+      konsole
+      krename
+      kdeApplications.dolphin-plugins
+      ffmpegthumbs
+      kdeApplications.kdegraphics-thumbnailers
+      kdeFrameworks.kded
+      kdeFrameworks.kio
+      kdeApplications.kio-extras
+
       dan.rank_photos
 
 #      ***REMOVED***
-
-#      dan.photini
 
       gnome3.gedit
       unstable.vscode
@@ -85,26 +82,22 @@ in {
 #      godot
 #      blender
 #      audacity
-      #mixxx
+#      mixxx
 #      ardour
       kdenlive
       frei0r
-    
-      mkvtoolnix
-#      unstable.youtubeDL
-      ffmpeg-full
-    
+      
       geogebra
     ];
 
     programs.firefox = {
-      enable = true;
+      enable = config.profiles.gui.enable;
 
       package = pkgs.firefox.override { extraNativeMessagingHosts = [ pkgs.dan.radical-native ]; };    
     };
 
     programs.obs-studio = {
-      enable = true;
+      enable = config.profiles.gui.enable;
     };
 
 
