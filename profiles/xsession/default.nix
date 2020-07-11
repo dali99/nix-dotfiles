@@ -12,13 +12,15 @@ in
 
 
   config = lib.mkIf cfg.enable {
+    profiles.gui.enable = true;
+
     home.keyboard = {
       layout = "no-latin1";
     };
 
     services.random-background = {
       enable = true;
-      imageDirectory = "%h/wallpapers";
+      imageDirectory = "${pkgs.dan.wallpapers}";
       interval = "30m";
     };
 
@@ -102,7 +104,6 @@ in
 
     home.packages = [
       pkgs.brightnessctl
-      pkgs.pavucontrol
       pkgs.xorg.xkill
       pkgs.arandr
 

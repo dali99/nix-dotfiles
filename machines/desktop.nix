@@ -10,6 +10,7 @@
   profiles.xsession.enable = true;
   profiles.zsh.enable = true;
 
+  profiles.games.enable = true;
 
   programs.home-manager = {
     enable = true;
