@@ -23,9 +23,11 @@ in {
 #     dwarf-fortress-packages.dwarf-fortress-full
 #     superTuxKart
 #     warsow
-      xonotic
+#      xonotic
       zeroad
+      unstable.osu-lazer
 
+      nur.repos.ivar.sm64ex
 #     dolphinEmuMaster
     ];
   };
