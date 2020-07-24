@@ -27,7 +27,7 @@ in {
       zeroad
       unstable.osu-lazer
 
-      nur.repos.ivar.sm64ex
+#      nur.repos.ivar.sm64ex
 #     dolphinEmuMaster
     ];
   };
