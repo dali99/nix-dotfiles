@@ -65,7 +65,7 @@ in {
       kdeFrameworks.kio
       kdeApplications.kio-extras
 
-      dan.rank_photos
+      #dan.rank_photos
 
 #      ***REMOVED***
 
@@ -87,7 +87,7 @@ in {
       kdenlive
       frei0r
       
-      geogebra
+      #geogebra
     ];
 
     programs.firefox = {
@@ -105,7 +105,9 @@ in {
       enable = true;
       userEmail = "daniel.olsen99@gmail.com";
       userName = "Daniel Olsen";
-
+      extraConfig = {
+         pull.rebase = true;
+      };
 #      delta.enable = true;
     
     };
