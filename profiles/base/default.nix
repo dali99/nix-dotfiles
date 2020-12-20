@@ -93,7 +93,7 @@ in {
     programs.firefox = {
       enable = config.profiles.gui.enable;
 
-      package = pkgs.firefox.override { extraNativeMessagingHosts = [ pkgs.dan.radical-native ]; };    
+#      package = pkgs.firefox.override { extraNativeMessagingHosts = [ pkgs.dan.radical-native ]; };    
     };
 
     programs.obs-studio = {
