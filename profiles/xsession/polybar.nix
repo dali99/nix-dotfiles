@@ -33,6 +33,7 @@ in
           height = 27;
 
           font-0 = "MesloLGS NF:fontformat=truetype:pixelsize=11;1";
+          font-1 = "Kozuka Mincho Pro:pixelsize=11;1";
 
           background = "\${colors.background}";
           foreground = "\${colors.foreground}";
@@ -117,6 +118,7 @@ in
           interval = 25;
 
           mount-0 = "/";
+          mount-1 = "/mnt/henning";
 
           label-mounted = "%{F#0a81f5}%mountpoint%%{F-}: %free%";
           label-unmounted = "%mountpoint% not mounted";
@@ -183,3 +185,4 @@ in
     };
   };
 }
+
