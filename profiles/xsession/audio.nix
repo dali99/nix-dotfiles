@@ -9,11 +9,11 @@
       pkgs.qjackctl
     ];
 
-    home.file.pulse = {
-      target = ".config/pulse/client.conf";
-      text = ''
-        daemon-binary=/var/run/current-system/sw/bin/pulseaudio
-      '';
-    };
+#    home.file.pulse = {
+#      target = ".config/pulse/client.conf";
+#      text = ''
+#        daemon-binary=/var/run/current-system/sw/bin/pulseaudio
+#      '';
+#    };
   };
 }

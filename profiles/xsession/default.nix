@@ -24,6 +24,8 @@ in
       interval = "30m";
     };
 
+    services.dunst.enable = false;
+
     xsession = {
       enable = true;
 
