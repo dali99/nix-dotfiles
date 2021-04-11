@@ -116,7 +116,7 @@ in
 
       pkgs.scrot
       pkgs.neofetch
-      pkgs.dan.colors
+      #pkgs.dan.colors
       pkgs.xclip
 
       pkgs.dejavu_fonts

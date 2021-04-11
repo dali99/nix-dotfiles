@@ -22,8 +22,8 @@ in
         mpvav1 = "mpv --vd-queue-enable=yes --ad-queue-enable=yes --vd-queue-max-bytes=4000MiB --vd-queue-max-samples=2000000 --vd-queue-max-secs=50";
       };
       initExtra = ''
-        source ${pkgs.unstable.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme 
-        source "$HOME/.config/nixpkgs/nix-dotfiles/profiles/zsh/.p10k.zsh"
+        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme 
+        source ${./p10k.zsh}
 
         ZLE_RPROMPT_INDENT=0
 

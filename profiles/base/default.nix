@@ -60,10 +60,10 @@ in {
       krename
       kdeApplications.dolphin-plugins
       ffmpegthumbs
-      kdeApplications.kdegraphics-thumbnailers
+      #kdeApplications.kdegraphics-thumbnailers
       kdeFrameworks.kded
       kdeFrameworks.kio
-      kdeApplications.kio-extras
+      #kdeApplications.kio-extras
 
       #dan.rank_photos
 
@@ -73,7 +73,7 @@ in {
       unstable.vscode
 #      texlive.combined.scheme-full
 #      kile
-      libreoffice-unwrapped
+      #libreoffice-unwrapped
     
       gimp
 #      krita
