@@ -73,7 +73,7 @@ in {
       unstable.vscode
 #      texlive.combined.scheme-full
 #      kile
-      #libreoffice-unwrapped
+      libreoffice
     
       gimp
 #      krita
@@ -87,7 +87,7 @@ in {
       kdenlive
       frei0r
       
-      #geogebra
+      geogebra
     ];
 
     programs.firefox = {
