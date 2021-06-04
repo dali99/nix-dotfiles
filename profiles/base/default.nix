@@ -58,11 +58,11 @@ in {
       dolphin
       konsole
       krename
-      kdeApplications.dolphin-plugins
+      #kdeApplications.dolphin-plugins
       ffmpegthumbs
       #kdeApplications.kdegraphics-thumbnailers
-      kdeFrameworks.kded
-      kdeFrameworks.kio
+      #kdeFrameworks.kded
+      #kdeFrameworks.kio
       #kdeApplications.kio-extras
 
       #dan.rank_photos
@@ -117,7 +117,6 @@ in {
 #      enable = true;
 #      indicator = true;
 #    };
-
 
     services.gpg-agent = {
       enable = true;
