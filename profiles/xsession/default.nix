@@ -73,6 +73,13 @@ in
             # "${modifier}+Return" = lib.mkForce "exec kitty";
             "${modifier}+Shift+Return" = "exec kitty -e ssh dandellion@lilith";
           };
+          startup = [
+            { 
+              command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+              always = false;
+              #notification = false;
+            }
+          ];
           window = {
             titlebar = false;
             hideEdgeBorders = "smart";
