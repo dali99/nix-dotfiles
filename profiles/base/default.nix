@@ -51,6 +51,7 @@ in {
 
       mpv
       sxiv
+      unstable.hydrus
       spotify
     
       mumble
