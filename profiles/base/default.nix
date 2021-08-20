@@ -9,6 +9,7 @@ in {
       type = "str";
     };
     eth = lib.mkOption {};
+    wlan = lib.mkOption {};
   };
 
   options.profiles.base = {
@@ -45,6 +46,8 @@ in {
 #      unstable.youtubeDL
       ffmpeg-full
     
+      nix-index
+      nur.repos.j-k.comma
     ] ++ lib.optionals config.profiles.gui.enable [
 #      virtmanager
 #      virt-viewer

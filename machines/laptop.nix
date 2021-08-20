@@ -4,7 +4,8 @@
 
   machine = {
     name = "DanixLaptop";
-    eth = "enp0s25";
+    eth = "enp0s31f6";
+    wlan = "wlp5s0";
   };
   profiles.base.enable = true;
   profiles.gui.enable = true;

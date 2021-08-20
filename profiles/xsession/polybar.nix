@@ -81,7 +81,7 @@ in
         };
         "module/wlan" = {
           type = "internal/network";
-          interface = "wlp4s0";
+          interface = config.machine.wlan;
           interval = "3.0";
 
           format-connected = "<ramp-signal> <label-connected>";
