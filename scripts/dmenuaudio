@@ -1,0 +1,9 @@
+#!/bin/sh
+# Give dmenu list of all unicode characters to copy.
+# Shows the selected character in dunst if running.
+
+chosen=$(cd $HOME/Soundboard && find -printf '%P\n'| dmenu -i -l 20 -fn Monospace-14)
+
+[ "$chosen" != "" ] || exit
+
+mpv --no-video --audio-device=pulse/SendToVirtualMic "$HOME/Soundboard/$chosen"

@@ -44,7 +44,8 @@ in
         i3.config = {
           modifier = "Mod4";
           terminal = "kitty";
-          keybindings = let modifier = config.xsession.windowManager.i3.config.modifier;
+          keybindings = let
+            modifier = config.xsession.windowManager.i3.config.modifier;
           in lib.mkOptionDefault {
             "${modifier}+0" = "workspace 10";
             "${modifier}+Shift+0" = "move container to workspace 10";
@@ -69,6 +70,8 @@ in
             "${modifier}+n" = "exec dolphin";
             "${modifier}+b" = "exec firefox";
             "${modifier}+t" = "exec gedit";
+
+            "${modifier}+Shift+s" = "exec $HOME/.config/nixpkgs/nix-dotfiles/scripts/dmenuaudio";
 
             # "${modifier}+Return" = lib.mkForce "exec kitty";
             "${modifier}+Shift+Return" = "exec kitty -e ssh dandellion@lilith";
