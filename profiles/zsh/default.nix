@@ -17,6 +17,7 @@ in
       history = {
         expireDuplicatesFirst = true;
         ignoreDups = true;
+        share = false;
       };
       shellAliases = {
         mpvav1 = "mpv --vd-queue-enable=yes --ad-queue-enable=yes --vd-queue-max-bytes=4000MiB --vd-queue-max-samples=2000000 --vd-queue-max-secs=50";
@@ -24,6 +25,12 @@ in
       initExtra = ''
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme 
         source ${./p10k.zsh}
+
+        autoload -U history-search-end
+        zle -N history-beginning-search-backward-end history-search-end
+        zle -N history-beginning-search-forward-end history-search-end
+        bindkey "^[[A" history-beginning-search-backward-end
+        bindkey "^[[B" history-beginning-search-forward-end
 
         ZLE_RPROMPT_INDENT=0
 
