@@ -137,6 +137,30 @@ in {
     };
 
 
+    programs.ssh = {
+      enable = true;
+      matchBlocks = {
+        "lilith" = {
+          hostname = "lilith.d.d.dodsorf.as";
+          user = "dandellion";
+        };
+        "desktop" = {
+          hostname = "10.42.42.10";
+          user = "dan";
+        };
+        "laptop" = {
+          hostname = "10.42.42.13";
+          user = "daniel";
+        };
+        "pvv.ntnu.no" = {
+          user = "danio";
+        };
+        "*.pvv.ntnu.no" = {
+          user = "danio";
+        };
+      };
+    };
+
 #    services.kdeconnect = {
 #      enable = true;
 #      indicator = true;
