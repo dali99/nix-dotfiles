@@ -38,7 +38,6 @@ in
         export FV_ARM_CLIENT_SECRET="***REMOVED***"
         export FV_ARM_TENANT_ID="***REMOVED***"
         export FV_ARM_ENVIRONMENT="public"
-
       '';
     };
 
