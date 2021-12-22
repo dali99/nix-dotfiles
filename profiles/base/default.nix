@@ -96,8 +96,28 @@ in {
 
     programs.firefox = {
       enable = config.profiles.gui.enable;
-
-#      package = pkgs.firefox.override { extraNativeMessagingHosts = [ pkgs.dan.radical-native ]; };    
+      profiles = {
+        daniel = {
+          settings = {
+            "browser.startup.homepage" = "https://nixos.org";
+          };
+          bookmarks = {
+            "NixOS Options" = {
+              keyword = "no";
+              url = "https://search.nixos.org/options?query=%s";
+            };
+            "NixOS Packages" = {
+              keyword = "np";
+              url = "https://search.nixos.org/packages?query=%s";
+            };
+            "Home-Manager Options" = {
+              keyword = "hm";
+              url = "https://rycee.gitlab.io/home-manager/options.html#opt-%s";
+            };
+          };
+        };
+      };
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [ bitwarden cookies-txt https-everywhere metamask no-pdf-download sponsorblock ublock-origin  ];
     };
 
     programs.obs-studio = {
