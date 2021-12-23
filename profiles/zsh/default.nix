@@ -31,6 +31,9 @@ in
         zle -N history-beginning-search-forward-end history-search-end
         bindkey "^[[A" history-beginning-search-backward-end
         bindkey "^[[B" history-beginning-search-forward-end
+        bindkey '\e[H'  beginning-of-line
+        bindkey '\e[F'  end-of-line
+        bindkey '\e[3~' delete-char
 
         ZLE_RPROMPT_INDENT=0
 
