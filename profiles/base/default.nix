@@ -59,19 +59,17 @@ in {
     
       mumble
     
-      dolphin
-      konsole
-      krename
-      #kdeApplications.dolphin-plugins
-      ffmpegthumbs
-      #kdeApplications.kdegraphics-thumbnailers
-      #kdeFrameworks.kded
-      #kdeFrameworks.kio
-      #kdeApplications.kio-extras
-
       #dan.rank_photos
 
 #      ***REMOVED***
+
+
+      dolphin plasma5Packages.dolphin-plugins
+      ffmpegthumbs
+      plasma5Packages.kdegraphics-thumbnailers
+      plasma5Packages.kio plasma5Packages.kio-extras
+      krename
+      konsole # https://bugs.kde.org/show_bug.cgi?id=407990 reeee
 
       gnome3.gedit
       unstable.vscode
