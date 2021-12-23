@@ -15,7 +15,7 @@ in
     profiles.gui.enable = true;
 
     home.keyboard = {
-      layout = "no-latin1";
+      layout = "no";
     };
 
     services.random-background = {
