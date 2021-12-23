@@ -170,6 +170,13 @@ in {
       enableSshSupport = true;
     };
 
-    fonts.fontconfig.enable = true;
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "image/png" = [ "sxiv.desktop" "gimp.desktop" ];
+      };
+    };
+
+    fonts.fontconfig.enable = config.profiles.gui.enable;
   };
 }
