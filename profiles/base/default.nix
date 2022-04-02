@@ -57,6 +57,8 @@ in {
 #      virtmanager
 #      virt-viewer
 
+     thunderbird
+
       mpv
       sxiv
       unstable.hydrus
