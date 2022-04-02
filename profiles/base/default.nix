@@ -182,6 +182,10 @@ in {
       enable = true;
       defaultApplications = {
         "image/png" = [ "sxiv.desktop" "gimp.desktop" ];
+        "text/plain" = [ "gedit.desktop" "kakoune.desktop" "code.desktop" ];
+      };
+      associations.removed = {
+        "text/plain" = [ "writer.desktop" ];
       };
     };
 
