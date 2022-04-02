@@ -125,9 +125,7 @@ in {
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [ bitwarden cookies-txt https-everywhere metamask no-pdf-download sponsorblock ublock-origin  ];
     };
 
-    programs.obs-studio = {
-      enable = config.profiles.gui.enable;
-    };
+    programs.obs-studio.enable = config.profiles.gui.enable;
 
 
     programs.git = {
