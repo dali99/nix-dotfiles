@@ -20,6 +20,12 @@ in
         share = false;
       };
       shellAliases = {
+        cat = "bat";
+        ls = "exa";
+        tree = "exa -T";
+
+        df = "df -h";
+
         mpvav1 = "mpv --vd-queue-enable=yes --ad-queue-enable=yes --vd-queue-max-bytes=4000MiB --vd-queue-max-samples=2000000 --vd-queue-max-secs=50";
 
         gst = "git status -sb";
