@@ -135,8 +135,7 @@ in {
       extraConfig = {
          pull.rebase = true;
       };
-#      delta.enable = true;
-    
+      delta.enable = true;
     };
 
 
