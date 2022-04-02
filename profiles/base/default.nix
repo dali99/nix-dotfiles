@@ -29,6 +29,7 @@ in {
       unstable.comma
 
       ldns
+      mtr
 
       lsof
 
