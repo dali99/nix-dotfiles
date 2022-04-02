@@ -12,6 +12,12 @@
   profiles.xsession.enable = true;
   profiles.zsh.enable = true;
 
+  services.gammastep =  {
+    enable = true;
+    dawnTime = "7:00-8:15"
+    duskTime = "21:30-22:30";
+  };
+
   profiles.games.enable = true;
 
   programs.home-manager = {
