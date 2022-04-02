@@ -161,6 +161,9 @@ in {
         "*.pvv.ntnu.no" = {
           user = "danio";
         };
+        "gitlab.stud.idi.ntnu.no" = {
+          proxyJump = "login.pvv.ntnu.no";
+        };
       };
     };
 
