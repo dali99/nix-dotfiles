@@ -14,7 +14,7 @@
 
   services.gammastep =  {
     enable = true;
-    dawnTime = "7:00-8:15"
+    dawnTime = "7:00-8:15";
     duskTime = "21:30-22:30";
   };
 
