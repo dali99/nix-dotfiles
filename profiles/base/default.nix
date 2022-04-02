@@ -22,6 +22,12 @@ in {
       #libguestfs
       #ansible
       #nixops
+
+      nix-output-monitor
+      nix-top
+      nix-index
+      unstable.comma
+
       ldns
 
       lsof
@@ -33,6 +39,7 @@ in {
     
       unzip
       p7zip
+
       parallel
       sshfs
       jq
@@ -45,9 +52,6 @@ in {
       mkvtoolnix
 #      unstable.youtubeDL
       ffmpeg-full
-    
-      nix-index
-      nur.repos.j-k.comma
     ] ++ lib.optionals config.profiles.gui.enable [
 #      virtmanager
 #      virt-viewer
