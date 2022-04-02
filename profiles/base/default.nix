@@ -47,6 +47,7 @@ in {
       ncdu
 
       bat
+      tree
       ripgrep
     
       mkvtoolnix
