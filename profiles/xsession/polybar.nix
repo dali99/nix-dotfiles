@@ -79,7 +79,7 @@ in
         "module/title" = {
           type = "internal/xwindow";
         };
-        "module/wlan" = {
+        "module/wlan" = lib.mkIf (config.machine.wlan != null) {
           type = "internal/network";
           interface = config.machine.wlan;
           interval = "3.0";
@@ -97,7 +97,7 @@ in
           ramp-signal-4 = "";
           ramp-signal-foreground = "\${colors.foreground-alt}";
         }; 
-        "module/eth" = if config.machine.eth != null
+        "module/eth" = if (config.machine.eth != null)
            then
              {
                type = "internal/network";

@@ -164,6 +164,11 @@ in {
         "gitlab.stud.idi.ntnu.no" = {
           proxyJump = "login.pvv.ntnu.no";
         };
+        "workshop" = {
+          user = "student";
+          hostname = "129.241.99.15";
+          proxyJump = "hildring.pvv.ntnu.no";
+        };
       };
     };
 

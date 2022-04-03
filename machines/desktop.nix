@@ -5,6 +5,7 @@
   machine = {
     name = "DanixDesktop";
     eth = "eno1";
+    wlan = null;
   };
   profiles.base.enable = true;
   profiles.xsession.enable = true;
@@ -14,6 +15,6 @@
 
   programs.home-manager = {
     enable = true;
-    path = "https://github.com/rycee/home-manager/archive/release-21.05.tar.gz";
+    path = "https://github.com/rycee/home-manager/archive/release-21.11.tar.gz";
   };
 }
