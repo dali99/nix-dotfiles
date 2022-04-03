@@ -18,7 +18,7 @@ in {
     ] ++ lib.optionals config.profiles.gui.enable [
       steam
 
-      multimc
+      unstable.polymc
 #     minetest
 #     dwarf-fortress-packages.dwarf-fortress-full
 #     superTuxKart
