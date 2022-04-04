@@ -3,6 +3,6 @@ backends:
     - matrix
     - linux
 matrix:
-    url: "https://matrix.dodsorf.as"
-    roomId: "***REMOVED***"
-    token: "***REMOVED***"
+    url: "*REMOVED*"
+    roomId: "*removed*"
+    token: "*removed*"
