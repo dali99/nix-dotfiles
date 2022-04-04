@@ -69,8 +69,6 @@ in {
     
       #dan.rank_photos
 
-#      ***REMOVED***
-
 
       dolphin plasma5Packages.dolphin-plugins
       ffmpegthumbs
