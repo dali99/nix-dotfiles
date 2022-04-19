@@ -40,12 +40,14 @@ in
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme 
         source ${./p10k.zsh}
 
-        autoload -U history-search-end
-        zle -N history-beginning-search-backward-end history-search-end
-        zle -N history-beginning-search-forward-end history-search-end
+        autoload -U down-line-or-beginning-search
+        autoload -U up-line-or-beginning-search
 
-        bindkey '^[OA' history-beginning-search-backward-end
-        bindkey '^[OB' history-beginning-search-forward-end
+        zle -N down-line-or-beginning-search
+        zle -N up-line-or-beginning-search
+
+        bindkey '^[OA' up-line-or-beginning-search
+        bindkey '^[OB' down-line-or-beginning-search
 
         bindkey '^[[1;5D' backward-word
         bindkey '^[[1;5C' forward-word
