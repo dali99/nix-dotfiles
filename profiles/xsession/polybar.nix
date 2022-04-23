@@ -97,22 +97,19 @@ in
           ramp-signal-4 = "";
           ramp-signal-foreground = "\${colors.foreground-alt}";
         }; 
-        "module/eth" = if (config.machine.eth != null)
-           then
-             {
-               type = "internal/network";
-               interface = "${config.machine.eth}";
-               interval = "3.0";
+        "module/eth" = lib.mkIf (config.machine.eth != null)
+           {
+             type = "internal/network";
+             interface = "${config.machine.eth}";
+             interval = "3.0";
 
-               format-connected-underline = "#55aa55";
-               format-connected-prefix = " ";
-               format-connected-prefix-foreground = "\${colors.foreground-alt}";
-               label-connected = "%local_ip%";
+             format-connected-underline = "#55aa55";
+             format-connected-prefix = " ";
+             format-connected-prefix-foreground = "\${colors.foreground-alt}";
+             label-connected = "%local_ip%";
 
-               format-disconnected = "";
-             }
-           else
-             null;
+             format-disconnected = "";
+           };
         "module/filesystem" = {
           type = "internal/fs";
           interval = 25;
