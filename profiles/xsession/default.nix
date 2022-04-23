@@ -2,6 +2,8 @@
 
 let
   cfg = config.profiles.xsession;
+  non-nixos = config.profiles.non-nixos;
+  mkGL = program: "${lib.strings.optionalString non-nixos.enable "nixGL "}${program}";
 in
 {
   imports = [ ./dunstrc.nix ./terminal.nix ./audio.nix ./polybar.nix ];
@@ -19,7 +21,7 @@ in
     };
 
     services.random-background = {
-      enable = true;
+      enable = false;
       imageDirectory = "${pkgs.dan.wallpapers}";
       interval = "30m";
     };
@@ -94,6 +96,7 @@ in
     services.picom = {
       enable = true;
       backend = "xrender";
+      experimentalBackends = true;
     };
 
 
@@ -113,6 +116,8 @@ in
       #useGtkTheme = true;
       platformTheme = "gtk";
     };
+
+    xsession.windowManager.command = lib.mkIf non-nixos.enable (lib.mkForce "nixGL ${config.xsession.windowManager.i3.package}/bin/i3");
 
     home.packages = [
       pkgs.brightnessctl
