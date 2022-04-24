@@ -184,6 +184,7 @@ in {
       defaultApplications = {
         "image/png" = [ "sxiv.desktop" "gimp.desktop" ];
         "text/plain" = [ "gedit.desktop" "kakoune.desktop" "code.desktop" ];
+        "video/x-matroska" = [ "mpv.desktop" ];
       };
       associations.removed = {
         "text/plain" = [ "writer.desktop" ];
