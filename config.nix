@@ -1,6 +1,6 @@
 let
-  unstable = import <nixos-unstable> { }; 
-  stable = import <nixos> {};
+  unstable = import <unstable> { }; 
+  stable = import <nixpkgs> {};
   nur = import <nur> { pkgs = unstable; };
 in
 {

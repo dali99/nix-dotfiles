@@ -62,8 +62,7 @@ in {
 
       mpv
       sxiv
-      spotify
-    
+
       mumble
     
       #dan.rank_photos

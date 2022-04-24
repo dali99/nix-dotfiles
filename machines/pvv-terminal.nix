@@ -13,6 +13,8 @@
   profiles.xsession.enable = true;
   profiles.zsh.enable = true;
 
+  profiles.audio.fancy = false;
+
   services.gammastep =  {
     enable = true;
     dawnTime = "7:00-8:15";

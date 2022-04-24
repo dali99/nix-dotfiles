@@ -6,7 +6,7 @@ let
   mkGL = program: "${lib.strings.optionalString non-nixos.enable "nixGL "}${program}";
 in
 {
-  imports = [ ./dunstrc.nix ./terminal.nix ./audio.nix ./polybar.nix ];
+  imports = [ ./dunstrc.nix ./terminal.nix ./polybar.nix ];
 
   options.profiles.xsession = {
     enable = lib.mkEnableOption "Whether or not to control the xsession";
