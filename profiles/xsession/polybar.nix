@@ -115,7 +115,7 @@ in
           interval = 25;
 
           mount-0 = "/";
-          mount-1 = "/mnt/henning";
+          mount-1 = config.machine.secondary-fs;
 
           label-mounted = "%{F#0a81f5}%mountpoint%%{F-}: %free%";
           label-unmounted = "%mountpoint% not mounted";

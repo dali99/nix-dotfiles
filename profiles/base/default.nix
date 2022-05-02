@@ -6,10 +6,14 @@ in {
 
   options.machine = {
     name = lib.mkOption {
-      type = "str";
+      type = lib.types.str;
     };
     eth = lib.mkOption {};
     wlan = lib.mkOption {};
+    secondary-fs = lib.mkOption {
+      type = lib.types.str;
+      default = "$HOME";
+    };
   };
 
   options.profiles.base = {

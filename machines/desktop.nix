@@ -6,6 +6,7 @@
     name = "DanixDesktop";
     eth = "eno1";
     wlan = null;
+    secondary-fs = "/mnt/henning";
   };
   profiles.base.enable = true;
   profiles.xsession.enable = true;
