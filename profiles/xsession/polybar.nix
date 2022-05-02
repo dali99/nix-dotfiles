@@ -45,7 +45,7 @@ in
           module-margin-right = "2";
 
           modules-left = "i3 title";
-          modules-right = "wlan eth filesystem uquota cpu memory battery date";
+          modules-right = "minecraft wlan eth filesystem uquota cpu memory battery date";
         };
 
         "module/i3" = {
@@ -177,6 +177,54 @@ in
           date = "%Y-%m-%d";
           time = "%H:%M:%S";
           label = "%date% %time%";
+        };
+
+        "module/minecraft" = {
+          type = "custom/script";
+          exec = "" + pkgs.writers.writePython3 "minecraft_status" { libraries = [ pkgs.python3.pkgs.mcstatus ]; flakeIgnore = [ "E722" ]; } ''
+            from mcstatus import MinecraftServer as JavaServer
+            pvv = JavaServer.lookup("minecraft.pvv.ntnu.no")
+            dods = JavaServer.lookup("mc.dodsorf.as")
+
+            try:
+                pvv_status = pvv.status()
+                dods_status = dods.status()
+            except:
+                pass
+
+            result = ""
+            try:
+                if pvv_status.players.online > 0:
+                    result += ("P" + str(pvv_status.players.online))
+                if dods_status > 0:
+                    result += ("D" + str(pvv_status.players.online))
+            except:
+                pass
+            print(result)
+          '';
+          click-left = "" + pkgs.writers.writePython3 "minecraft_status" { libraries = [ pkgs.python3.pkgs.mcstatus ]; flakeIgnore = [ "E722" ]; } ''
+            from mcstatus import MinecraftServer as JavaServer
+            import os
+
+            pvv = JavaServer.lookup("minecraft.pvv.ntnu.no")
+            dods = JavaServer.lookup("mc.dodsorf.as")
+
+            try:
+                pvv_status = pvv.status()
+                dods_status = dods.status()
+            except:
+                pass
+
+            result = ""
+            if pvv_status.players.sample is not None:
+                result += "PVV\n"
+                for player in pvv_status.players.sample:
+                    result += player
+            os.exec("notify-send", "Minecraft Server Status", result)
+          '';
+          interval = 10;
+          format = " <label>";
+
         };
       };
     };
