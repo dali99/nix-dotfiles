@@ -45,7 +45,7 @@ in
           module-margin-right = "2";
 
           modules-left = "i3 title";
-          modules-right = "wlan eth filesystem cpu memory battery date";
+          modules-right = "wlan eth filesystem uquota cpu memory battery date";
         };
 
         "module/i3" = {
@@ -115,7 +115,7 @@ in
           interval = 25;
 
           mount-0 = "/";
-          mount-1 = config.machine.secondary-fs;
+          mount-1 = lib.mkIf (config.machine.secondary-fs != null) config.machine.secondary-fs;
 
           label-mounted = "%{F#0a81f5}%mountpoint%%{F-}: %free%";
           label-unmounted = "%mountpoint% not mounted";

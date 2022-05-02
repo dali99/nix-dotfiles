@@ -11,8 +11,9 @@ in {
     eth = lib.mkOption {};
     wlan = lib.mkOption {};
     secondary-fs = lib.mkOption {
-      type = lib.types.str;
-      default = "$HOME";
+      type = lib.types.nullOr lib.types.nonEmptyStr;
+      default = null;
+      example = "''${env:HOME}";
     };
   };
 
