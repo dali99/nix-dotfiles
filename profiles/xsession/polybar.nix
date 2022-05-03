@@ -202,12 +202,15 @@ in
                 pass
             print(result)
           '';
-          click-left = "" + pkgs.writers.writePython3 "minecraft_status" { libraries = [ pkgs.python3.pkgs.mcstatus ]; flakeIgnore = [ "E722" ]; } ''
+          click-left = "" + pkgs.writers.writePython3 "minecraft_status" { libraries = with pkgs.python3.pkgs; [ mcstatus notify2 ]; flakeIgnore = [ "E722" ]; } ''
             from mcstatus import MinecraftServer as JavaServer
-            import os
+            import notify2
 
             pvv = JavaServer.lookup("minecraft.pvv.ntnu.no")
             dods = JavaServer.lookup("mc.dodsorf.as")
+
+            pvv_status = None
+            dods_status = None
 
             try:
                 pvv_status = pvv.status()
@@ -216,15 +219,23 @@ in
                 pass
 
             result = ""
-            if pvv_status.players.sample is not None:
-                result += "PVV\n"
+            if pvv_status is not None:
+                result += "PVV: "
                 for player in pvv_status.players.sample:
-                    result += player
-            os.exec("notify-send", "Minecraft Server Status", result)
+                    result += player.name
+                result += "\n"
+            if dods_status is not None:
+                result += "DODS: "
+                for player in dods_status.players.sample:
+                    result += player.name
+                result += "\n"
+
+            notify2.init('Minecraft Server Status')
+            n = notify2.Notification("Minecraft Server Status", result)
+            n.show()
           '';
           interval = 10;
           format = " <label>";
-
         };
       };
     };
