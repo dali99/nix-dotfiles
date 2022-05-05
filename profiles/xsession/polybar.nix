@@ -222,12 +222,12 @@ in
             if pvv_status is not None:
                 result += "PVV: "
                 for player in pvv_status.players.sample:
-                    result += player.name
+                    result += player.name + " "
                 result += "\n"
             if dods_status is not None:
                 result += "DODS: "
                 for player in dods_status.players.sample:
-                    result += player.name
+                    result += player.name + " "
                 result += "\n"
 
             notify2.init('Minecraft Server Status')
