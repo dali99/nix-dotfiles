@@ -20,9 +20,9 @@
 
   services.polybar.config."module/uquota" = {
     type = "custom/script";
-    exec-if = "which uquota";
+    exec-if = "test -f /usr/local/bin/uquota";
     exec = "" + pkgs.writers.writePerl "parse_uquota" { } ''
-      my $raw = `uquota`;
+      my $raw = `/usr/local/bin/uquota`;
       if ( $raw =~ /Du har brukt (\d+(?:[KMGT]iB)) av (\d+(?:[KMGT]iB)), eller (\d+)/ )
       {
           print $3 . "%\n";
