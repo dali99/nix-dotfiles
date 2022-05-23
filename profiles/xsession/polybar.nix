@@ -45,7 +45,7 @@ in
           module-margin-right = "2";
 
           modules-left = "i3 title";
-          modules-right = "minecraft wlan eth filesystem uquota cpu memory battery date";
+          modules-right = "countdown minecraft wlan eth filesystem uquota cpu memory battery date";
         };
 
         "module/i3" = {
@@ -177,6 +177,16 @@ in
           date = "%Y-%m-%d";
           time = "%H:%M:%S";
           label = "%date% %time%";
+        };
+
+        "module/countdown" = {
+          type = "custom/script";
+          exec-if = "test -f $HOME/countdown";
+          exec = "" + pkgs.writers.writeBash "countdown" ''
+            secs=$(( $(${pkgs.coreutils}/bin/date +%s -d $(${pkgs.coreutils}/bin/cat $HOME/countdown)) - $( ${pkgs.coreutils}/bin/date +%s ) ))
+            printf '%d:%02d:%02d:%02d\n' $((secs/86400)) $((secs%86400/3600)) $((secs%3600/60)) $((secs%60))
+          '';
+          interval = 1;
         };
 
         "module/minecraft" = {
