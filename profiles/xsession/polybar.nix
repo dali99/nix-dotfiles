@@ -188,6 +188,10 @@ in
 
             try:
                 pvv_status = pvv.status()
+            except:
+                pass
+
+            try:
                 dods_status = dods.status()
             except:
                 pass
@@ -196,10 +200,15 @@ in
             try:
                 if pvv_status.players.online > 0:
                     result += ("P" + str(pvv_status.players.online))
-                if dods_status > 0:
-                    result += ("D" + str(pvv_status.players.online))
             except:
                 pass
+
+            try:
+                if dods_status.players.online > 0:
+                    result += ("D" + str(dods_status.players.online))
+            except:
+                pass
+
             print(result)
           '';
           click-left = "" + pkgs.writers.writePython3 "minecraft_status" { libraries = with pkgs.python3.pkgs; [ mcstatus notify2 ]; flakeIgnore = [ "E722" ]; } ''
@@ -214,6 +223,10 @@ in
 
             try:
                 pvv_status = pvv.status()
+            except:
+                pass
+
+            try:
                 dods_status = dods.status()
             except:
                 pass
