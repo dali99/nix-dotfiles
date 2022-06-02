@@ -34,7 +34,8 @@
       };
   in
   {
-    homeConfigurations = nixlib.genAttrs [ "laptop" "desktop" ] (machine: mkHome { inherit machine; })
+    homeConfigurations = nixlib.genAttrs [ "laptop" ] (machine: mkHome { inherit machine; })
+      // nixlib.genAttrs [ "desktop" ] (machine: mkHome { inherit machine; username = "dan"; })
       // nixlib.genAttrs [ "pvv-terminal" ] (machine: mkHome {inherit machine; username = "danio"; homeDirectory = "/home/pvv/d/danio";});
 
     nixosModules = {
