@@ -21,6 +21,7 @@ in
 
     ] ++ lib.optionals config.profiles.gui.enable (with pkgs; [
       pavucontrol
+    ]) ++ lib.optionals (config.nixpkgs.config.allowUnfree && config.profiles.gui.enable) (with pkgs; [
       spotify
     ]) ++ lib.optionals cfg.fancy (with pkgs; [
       carla

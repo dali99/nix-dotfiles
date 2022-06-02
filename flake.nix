@@ -15,7 +15,11 @@
     dan.inputs.nixpkgs.follows = "unstable";
   };
 
-  outputs = {home-manager-2205, unstable, nur, dan, ... }:
+  outputs = {self, home-manager-2205, unstable, nur, dan, ... }:
+  let
+    pvv-home = "/home/pvv/d/${pvv-username}";
+    pvv-username = "danio";
+  in
   {
     homeConfigurations.laptop = home-manager-2205.lib.homeManagerConfiguration {
       configuration = import ./machines/laptop.nix;
@@ -23,7 +27,27 @@
       username = "daniel";
       homeDirectory = "/home/daniel";
       stateVersion = "22.05";
-      extraSpecialArgs = { inherit nur unstable dan; };
+      extraSpecialArgs = { inherit (self) overlays; };
     };
+
+
+    homeConfigurations.pvv-terminal = home-manager-2205.lib.homeManagerConfiguration {
+      configuration = import ./machines/pvv-terminal.nix;
+      system = "x86_64-linux";
+      username = pvv-username;
+      homeDirectory = pvv-home;
+      stateVersion = "22.05";
+      extraSpecialArgs = { inherit (self) overlays; };
+    };
+
+    overlays = [
+      (final: prev: {
+        unstable = import unstable {
+          inherit (prev) system config;
+        };
+        dan = dan.packages.${prev.system};
+      })
+      nur.overlay
+    ];
   };
 }

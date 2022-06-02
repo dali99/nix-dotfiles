@@ -1,5 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, overlays, ... }:
 {
+  nixpkgs.overlays = overlays;
+  #nixpkgs.config.allowUnfreePredicate = (pkg: true);
+
   imports = [ ../profiles ];
 
   machine = {

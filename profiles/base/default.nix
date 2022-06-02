@@ -81,7 +81,7 @@ in {
       konsole # https://bugs.kde.org/show_bug.cgi?id=407990 reeee
 
       gnome3.gedit
-      unstable.vscode
+      vscodium
 #      texlive.combined.scheme-full
 #      kile
       libreoffice
@@ -97,7 +97,7 @@ in {
 #      ardour
       kdenlive
       frei0r
-      
+    ]  ++ lib.optionals (config.nixpkgs.config.allowUnfree && config.profiles.gui.enable) [
       geogebra
     ];
 
