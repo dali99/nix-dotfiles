@@ -1,5 +1,18 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, nur, unstable, dan, ... }:
 {
+  nixpkgs.overlays = [
+    nur.overlay
+    (final: prev: {
+      unstable = import unstable {
+        inherit (prev) system;
+        config.allowUnfree = true;
+      };
+
+      dan = dan.packages.${prev.system};
+    })
+  ];
+  nixpkgs.config.allowUnfreePredicate = (pkg: true);
+
   imports = [ ../profiles ];
 
   machine = {
