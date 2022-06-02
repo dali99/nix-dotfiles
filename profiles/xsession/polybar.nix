@@ -192,7 +192,7 @@ in
         "module/minecraft" = {
           type = "custom/script";
           exec = "" + pkgs.writers.writePython3 "minecraft_status" { libraries = [ pkgs.python3.pkgs.mcstatus ]; flakeIgnore = [ "E722" ]; } ''
-            from mcstatus import MinecraftServer as JavaServer
+            from mcstatus import JavaServer
             pvv = JavaServer.lookup("minecraft.pvv.ntnu.no")
             dods = JavaServer.lookup("mc.dodsorf.as")
 
@@ -222,7 +222,7 @@ in
             print(result)
           '';
           click-left = "" + pkgs.writers.writePython3 "minecraft_status" { libraries = with pkgs.python3.pkgs; [ mcstatus notify2 ]; flakeIgnore = [ "E722" ]; } ''
-            from mcstatus import MinecraftServer as JavaServer
+            from mcstatus import JavaServer
             import notify2
 
             pvv = JavaServer.lookup("minecraft.pvv.ntnu.no")
