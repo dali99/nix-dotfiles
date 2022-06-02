@@ -34,9 +34,4 @@
     interval = 10;
     format = "ﴥ <label>";
   };
-
-  programs.home-manager = {
-    enable = true;
-    path = "https://github.com/rycee/home-manager/archive/release-21.11.tar.gz";
-  };
 }

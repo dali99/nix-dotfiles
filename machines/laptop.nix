@@ -23,9 +23,4 @@
   };
 
   profiles.games.enable = true;
-
-  programs.home-manager = {
-    enable = true;
-    path = "https://github.com/rycee/home-manager/archive/release-22.05.tar.gz";
-  };
 }

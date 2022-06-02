@@ -7,17 +7,19 @@
         ]
       },
       "locked": {
+        "host": "git.dodsorf.as",
         "lastModified": 1654132489,
         "narHash": "sha256-7L6gKN5Y2PbjK2aHX2jwOCZfe9R+7RusvuULy9EbKGs=",
-        "ref": "master",
+        "owner": "Dandellion",
+        "repo": "NUR",
         "rev": "9b6f60ce8a94d8269190dbe4ac9450f87910ac8b",
-        "revCount": 159,
-        "type": "git",
-        "url": "https://git.dodsorf.as/Dandellion/NUR"
+        "type": "gitlab"
       },
       "original": {
-        "type": "git",
-        "url": "https://git.dodsorf.as/Dandellion/NUR"
+        "host": "git.dodsorf.as",
+        "owner": "Dandellion",
+        "repo": "NUR",
+        "type": "gitlab"
       }
     },
     "home-manager-2205": {

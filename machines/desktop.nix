@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, overlays, ... }:
 {
+  nixpkgs.overlays = overlays;
+  nixpkgs.config.allowUnfreePredicate = (pkg: true);
+  nixpkgs.config.allowUnfree = true;
+
   imports = [ ../profiles ];
 
   machine = {
@@ -13,9 +17,4 @@
   profiles.zsh.enable = true;
 
   profiles.games.enable = true;
-
-  programs.home-manager = {
-    enable = true;
-    path = "https://github.com/rycee/home-manager/archive/release-21.11.tar.gz";
-  };
 }

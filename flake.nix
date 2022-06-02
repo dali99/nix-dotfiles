@@ -11,33 +11,34 @@
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "unstable";
 
-    dan.url = "git+https://git.dodsorf.as/Dandellion/NUR";
+    dan.url = "gitlab:Dandellion/NUR?host=git.dodsorf.as"; #"git+https://git.dodsorf.as/Dandellion/NUR";
     dan.inputs.nixpkgs.follows = "unstable";
   };
 
   outputs = {self, home-manager-2205, unstable, nur, dan, ... }:
   let
-    pvv-home = "/home/pvv/d/${pvv-username}";
-    pvv-username = "danio";
+    nixlib = unstable.lib;
+
+    mkHome =
+      { machine
+      , hmChannel ? home-manager-2205
+      , configuration ? self.nixosModules.home-manager.${machine}
+      , system ? "x86_64-linux"
+      , username ? "daniel"
+      , homeDirectory ? "/home/${username}"
+      , stateVersion ? "22.05"
+      , extraSpecialArgs ? { inherit (self) overlays; }
+      }:
+      hmChannel.lib.homeManagerConfiguration {
+        inherit configuration system username homeDirectory stateVersion extraSpecialArgs;
+      };
   in
   {
-    homeConfigurations.laptop = home-manager-2205.lib.homeManagerConfiguration {
-      configuration = import ./machines/laptop.nix;
-      system = "x86_64-linux";
-      username = "daniel";
-      homeDirectory = "/home/daniel";
-      stateVersion = "22.05";
-      extraSpecialArgs = { inherit (self) overlays; };
-    };
+    homeConfigurations = nixlib.genAttrs [ "laptop" "desktop" ] (machine: mkHome { inherit machine; })
+      // nixlib.genAttrs [ "pvv-terminal" ] (machine: mkHome {inherit machine; username = "danio"; homeDirectory = "/home/pvv/d/danio";});
 
-
-    homeConfigurations.pvv-terminal = home-manager-2205.lib.homeManagerConfiguration {
-      configuration = import ./machines/pvv-terminal.nix;
-      system = "x86_64-linux";
-      username = pvv-username;
-      homeDirectory = pvv-home;
-      stateVersion = "22.05";
-      extraSpecialArgs = { inherit (self) overlays; };
+    nixosModules = {
+      home-manager = nixlib.genAttrs [ "laptop" "desktop" "pvv-terminal" ] (machine: import ./machines/${machine}.nix);
     };
 
     overlays = [
