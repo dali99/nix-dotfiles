@@ -19,15 +19,12 @@ in {
 
   options.profiles.base = {
     enable = lib.mkEnableOption "The base profile, should be always enabled";
+    plus = lib.mkEnableOption "Useful things you arguably don't NEED";
   };
 
   config = lib.mkIf cfg.enable {
 
     home.packages = with pkgs; [
-      #libguestfs
-      #ansible
-      #nixops
-
       nix-output-monitor
       nix-top
       nix-index
@@ -55,23 +52,11 @@ in {
       bat
       exa
       ripgrep
-    
-      mkvtoolnix
-#      unstable.youtubeDL
+    ] ++ lib.optionals cfg.plus [
       ffmpeg-full
     ] ++ lib.optionals config.profiles.gui.enable [
-#      virtmanager
-#      virt-viewer
-
-     thunderbird
-
       mpv
       sxiv
-
-      mumble
-    
-      #dan.rank_photos
-
 
       dolphin plasma5Packages.dolphin-plugins
       ffmpegthumbs
@@ -82,22 +67,24 @@ in {
 
       gnome3.gedit
       vscodium
+
+      gimp
+    ] ++ lib.optionals (config.profiles.gui.enable && cfg.plus) [
+      mumble
+
 #      texlive.combined.scheme-full
 #      kile
       libreoffice
-    
-      gimp
-#      krita
-#      inkscape
-#      digikam
-#      godot
-#      blender
-#      audacity
-#      mixxx
-#      ardour
+      thunderbird
+
       kdenlive
       frei0r
-    ]  ++ lib.optionals (config.nixpkgs.config.allowUnfree && config.profiles.gui.enable) [
+      audacity
+      inkscape
+      blender
+
+      mkvtoolnix
+    ] ++ lib.optionals (config.nixpkgs.config.allowUnfree && config.profiles.gui.enable) [
       geogebra
     ];
 
@@ -127,7 +114,7 @@ in {
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [ bitwarden cookies-txt https-everywhere metamask no-pdf-download sponsorblock ublock-origin  ];
     };
 
-    programs.obs-studio.enable = config.profiles.gui.enable;
+    programs.obs-studio.enable = (config.profiles.gui.enable && cfg.plus);
 
 
     programs.git = {
@@ -150,6 +137,7 @@ in {
         };
         "desktop" = {
           hostname = "10.42.42.10";
+          proxyJump = "lilith";
           user = "dan";
         };
         "laptop" = {
@@ -172,11 +160,6 @@ in {
         };
       };
     };
-
-#    services.kdeconnect = {
-#      enable = true;
-#      indicator = true;
-#    };
 
     services.gpg-agent = {
       enable = true;

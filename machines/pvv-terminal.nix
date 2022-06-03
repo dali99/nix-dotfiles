@@ -12,6 +12,7 @@
     secondary-fs = null;
   };
   profiles.base.enable = true;
+  profiles.base.plus = false;
   profiles.gui.enable = true;
   profiles.non-nixos.enable = true;
   profiles.xsession.enable = true;

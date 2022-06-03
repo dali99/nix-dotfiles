@@ -32,14 +32,18 @@
       hmChannel.lib.homeManagerConfiguration {
         inherit configuration system username homeDirectory stateVersion extraSpecialArgs;
       };
+
+      mkHomes = machines: extraArgs: nixlib.genAttrs machines (machine: mkHome {inherit machine; } // extraArgs);
+      
+      allMachines = [ "laptop" "desktop" "headless" "pvv-terminal" ];
   in
   {
-    homeConfigurations = nixlib.genAttrs [ "laptop" ] (machine: mkHome { inherit machine; })
-      // nixlib.genAttrs [ "desktop" ] (machine: mkHome { inherit machine; username = "dan"; })
-      // nixlib.genAttrs [ "pvv-terminal" ] (machine: mkHome {inherit machine; username = "danio"; homeDirectory = "/home/pvv/d/danio";});
+    homeConfigurations = mkHomes [ "laptop" "headless" ] { }
+      // mkHomes [ "desktop" ] { username = "dan"; }
+      // mkHomes [ "pvv-terminal" ] { username = "danio"; homeDirectory = "/home/pvv/d/danio"; };
 
     nixosModules = {
-      home-manager = nixlib.genAttrs [ "laptop" "desktop" "pvv-terminal" ] (machine: import ./machines/${machine}.nix);
+      home-manager = nixlib.genAttrs allMachines (machine: import ./machines/${machine}.nix);
     };
 
     overlays = [
@@ -51,5 +55,12 @@
       })
       nur.overlay
     ];
+
+    homeActivations = nixlib.genAttrs allMachines (machine: self.homeConfigurations.${machine}.activationPackage);
+
+    apps.x86_64-linux = nixlib.genAttrs allMachines (machine: {
+      type = "app";
+      program = "${self.homeActivations.${machine}}/activate";
+    });
   };
 }

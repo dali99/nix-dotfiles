@@ -12,6 +12,7 @@
     wlan = "wlp5s0";
   };
   profiles.base.enable = true;
+  profiles.base.plus = true;
   profiles.gui.enable = true;
   profiles.xsession.enable = true;
   profiles.zsh.enable = true;
