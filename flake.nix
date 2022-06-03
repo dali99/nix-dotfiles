@@ -33,7 +33,7 @@
         inherit configuration system username homeDirectory stateVersion extraSpecialArgs;
       };
 
-      mkHomes = machines: extraArgs: nixlib.genAttrs machines (machine: mkHome {inherit machine; } // extraArgs);
+      mkHomes = machines: extraArgs: nixlib.genAttrs machines (machine: mkHome ({inherit machine; } // extraArgs));
       
       allMachines = [ "laptop" "desktop" "headless" "pvv-terminal" ];
   in
