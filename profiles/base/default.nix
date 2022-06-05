@@ -2,9 +2,9 @@
 
 let
   cfg = config.profiles.base;
-  
+
   helixDesktop = pkgs.makeDesktopItem {
-    name  = "Helix";
+    name = "Helix";
     type = "Application";
     desktopName = "Helix";
     genericName = "Text Editor";
@@ -17,15 +17,14 @@ let
     keywords = [ "Text" "editor" ];
     startupNotify = false;
   };
-
-in {
-
+in
+{
   options.machine = {
     name = lib.mkOption {
       type = lib.types.str;
     };
-    eth = lib.mkOption {};
-    wlan = lib.mkOption {};
+    eth = lib.mkOption { };
+    wlan = lib.mkOption { };
     secondary-fs = lib.mkOption {
       type = lib.types.nullOr lib.types.nonEmptyStr;
       default = null;
@@ -47,7 +46,7 @@ in {
 
       rnix-lsp
       helixDesktop
-      
+
       ldns
       mtr
 
@@ -57,7 +56,7 @@ in {
 
       file
       tmux
-    
+
       unzip
       p7zip
 
@@ -76,10 +75,12 @@ in {
       mpv
       sxiv
 
-      dolphin plasma5Packages.dolphin-plugins
+      dolphin
+      plasma5Packages.dolphin-plugins
       ffmpegthumbs
       plasma5Packages.kdegraphics-thumbnailers
-      plasma5Packages.kio plasma5Packages.kio-extras
+      plasma5Packages.kio
+      plasma5Packages.kio-extras
       krename
       konsole # https://bugs.kde.org/show_bug.cgi?id=407990 reeee
 
@@ -90,8 +91,8 @@ in {
     ] ++ lib.optionals (config.profiles.gui.enable && cfg.plus) [
       mumble
 
-#      texlive.combined.scheme-full
-#      kile
+      #      texlive.combined.scheme-full
+      #      kile
       libreoffice
       thunderbird
 
@@ -129,7 +130,7 @@ in {
           };
         };
       };
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [ bitwarden cookies-txt https-everywhere metamask no-pdf-download sponsorblock ublock-origin  ];
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [ bitwarden cookies-txt https-everywhere metamask no-pdf-download sponsorblock ublock-origin ];
     };
 
     programs.obs-studio.enable = (config.profiles.gui.enable && cfg.plus);
@@ -163,8 +164,8 @@ in {
         n = "!git commit --all --amend --no-edit && git rc";
       };
       extraConfig = {
-         pull.rebase = true;
-         sequence.editor = "${pkgs.git-interactive-rebase-tool}/bin/interactive-rebase-tool";
+        pull.rebase = true;
+        sequence.editor = "${pkgs.git-interactive-rebase-tool}/bin/interactive-rebase-tool";
       };
       delta.enable = true;
     };
@@ -212,7 +213,7 @@ in {
     home.sessionVariables = {
       EDITOR = "hx";
     };
-      
+
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
