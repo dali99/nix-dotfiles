@@ -18,6 +18,7 @@ in
 
     home.keyboard = {
       layout = "no";
+      variant = "nodeadkeys";
     };
 
     services.random-background = {

@@ -37,6 +37,8 @@ in
         gne = "git n";
         gds = "git diff --staged";
         glg = "git log --oneline";
+        
+        nano = "hx"; # Behavioral training
       };
       initExtra = ''
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme 
