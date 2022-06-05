@@ -33,6 +33,8 @@ in
         gst = "git status -sb";
         gcm = "git commit -m";
         gca = "git commit --amend --no-edit";
+        grc = "git rc";
+        gne = "git n";
         gds = "git diff --staged";
         glg = "git log --oneline";
       };

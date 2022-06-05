@@ -121,8 +121,14 @@ in {
       enable = true;
       userEmail = "daniel.olsen99@gmail.com";
       userName = "Daniel Olsen";
+      aliases = {
+        absorb = "!${pkgs.git-absorb}/bin/git-absorb";
+        rc = "rebase --continue";
+        n = "!git commit --all --amend --no-edit && git rc";
+      };
       extraConfig = {
          pull.rebase = true;
+         sequence.editor = "${pkgs.git-interactive-rebase-tool}/bin/interactive-rebase-tool";
       };
       delta.enable = true;
     };
@@ -171,6 +177,7 @@ in {
       enable = true;
       defaultApplications = {
         "image/png" = [ "sxiv.desktop" "gimp.desktop" ];
+        "image/jpeg" = [ "sxiv.desktop" ];
         "text/plain" = [ "gedit.desktop" "kakoune.desktop" "code.desktop" ];
         "video/x-matroska" = [ "mpv.desktop" ];
       };
