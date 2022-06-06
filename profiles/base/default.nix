@@ -42,6 +42,7 @@ in
       nix-output-monitor
       nix-top
       nix-index
+      nix-tree
       unstable.comma
 
       rnix-lsp
