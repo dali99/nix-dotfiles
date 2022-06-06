@@ -160,12 +160,27 @@ in
       userName = "Daniel Olsen";
       aliases = {
         absorb = "!${pkgs.git-absorb}/bin/git-absorb";
+        revise = "!${pkgs.git-revise}/bin/git-revise";
         rc = "rebase --continue";
         n = "!git commit --all --amend --no-edit && git rc";
       };
       extraConfig = {
         pull.rebase = true;
-        sequence.editor = "${pkgs.git-interactive-rebase-tool}/bin/interactive-rebase-tool";
+        sequence.editor = let 
+          girt = pkgs.unstable.git-interactive-rebase-tool.overrideAttrs (old: rec {
+            src = pkgs.fetchFromGitHub {
+              owner = "Dali99";
+              repo = "git-interactive-rebase-tool";
+              rev = "590f87d8ed16992373e214bca5994f89c69fa942";
+              sha256 = "sha256-vUjqnt5ZSpzoohkzDXEqTMhMEkYzPMUZiaYWS0ZQcPQ=";
+            };
+            cargoDeps = old.cargoDeps.overrideAttrs (oldB: {
+              name = "${oldB.name}";
+              inherit src;
+              outputHash = "197dv8hbj4vd9grvhiinpsww3vfmmbl9b8gxk7la4gs8535s08x7";
+            });
+          });
+        in "${girt}/bin/interactive-rebase-tool";
       };
       delta.enable = true;
     };
