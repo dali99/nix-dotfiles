@@ -139,18 +139,54 @@ in
 
     programs.helix = {
       enable = true;
-      package = pkgs.unstable.helix;
-      settings = {
+      package = pkgs.unstable.helix.overrideAttrs (old: {
+        patches = old.patches ++ [
+            (pkgs.fetchpatch {
+              url = "https://github.com/helix-editor/helix/commit/d8e93d2a37adad6f04b3453d7570c88f6e37d0ab.patch";
+              sha256 = "sha256-uIwtATxO8Jx92btIBJh8/v8ZRuAjbOfT7Oi5IaNr1nY=";
+            })
+          ];
+      });
+      settings = let
+        b = command: ":insert-output " + command;
+        c = chars: b "printf " + chars;
+      in {
         editor.line-number = "relative";
         editor.mouse = false;
         keys.normal = {
-          # Empty keys: Ø, æ, Æ, å, Å, *, 
+          # Empty keys: Ø, æ, Æ, å, Å, *, [ ] 
           "ø" = "collapse_selection"; # For ;
           "minus" = "search"; # For /
           "_" = "rsearch"; # for =
           "plus" = "trim_selections"; # for _
-          "å"."d" = "goto_prev_diag"; # for [d
-          "¨"."d" = "goto_next_diag";
+          "å" = {
+            "d" = "goto_prev_diag"; # for [d
+            "D" = "goto_first_diag";
+            "f" = "goto_prev_function";
+            "c" = "goto_prev_class";
+            "a" = "goto_prev_parameter";
+            "o" = "goto_prev_comment";
+            "p" = "goto_prev_paragraph";
+            "space" = "add_newline_above";
+          };
+          "¨" = {
+            "d" = "goto_next_diag";
+            "D" = "goto_last_diag";
+            "f" = "goto_next_function";
+            "c" = "goto_next_class";
+            "a" = "goto_next_parameter";
+            "o" = "goto_next_comment";
+            "p" = "goto_next_paragraph";
+            "space" = "add_newline_below";
+          };
+        };
+        keys.insert = {
+          "S-tab" = "unindent";
+          # Poor man's US-Keyboard
+          "Å" = [(c "{}") "move_char_left"];
+          "º" = c "Å";
+          "^" = c "}";
+          "¤" = c "^";
         };
       };
     };
