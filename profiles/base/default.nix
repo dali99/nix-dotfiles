@@ -38,6 +38,12 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    home.language = {
+      base = "nb_NO";
+      messages = "en_US";
+    };
+
+
     home.packages = with pkgs; [
       nix-output-monitor
       nix-top
