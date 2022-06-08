@@ -1,5 +1,8 @@
 {
   description = "dandellion's home-manager profiles";
+  
+  nixConfig.extra-substituters = ["https://helix.cachix.org"];
+  nixConfig.exta-trusted-public-keys = "mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs=";
 
   inputs  = {
     home-manager-2205.url = "github:nix-community/home-manager/release-22.05";
@@ -41,8 +44,6 @@
       allMachines = [ "laptop" "desktop" "headless" "pvv-terminal" ];
   in
   {
-    nixConfig.extra-substituters = ["https://helix.cachix.org"];
-    nixConfig.trusted-public-keys = "mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs=";
     
     homeConfigurations = mkHomes [ "laptop" "headless" ] { }
       // mkHomes [ "desktop" ] { username = "dan"; }
