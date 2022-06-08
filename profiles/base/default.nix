@@ -145,14 +145,7 @@ in
 
     programs.helix = {
       enable = true;
-      package = pkgs.unstable.helix.overrideAttrs (old: {
-        patches = old.patches ++ [
-            (pkgs.fetchpatch {
-              url = "https://github.com/helix-editor/helix/commit/d8e93d2a37adad6f04b3453d7570c88f6e37d0ab.patch";
-              sha256 = "sha256-uIwtATxO8Jx92btIBJh8/v8ZRuAjbOfT7Oi5IaNr1nY=";
-            })
-          ];
-      });
+      package = pkgs.helix;
       settings = let
         b = command: ":insert-output " + command;
         c = chars: b "printf " + chars;
@@ -164,7 +157,7 @@ in
           "ø" = "collapse_selection"; # For ;
           "minus" = "search"; # For /
           "_" = "rsearch"; # for =
-          "plus" = "trim_selections"; # for _
+          "+" = "trim_selections"; # for _
           "å" = {
             "d" = "goto_prev_diag"; # for [d
             "D" = "goto_first_diag";

@@ -13,9 +13,12 @@
 
     dan.url = "gitlab:Dandellion/NUR?host=git.dodsorf.as"; #"git+https://git.dodsorf.as/Dandellion/NUR";
     dan.inputs.nixpkgs.follows = "unstable";
+    
+    helix.url = "github:helix-editor/helix";
+    helix.inputs.nixpkgs.follows = "unstable";
   };
 
-  outputs = {self, home-manager-2205, unstable, nur, dan, ... }:
+  outputs = {self, home-manager-2205, unstable, nur, dan, ... }@inputs:
   let
     nixlib = unstable.lib;
 
@@ -52,6 +55,7 @@
           inherit (prev) system config;
         };
         dan = dan.packages.${prev.system};
+        helix = inputs.helix.packages.${prev.system}.helix;
       })
       nur.overlay
     ];
