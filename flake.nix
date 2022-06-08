@@ -41,6 +41,9 @@
       allMachines = [ "laptop" "desktop" "headless" "pvv-terminal" ];
   in
   {
+    nixConfig.extra-substituters = ["https://helix.cachix.org"];
+    nixConfig.trusted-public-keys = "mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs=";
+    
     homeConfigurations = mkHomes [ "laptop" "headless" ] { }
       // mkHomes [ "desktop" ] { username = "dan"; }
       // mkHomes [ "pvv-terminal" ] { username = "danio"; homeDirectory = "/home/pvv/d/danio"; };
