@@ -70,5 +70,10 @@
       type = "app";
       program = "${self.homeActivations.${machine}}/activate";
     });
+    
+    hydraJobs = {
+      laptop.x86_64-linux = self.homeActivations.laptop;
+      desktop.x86_64-linux = self.homeActivations.desktop;
+    };
   };
 }
