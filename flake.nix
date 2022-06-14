@@ -73,7 +73,7 @@
     
     hydraJobs = {
       laptop.x86_64-linux = self.homeActivations.laptop;
-      desktop.x86_64-linux = self.homeActivations.desktop;
+      # desktop.x86_64-linux = self.homeActivations.desktop;
     };
   };
 }
