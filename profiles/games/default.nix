@@ -24,7 +24,7 @@ in {
 #     superTuxKart
 #     warsow
 #      xonotic
-      zeroad
+      # zeroad
       unstable.osu-lazer
 
 #      nur.repos.ivar.sm64ex
