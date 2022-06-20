@@ -191,73 +191,55 @@ in
 
         "module/minecraft" = {
           type = "custom/script";
-          exec = "" + pkgs.writers.writePython3 "minecraft_status" { libraries = [ pkgs.python3.pkgs.mcstatus ]; flakeIgnore = [ "E722" ]; } ''
+          exec = "" + pkgs.writers.writePython3 "minecraft_status" {
+            libraries = with pkgs.python3.pkgs; [ mcstatus notify2 ];
+            flakeIgnore = [ "E722" ]; 
+          } ''
             from mcstatus import JavaServer
-            pvv = JavaServer.lookup("minecraft.pvv.ntnu.no")
-            dods = JavaServer.lookup("mc.dodsorf.as")
+            import signal
+            from time import sleep
+            
+            
+            def see_players():
+                result = ""
+                if pvv_status is not None:
+                    result += "PVV: "
+                    for player in pvv_status.players.sample:
+                        result += player.name + " "
+                        result += "\n"
+                if dods_status is not None:
+                    result += "DODS: "
+                    for player in dods_status.players.sample:
+                        result += player.name + " "
+                        result += "\n"
 
-            try:
-                pvv_status = pvv.status()
-            except:
-                pass
 
-            try:
-                dods_status = dods.status()
-            except:
-                pass
+            signal.signal(signal.SIGUSR1, see_players)
 
-            result = ""
-            try:
-                if pvv_status.players.online > 0:
-                    result += ("P" + str(pvv_status.players.online))
-            except:
-                pass
+            while True:
+                result = ""
+                try:
+                    pvv = JavaServer.lookup("minecraft.pvv.ntnu.no")
+                    pvv_status = pvv.status()
+                    if pvv_status.players.online > 0:
+                        result += ("P" + str(pvv_status.players.online))
+                except:
+                    pass
 
-            try:
-                if dods_status.players.online > 0:
-                    result += ("D" + str(dods_status.players.online))
-            except:
-                pass
+                try:
+                    dods = JavaServer.lookup("mc.dodsorf.as")
+                    dods_status = dods.status()
+                    if dods_status.players.online > 0:
+                        result += ("D" + str(dods_status.players.online))
+                except:
+                    pass
 
-            print(result)
+                print(result)
+                sleep(5)
           '';
-          click-left = "" + pkgs.writers.writePython3 "minecraft_status" { libraries = with pkgs.python3.pkgs; [ mcstatus notify2 ]; flakeIgnore = [ "E722" ]; } ''
-            from mcstatus import JavaServer
-            import notify2
-
-            pvv = JavaServer.lookup("minecraft.pvv.ntnu.no")
-            dods = JavaServer.lookup("mc.dodsorf.as")
-
-            pvv_status = None
-            dods_status = None
-
-            try:
-                pvv_status = pvv.status()
-            except:
-                pass
-
-            try:
-                dods_status = dods.status()
-            except:
-                pass
-
-            result = ""
-            if pvv_status is not None:
-                result += "PVV: "
-                for player in pvv_status.players.sample:
-                    result += player.name + " "
-                result += "\n"
-            if dods_status is not None:
-                result += "DODS: "
-                for player in dods_status.players.sample:
-                    result += player.name + " "
-                result += "\n"
-
-            notify2.init('Minecraft Server Status')
-            n = notify2.Notification("Minecraft Server Status", result)
-            n.show()
-          '';
-          interval = 10;
+          click-left = "kill -USR1 %pid%";
+          # interval =
+          tail = true;
           format = " <label>";
         };
       };
