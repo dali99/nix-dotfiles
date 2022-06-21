@@ -1,8 +1,8 @@
 {
   description = "dandellion's home-manager profiles";
   
-  nixConfig.extra-substituters = ["https://helix.cachix.org"];
-  nixConfig.exta-trusted-public-keys = "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs=";
+  nixConfig.extra-substituters = ["https://cache.dodsorf.as"];
+  nixConfig.exta-trusted-public-keys = "cache.dodsorf.as:FYKGadXTyI2ax8mirBTOjEqS/8PZKAWxiJVOBjESQXc=";
 
   inputs  = {
     home-manager-2205.url = "github:nix-community/home-manager/release-22.05";
