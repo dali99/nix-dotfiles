@@ -215,8 +215,8 @@ in
                 if len(list) > 0:
                     result += server + ": "
                     for player in list:
-                        result += player.name + " \n"
-                return result
+                        result += player.name + " "
+                return result + "\n"
 
 
             def display_players(pvv, dods):
