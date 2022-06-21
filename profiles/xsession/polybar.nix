@@ -198,44 +198,58 @@ in
             from mcstatus import JavaServer
             import signal
             from time import sleep
-            
-            
-            def see_players():
+            import notify2
+
+            pvv = JavaServer.lookup("minecraft.pvv.ntnu.no")
+            dods = JavaServer.lookup("mc.dodsorf.as")
+
+
+            def getPlayers(server):
+                status = server.status()
+                players = getattr(getattr(status, "players"), "sample", [])
+                return players or []
+
+
+            def build_players(list, server):
                 result = ""
-                if pvv_status is not None:
-                    result += "PVV: "
-                    for player in pvv_status.players.sample:
-                        result += player.name + " "
-                        result += "\n"
-                if dods_status is not None:
-                    result += "DODS: "
-                    for player in dods_status.players.sample:
-                        result += player.name + " "
-                        result += "\n"
+                if len(list) > 0:
+                    result += server + ": "
+                    for player in list:
+                        result += player.name + " \n"
+                return result
 
 
-            signal.signal(signal.SIGUSR1, see_players)
+            def display_players(pvv, dods):
+                result = build_players(getPlayers(pvv), "PVV")
+                result += build_players(getPlayers(dods), "DODS")
+                return result
 
-            while True:
-                result = ""
-                try:
-                    pvv = JavaServer.lookup("minecraft.pvv.ntnu.no")
-                    pvv_status = pvv.status()
-                    if pvv_status.players.online > 0:
-                        result += ("P" + str(pvv_status.players.online))
-                except:
-                    pass
 
-                try:
-                    dods = JavaServer.lookup("mc.dodsorf.as")
-                    dods_status = dods.status()
-                    if dods_status.players.online > 0:
-                        result += ("D" + str(dods_status.players.online))
-                except:
-                    pass
+            def peek(*_):
+                result = display_players(pvv, dods)
+                notify2.init('Minecraft Server Status')
+                n = notify2.Notification("Minecraft Server Status", result)
+                n.show()
+                main()
 
-                print(result)
-                sleep(5)
+
+            signal.signal(signal.SIGUSR1, peek)
+
+
+            def main():
+                while True:
+                    result = ""
+                    pvvs = getPlayers(pvv)
+                    dodss = getPlayers(dods)
+                    if len(pvvs) > 0:
+                        result += "P" + str(len(pvvs))
+                    if len(dodss) > 0:
+                        result += "D" + str(len(dodss))
+                    print(result, flush=True)
+                    sleep(5)
+
+
+            main()
           '';
           click-left = "kill -USR1 %pid%";
           # interval =
