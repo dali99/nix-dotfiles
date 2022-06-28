@@ -39,8 +39,8 @@ in
 
   config = lib.mkIf cfg.enable {
     home.language = {
-      base = "nb_NO";
-      messages = "en_US";
+      base = "nb_NO.utf8";
+      messages = "en_US.utf8";
     };
 
 
