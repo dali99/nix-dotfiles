@@ -200,6 +200,9 @@ in
         rc = "rebase --continue";
         n = "!git commit --all --amend --no-edit && git rc";
       };
+      ignores = [
+        ".direnv"
+      ];
       extraConfig = {
         pull.rebase = true;
         sequence.editor = let 
