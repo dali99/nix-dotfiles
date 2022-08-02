@@ -92,7 +92,6 @@ in
       konsole # https://bugs.kde.org/show_bug.cgi?id=407990 reeee
 
       gnome3.gedit
-      vscodium
 
       gimp
     ] ++ lib.optionals (config.profiles.gui.enable && cfg.plus) [
@@ -187,6 +186,19 @@ in
           "^" = c "}";
           "¤" = c "^";
         };
+      };
+    };
+
+    programs.vscode = {
+      enable = config.profiles.gui.enable;
+      package = pkgs.vscodium;
+      extensions = with pkgs.vscode-extensions; [
+        bbenoist.nix
+        ms-vsliveshare.vsliveshare
+      ];
+      userSettings = {
+        "editor.insertSpaces" = false;
+        "terminal.integrated.fontFamily" = "MesloLGS NF";
       };
     };
 
