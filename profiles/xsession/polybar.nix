@@ -205,9 +205,12 @@ in
 
 
             def getPlayers(server):
-                status = server.status()
-                players = getattr(getattr(status, "players"), "sample", [])
-                return players or []
+                try:
+                    status = server.status()
+                except:
+                    return []
+                else:
+                    return status.players.sample or []
 
 
             def build_players(list, server):
