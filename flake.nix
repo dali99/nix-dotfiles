@@ -19,9 +19,12 @@
     
     helix.url = "github:helix-editor/helix";
     helix.inputs.nixpkgs.follows = "unstable";
+
+    nixgl.url = "github:guibou/nixGL";
+    nixgl.inputs.nixpkgs.follows = "nixos-2205";
   };
 
-  outputs = {self, home-manager-2205, unstable, nur, dan, ... }@inputs:
+  outputs = {self, home-manager-2205, unstable, nur, dan, nixgl, ... }@inputs:
   let
     nixlib = unstable.lib;
 
@@ -62,6 +65,7 @@
         helix = inputs.helix.packages.${prev.system}.helix;
       })
       nur.overlay
+      nixgl.overlay
     ];
 
     homeActivations = nixlib.genAttrs allMachines (machine: self.homeConfigurations.${machine}.activationPackage);

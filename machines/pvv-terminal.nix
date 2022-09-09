@@ -1,7 +1,7 @@
 { config, lib, pkgs, overlays, ... }:
 {
   nixpkgs.overlays = overlays;
-  #nixpkgs.config.allowUnfreePredicate = (pkg: true);
+  nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
   imports = [ ../profiles ];
 
@@ -11,6 +11,7 @@
     wlan = null;
     secondary-fs = null;
   };
+
   profiles.base.enable = true;
   profiles.base.plus = false;
   profiles.gui.enable = true;

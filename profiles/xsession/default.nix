@@ -3,7 +3,7 @@
 let
   cfg = config.profiles.xsession;
   non-nixos = config.profiles.non-nixos;
-  mkGL = program: "${lib.strings.optionalString non-nixos.enable "nixGL "}${program}";
+  mkGL = program: "${lib.strings.optionalString non-nixos.enable "${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL "}${program}";
 in
 {
   imports = [ ./dunstrc.nix ./terminal.nix ./polybar.nix ];
@@ -46,7 +46,7 @@ in
         i3.enable = true;
         i3.config = {
           modifier = "Mod4";
-          terminal = "kitty";
+          terminal = "${pkgs.kitty}/bin/kitty";
           keybindings = let
             modifier = config.xsession.windowManager.i3.config.modifier;
           in lib.mkOptionDefault {
@@ -118,7 +118,7 @@ in
       platformTheme = "gtk";
     };
 
-    xsession.windowManager.command = lib.mkIf non-nixos.enable (lib.mkForce "nixGL ${config.xsession.windowManager.i3.package}/bin/i3");
+    xsession.windowManager.command = lib.mkIf non-nixos.enable (lib.mkForce "${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL ${config.xsession.windowManager.i3.package}/bin/i3");
 
     home.packages = [
       pkgs.brightnessctl
