@@ -194,6 +194,10 @@ in
       package = pkgs.vscodium;
       extensions = with pkgs.vscode-extensions; [
         bbenoist.nix
+        
+        matklad.rust-analyzer
+        vadimcn.vscode-lldb
+      ] ++ lib.optionals config.nixpkgs.config.allowUnfree [
         ms-vsliveshare.vsliveshare
       ];
       userSettings = {

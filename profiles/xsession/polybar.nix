@@ -78,6 +78,7 @@ in
         };
         "module/title" = {
           type = "internal/xwindow";
+          label-maxlen = 40;
         };
         "module/wlan" = lib.mkIf (config.machine.wlan != null) {
           type = "internal/network";
