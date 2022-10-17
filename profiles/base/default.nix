@@ -218,6 +218,7 @@ in
       };
       ignores = [
         ".direnv"
+        ".vscode"
       ];
       extraConfig = {
         pull.rebase = true;
