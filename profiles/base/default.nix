@@ -45,7 +45,7 @@ in
 
 
     home.packages = with pkgs; [
-      nix-output-monitor
+      unstable.nix-output-monitor
       nix-top
       nix-index
       nix-tree
