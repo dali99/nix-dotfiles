@@ -233,7 +233,7 @@ in
             cargoDeps = old.cargoDeps.overrideAttrs (oldB: {
               name = "${oldB.name}";
               inherit src;
-              outputHash = "197dv8hbj4vd9grvhiinpsww3vfmmbl9b8gxk7la4gs8535s08x7";
+              outputHash = "sha256-/I465/PlOckvov9PgSCg7CN5hEKeeQCw8rPsvpKJons=";
             });
           });
         in "${girt}/bin/interactive-rebase-tool";
