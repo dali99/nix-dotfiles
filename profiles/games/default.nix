@@ -18,7 +18,7 @@ in {
     ] ++ lib.optionals config.profiles.gui.enable [
       steam
 
-      unstable.polymc
+      unstable.prismlauncher
 #     minetest
 #     dwarf-fortress-packages.dwarf-fortress-full
 #     superTuxKart

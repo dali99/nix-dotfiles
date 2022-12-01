@@ -97,7 +97,6 @@ in
     services.picom = {
       enable = true;
       backend = "xrender";
-      experimentalBackends = true;
     };
 
 

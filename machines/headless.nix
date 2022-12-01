@@ -12,7 +12,5 @@
   };
 
   profiles.base.enable = true;
-  profiles.base.enable = false;
-
   profiles.zsh.enable = true;
 }

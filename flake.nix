@@ -5,14 +5,14 @@
   nixConfig.exta-trusted-public-keys = "cache.dodsorf.as:FYKGadXTyI2ax8mirBTOjEqS/8PZKAWxiJVOBjESQXc=";
 
   inputs  = {
-    home-manager-2205.url = "github:nix-community/home-manager/release-22.05";
-    nixos-2205.url = "github:nixos/nixpkgs/nixos-22.05";
-    home-manager-2205.inputs.nixpkgs.follows = "nixos-2205";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    
+    home-manager.url = "github:nix-community/home-manager/release-22.11";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     nur.url = "github:nix-community/NUR";
-    nur.inputs.nixpkgs.follows = "unstable";
 
     dan.url = "git+https://git2.dodsorf.as/Dandellion/NUR.git"; #"git+https://git.dodsorf.as/Dandellion/NUR";
     dan.inputs.nixpkgs.follows = "unstable";
@@ -21,16 +21,15 @@
     helix.inputs.nixpkgs.follows = "unstable";
 
     nixgl.url = "github:guibou/nixGL";
-    nixgl.inputs.nixpkgs.follows = "nixos-2205";
+    nixgl.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {self, home-manager-2205, unstable, nur, dan, nixgl, ... }@inputs:
+  outputs = {self, nixpkgs, home-manager, unstable, nur, dan, nixgl, ... }@inputs:
   let
     nixlib = unstable.lib;
 
     mkHome =
       { machine
-      , hmChannel ? home-manager-2205
       , configuration ? self.nixosModules.home-manager.${machine}
       , system ? "x86_64-linux"
       , username ? "daniel"
@@ -38,8 +37,17 @@
       , stateVersion ? "22.05"
       , extraSpecialArgs ? { inherit (self) overlays; }
       }:
-      hmChannel.lib.homeManagerConfiguration {
-        inherit configuration system username homeDirectory stateVersion extraSpecialArgs;
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [
+          configuration
+          {
+            home = {
+              inherit username homeDirectory stateVersion;
+            };
+          }
+        ];
+        inherit extraSpecialArgs;
       };
 
       mkHomes = machines: extraArgs: nixlib.genAttrs machines (machine: mkHome ({inherit machine; } // extraArgs));
