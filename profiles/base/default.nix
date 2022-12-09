@@ -139,8 +139,38 @@ in
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [ bitwarden cookies-txt https-everywhere metamask no-pdf-download sponsorblock ublock-origin ];
     };
 
+    services.espanso = {
+      enable = config.profiles.gui.enable;
+      settings = {
+        matches = [
+          { # Dates
+            trigger = ":date";
+            replace = "{{mydate}}";
+            vars = [{
+              name = "mydate";
+              type = "date";
+              params = { format = "%Y-%m-%d"; };
+            }];
+          }
+          {
+            regex = ":c(?P<expr>.*?):";
+            replace = "{{result}}";
+            vars = [{
+              name = "result";
+              type = "shell";
+              params = {
+                cmd = "expr $ESPANSO_EXPR";
+              };
+            }];
+          }
+        ];
+      };
+    };
+
     programs.obs-studio.enable = (config.profiles.gui.enable && cfg.plus);
 
+
+   programs.tealdeer.enable = true;
 
     programs.helix = {
       enable = true;
@@ -217,6 +247,7 @@ in
         n = "!git commit --all --amend --no-edit && git rc";
       };
       ignores = [
+        ".envrc"
         ".direnv"
         ".vscode"
       ];
