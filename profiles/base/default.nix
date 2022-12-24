@@ -139,38 +139,11 @@ in
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [ bitwarden cookies-txt https-everywhere metamask no-pdf-download sponsorblock ublock-origin ];
     };
 
-    services.espanso = {
-      enable = config.profiles.gui.enable;
-      settings = {
-        matches = [
-          { # Dates
-            trigger = ":date";
-            replace = "{{mydate}}";
-            vars = [{
-              name = "mydate";
-              type = "date";
-              params = { format = "%Y-%m-%d"; };
-            }];
-          }
-          {
-            regex = ":c(?P<expr>.*?):";
-            replace = "{{result}}";
-            vars = [{
-              name = "result";
-              type = "shell";
-              params = {
-                cmd = "expr $ESPANSO_EXPR";
-              };
-            }];
-          }
-        ];
-      };
-    };
 
     programs.obs-studio.enable = (config.profiles.gui.enable && cfg.plus);
 
 
-   programs.tealdeer.enable = true;
+     programs.tealdeer.enable = true;
 
     programs.helix = {
       enable = true;
@@ -253,21 +226,21 @@ in
       ];
       extraConfig = {
         pull.rebase = true;
-        sequence.editor = let 
-          girt = pkgs.unstable.git-interactive-rebase-tool.overrideAttrs (old: rec {
-            src = pkgs.fetchFromGitHub {
-              owner = "Dali99";
-              repo = "git-interactive-rebase-tool";
-              rev = "590f87d8ed16992373e214bca5994f89c69fa942";
-              sha256 = "sha256-vUjqnt5ZSpzoohkzDXEqTMhMEkYzPMUZiaYWS0ZQcPQ=";
-            };
-            cargoDeps = old.cargoDeps.overrideAttrs (oldB: {
-              name = "${oldB.name}";
-              inherit src;
-              outputHash = "sha256-/I465/PlOckvov9PgSCg7CN5hEKeeQCw8rPsvpKJons=";
-            });
-          });
-        in "${girt}/bin/interactive-rebase-tool";
+        # sequence.editor = let 
+        #   girt = pkgs.unstable.git-interactive-rebase-tool.overrideAttrs (old: rec {
+        #     src = pkgs.fetchFromGitHub {
+        #       owner = "Dali99";
+        #       repo = "git-interactive-rebase-tool";
+        #       rev = "590f87d8ed16992373e214bca5994f89c69fa942";
+        #       sha256 = "sha256-vUjqnt5ZSpzoohkzDXEqTMhMEkYzPMUZiaYWS0ZQcPQ=";
+        #     };
+        #     cargoDeps = old.cargoDeps.overrideAttrs (oldB: {
+        #       name = "${oldB.name}";
+        #       inherit src;
+        #       outputHash = "sha256-/I465/PlOckvov9PgSCg7CN5hEKeeQCw8rPsvpKJons=";
+        #     });
+        #   });
+        # in "${girt}/bin/interactive-rebase-tool";
       };
       delta.enable = true;
     };
