@@ -143,7 +143,7 @@ in
     programs.obs-studio.enable = (config.profiles.gui.enable && cfg.plus);
 
 
-     programs.tealdeer.enable = true;
+    programs.tealdeer.enable = true;
 
     programs.helix = {
       enable = true;
@@ -254,12 +254,11 @@ in
           user = "dandellion";
         };
         "desktop" = {
-          hostname = "10.42.42.10";
-          proxyJump = "lilith";
+          hostname = "nixos-fhjypz8j.dods";
           user = "dan";
         };
         "laptop" = {
-          hostname = "10.42.42.13";
+          hostname = "danixlaptop.dods";
           user = "daniel";
         };
         "pvv.ntnu.no" = {
@@ -270,11 +269,6 @@ in
         };
         "gitlab.stud.idi.ntnu.no" = {
           proxyJump = "login.pvv.ntnu.no";
-        };
-        "workshop" = {
-          user = "student";
-          hostname = "129.241.99.15";
-          proxyJump = "hildring.pvv.ntnu.no";
         };
       };
     };
