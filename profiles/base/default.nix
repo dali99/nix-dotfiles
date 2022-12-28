@@ -184,7 +184,7 @@ in
         keys.insert = {
           "S-tab" = "unindent";
           # Poor man's US-Keyboard
-          "Å" = [(c "{}") "move_char_left"];
+          "Å" = [(c "{}") "move_char_right"];
           "º" = c "Å";
           "^" = c "}";
           "¤" = c "^";
