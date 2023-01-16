@@ -136,7 +136,7 @@ in
           };
         };
       };
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [ bitwarden cookies-txt https-everywhere metamask no-pdf-download sponsorblock ublock-origin ];
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [ bitwarden cookies-txt metamask no-pdf-download sponsorblock ublock-origin ];
     };
 
 
