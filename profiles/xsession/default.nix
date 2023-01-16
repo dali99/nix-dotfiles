@@ -4,7 +4,7 @@ let
   cfg = config.profiles.xsession;
   non-nixos = config.profiles.non-nixos;
   mkGL = program: "${lib.strings.optionalString non-nixos.enable "${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL "}${program}";
-  execScope = program: "exec bash -c \"systemd-run --user --scope --unit='app-i3-exec-$RANDOM' -p CollectMode=inactive-or-failed -p MemoryHigh=92% -p MemoryMax=98% \"${program}\"\"";
+  execScope = program: "exec bash -c \"systemd-run --user --scope --unit='app-i3-exec-$RANDOM' -p CollectMode=inactive-or-failed -p MemoryHigh=85% -p MemoryMax=92% -p MemorySwapMax=5G -p MemoryAccounting=true \"${program}\"\"";
 in
 {
   imports = [ ./dunstrc.nix ./terminal.nix ./polybar.nix ];
@@ -16,6 +16,14 @@ in
 
   config = lib.mkIf cfg.enable {
     profiles.gui.enable = true;
+
+    systemd.user.slices.app.Slice = {
+      MemoryHigh="90%";
+      MemoryMax="94%";
+      MemorySwapMax="8G";
+      CPUQuota="${toString ((config.machine.cores - 1)*100)}%";
+      MemoryAccounting = true;
+    };
 
     home.keyboard = {
       layout = "no";

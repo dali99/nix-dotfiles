@@ -115,8 +115,9 @@ declare -ga runargs=(
      --slice="app.slice"             # run as part of `app.slice`
      --unit="${prefix}${name}-${rand}"
 
-     -p MemoryHigh=92%
-     -p MemoryMax=98%
+     -p MemoryHigh=85%
+     -p MemoryMax=92%
+     -p MemorySwapMax=5G
                                      # unit name
      --description="dmenu selection ${selection[*]@Q}"
 )

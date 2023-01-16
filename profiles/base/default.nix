@@ -23,6 +23,10 @@ in
     name = lib.mkOption {
       type = lib.types.str;
     };
+    cores = lib.mkOption {
+      type = lib.types.ints.positive;
+      default = 1;
+    };
     systemd = lib.mkOption {
       type = lib.types.bool;
       default = true;
