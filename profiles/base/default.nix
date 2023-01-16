@@ -250,7 +250,7 @@ in
       enable = true;
       matchBlocks = {
         "lilith" = {
-          hostname = "lilith.d.d.dodsorf.as";
+          hostname = "lilith.dods";
           user = "dandellion";
         };
         "desktop" = {
