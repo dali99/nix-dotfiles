@@ -1,0 +1,139 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
+#
+# dmenu_run_systemd: start a program from dmenu as transient systemd .scope
+# (C) Copyright Benjamin Block 2021
+# (C) Copyright Daniel Olsen 2023
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice (including the next
+# paragraph) shall be included in all copies or substantial portions of the
+# Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+# Requirements:
+#   - Package: bash
+#   - Package: dmenu
+#     - dmenu_path
+#     - dmenu
+#   - Package: coreutils
+#     - basenc
+#     - tr
+#   - Package: systemd
+#     - systemd-run
+#   - Package: util-linux
+#     - getopt
+#
+# Usage: dmenu_run_systemd
+#
+#   Start demnu to select program to execute, then start selected program in
+#   background.
+#
+# Usage: dmenu_run_systemd [Options] [--] <command> [<arg1>[, <arg2>[...]]]
+#
+#   Start <command> with <arg1..N> without involving dmenu.
+#   E.g. in i3 config: `bindsym $mod+Return exec dmenu_run_systemd alacritty`.
+#
+#   Options:
+#    -f, --forground  Start <command> as forground task (default: no)
+#    -p, --pwd        Use the current ${PWD} as working directory (default:
+#                     ${HOME})
+
+declare -g prefix forground=false cpwd=false
+declare -ga selection
+if [ "${#}" -lt 1 ]; then
+     prefix="dmenu-"
+     selection=("$(dmenu_path | dmenu)")                     || exit 127
+else
+     prefix="xrun-"
+
+     declare opts
+     opts="$(getopt --shell bash                                     \
+                     -o "fp"                                         \
+                     -l "forground,pwd"                              \
+                     -n "dmenu_run_systemd" -- "${@}")"      || exit 122
+     eval set -- "${opts}"
+     unset opts
+
+     while true; do
+             case "${1}" in
+             '-f'|'--forground')
+                     forground=true
+             ;;
+             '-p'|'--pwd')
+                     cpwd=true
+             ;;
+             '--')   shift; break;;
+             esac
+             shift
+     done
+
+     selection=("${@}")
+fi
+readonly selection prefix
+
+declare -g name
+# Max unit name length:     256
+#        -    ".scope"   -    6
+#        - "<prefix>-"   -    6
+#        -   "-<rand>"   -   33
+#                        ------
+#            "<name>" <=    211
+read -r -d '' -n 192 name < <(
+     echo -n "${selection[*]}" | tr -c 'a-zA-Z0-9_-' '[_*]'  || exit 1
+     echo -e '\0'                                            || exit 2
+)                                                            || exit 126
+readonly name
+{ [ "${#name}" -gt 0 ] && [ "${#name}" -le 211 ]; }          || exit 125
+
+declare -g rand
+# ~5 bits per character => 32*5 = ~160 bits random number
+read -r -N 32 rand < <(basenc --base32 < /dev/urandom)               || exit 124
+readonly rand
+[ "${#rand}" -eq 32 ]                                                || exit 123
+
+declare -ga runargs=(
+     --quiet
+     --user                          # run in per-User slice
+     --scope                         # create transient `.scope` unit,
+                                     # instead of `.service`
+     --collect                       # garbage collect everything after run,
+                                     # even on failure
+     --slice="app.slice"             # run as part of `app.slice`
+     --unit="${prefix}${name}-${rand}"
+
+     -p MemoryHigh=92%
+     -p MemoryMax=98%
+                                     # unit name
+     --description="dmenu selection ${selection[*]@Q}"
+)
+
+if ${cpwd}; then
+     runargs+=( --working-directory="${PWD:-/}" )
+else
+     runargs+=( --working-directory="${HOME:-/}" )
+fi
+
+readonly runargs
+
+## Debugging:
+#declare -p prefix selection name rand runargs
+
+if ${forground}; then
+     systemd-run "${runargs[@]}" -- "${selection[@]}"
+else
+     systemd-run "${runargs[@]}" -- "${selection[@]}" &
+fi

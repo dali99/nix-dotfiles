@@ -4,6 +4,7 @@ let
   cfg = config.profiles.xsession;
   non-nixos = config.profiles.non-nixos;
   mkGL = program: "${lib.strings.optionalString non-nixos.enable "${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL "}${program}";
+  execScope = program: "exec bash -c \"systemd-run --user --scope --unit='app-i3-exec-$RANDOM' -p CollectMode=inactive-or-failed -p MemoryHigh=92% -p MemoryMax=98% \"${program}\"\"";
 in
 {
   imports = [ ./dunstrc.nix ./terminal.nix ./polybar.nix ];
@@ -49,6 +50,7 @@ in
           terminal = "${pkgs.kitty}/bin/kitty";
           keybindings = let
             modifier = config.xsession.windowManager.i3.config.modifier;
+            dmenu = if config.machine.systemd then "${../../scripts/dmenu_run_systemd}" else "dmenu_run";
           in lib.mkOptionDefault {
             "${modifier}+0" = "workspace 10";
             "${modifier}+Shift+0" = "move container to workspace 10";
@@ -64,20 +66,22 @@ in
             "XF86MonBrightnessUp" = "exec --no-startup-id brightnessctl set +5%";
             "XF86MonBrightnessDown" = "exec --no-startup-id brightnessctl set 5%-";
 
-            "XF86Display" = "exec arandr";
-
             "Print" = "exec scrot %Y-%m-%d_$wx$h_scrot.png -z -e 'mv $f /home/daniel/Pictures/screenshots/'";
             "${modifier}+Print" = "exec scrot /home/daniel/Pictures/Screenshots/%Y-%m-%d_$wx$h_scrot.png -z";
+
+            "XF86Display" = "exec arandr";
+
             "${modifier}+Shift+U" = "exec $HOME/.config/nixpkgs/nix-dotfiles/scripts/dmenuunicode";
-
-            "${modifier}+n" = "exec dolphin";
-            "${modifier}+b" = "exec firefox";
-            "${modifier}+t" = "exec gedit";
-
             "${modifier}+Shift+s" = "exec $HOME/.config/nixpkgs/nix-dotfiles/scripts/dmenuaudio";
 
-            # "${modifier}+Return" = lib.mkForce "exec kitty";
-            "${modifier}+Shift+Return" = "exec kitty -e ssh dandellion@lilith";
+            "${modifier}+d" = "exec ${dmenu}";
+
+            "${modifier}+n" = execScope "dolphin";
+            "${modifier}+b" = execScope "firefox";
+            "${modifier}+t" = execScope "gedit";
+
+            "${modifier}+Return" = execScope "kitty";
+            "${modifier}+Shift+Return" = execScope "kitty -e ssh dandellion@lilith";
           };
           startup = [
             { 

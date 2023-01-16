@@ -23,6 +23,10 @@ in
     name = lib.mkOption {
       type = lib.types.str;
     };
+    systemd = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+    };
     eth = lib.mkOption { };
     wlan = lib.mkOption { };
     secondary-fs = lib.mkOption {
