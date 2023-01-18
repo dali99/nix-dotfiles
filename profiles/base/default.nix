@@ -72,6 +72,8 @@ in
       file
       tmux
 
+      timewarrior
+
       unzip
       p7zip
 
