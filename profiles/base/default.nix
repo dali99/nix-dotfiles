@@ -62,6 +62,8 @@ in
       rnix-lsp
       helixDesktop
 
+      openvpn
+
       ldns
       mtr
       nmap
