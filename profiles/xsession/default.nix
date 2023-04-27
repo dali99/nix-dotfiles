@@ -77,6 +77,12 @@ in
             "Print" = "exec scrot %Y-%m-%d_$wx$h_scrot.png -z -e 'mv $f /home/daniel/Pictures/screenshots/'";
             "${modifier}+Print" = "exec scrot /home/daniel/Pictures/Screenshots/%Y-%m-%d_$wx$h_scrot.png -z";
 
+            "${modifier}+l" = "exec ${pkgs.writers.writeBash "hello_world" ''
+              dunstctl set-paused true
+              ${pkgs.i3lock}/bin/i3lock -n -i ~/images/wallpapers/locked.png
+              dunstctl set-paused false
+            ''}";
+
             "XF86Display" = "exec arandr";
 
             "${modifier}+Shift+U" = "exec $HOME/.config/nixpkgs/nix-dotfiles/scripts/dmenuunicode";
