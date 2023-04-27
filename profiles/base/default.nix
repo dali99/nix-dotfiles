@@ -236,21 +236,22 @@ in
       ];
       extraConfig = {
         pull.rebase = true;
-        # sequence.editor = let 
-        #   girt = pkgs.unstable.git-interactive-rebase-tool.overrideAttrs (old: rec {
-        #     src = pkgs.fetchFromGitHub {
-        #       owner = "Dali99";
-        #       repo = "git-interactive-rebase-tool";
-        #       rev = "590f87d8ed16992373e214bca5994f89c69fa942";
-        #       sha256 = "sha256-vUjqnt5ZSpzoohkzDXEqTMhMEkYzPMUZiaYWS0ZQcPQ=";
-        #     };
-        #     cargoDeps = old.cargoDeps.overrideAttrs (oldB: {
-        #       name = "${oldB.name}";
-        #       inherit src;
-        #       outputHash = "sha256-/I465/PlOckvov9PgSCg7CN5hEKeeQCw8rPsvpKJons=";
-        #     });
-        #   });
-        # in "${girt}/bin/interactive-rebase-tool";
+        sequence.editor = let 
+          # girt = pkgs.unstable.git-interactive-rebase-tool.overrideAttrs (old: rec {
+          #   src = pkgs.fetchFromGitHub {
+          #     owner = "Dali99";
+          #     repo = "git-interactive-rebase-tool";
+          #     rev = "590f87d8ed16992373e214bca5994f89c69fa942";
+          #     sha256 = "sha256-vUjqnt5ZSpzoohkzDXEqTMhMEkYzPMUZiaYWS0ZQcPQ=";
+          #   };
+          #   cargoDeps = old.cargoDeps.overrideAttrs (oldB: {
+          #     name = "${oldB.name}";
+          #     inherit src;
+          #     outputHash = "sha256-/I465/PlOckvov9PgSCg7CN5hEKeeQCw8rPsvpKJons=";
+          #   });
+          # });
+          girt = pkgs.git-interactive-rebase-tool;
+        in "${girt}/bin/interactive-rebase-tool";
       };
       delta.enable = true;
     };
