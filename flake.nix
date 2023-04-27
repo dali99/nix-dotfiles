@@ -70,7 +70,7 @@
           inherit (prev) system config;
         };
         dan = dan.packages.${prev.system};
-        helix = inputs.helix.packages.${prev.system}.helix;
+        # helix = inputs.helix.packages.${prev.system}.helix;
       })
       nur.overlay
       nixgl.overlay
