@@ -64,10 +64,14 @@ in
 
       ldns
       mtr
+      nmap
+      inetutils
+      httpie
 
       lsof
 
       htop
+      progress
 
       file
       tmux
