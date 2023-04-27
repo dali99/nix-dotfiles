@@ -260,15 +260,15 @@ in
       enable = true;
       matchBlocks = {
         "lilith" = {
-          hostname = "lilith.dods";
+          hostname = "lilith-xxk090fp.daniel";
           user = "dandellion";
         };
         "desktop" = {
-          hostname = "nixos-fhjypz8j.dods";
+          hostname = "nixos-il0laur2.daniel";
           user = "dan";
         };
         "laptop" = {
-          hostname = "danixlaptop.dods";
+          hostname = "danixlaptop-q4838soc.daniel";
           user = "daniel";
         };
         "pvv.ntnu.no" = {
