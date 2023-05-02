@@ -68,6 +68,11 @@ in
     programs.direnv = {
       enable = true;
     };
+    
+    programs.atuin = {
+      enable = true;
+      enableZshIntegration = true;
+    };
 
     home.packages = [
        pkgs.dan.mesloNFp10k
