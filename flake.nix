@@ -17,8 +17,8 @@
     dan.url = "git+https://git.dodsorf.as/Dandellion/NUR.git"; #"git+https://git.dodsorf.as/Dandellion/NUR";
     dan.inputs.nixpkgs.follows = "unstable";
     
-    helix.url = "github:helix-editor/helix";
-    helix.inputs.nixpkgs.follows = "unstable";
+    # helix.url = "github:helix-editor/helix";
+    # helix.inputs.nixpkgs.follows = "unstable";
 
     nixgl.url = "github:guibou/nixGL";
     nixgl.inputs.nixpkgs.follows = "nixpkgs";

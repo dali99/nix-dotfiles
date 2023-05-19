@@ -238,6 +238,7 @@ in
       ignores = [
         ".envrc"
         ".direnv"
+        ".devenv"
         ".vscode"
       ];
       extraConfig = {
