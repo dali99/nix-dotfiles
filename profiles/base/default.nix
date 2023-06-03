@@ -2,21 +2,6 @@
 
 let
   cfg = config.profiles.base;
-
-  helixDesktop = pkgs.makeDesktopItem {
-    name = "Helix";
-    type = "Application";
-    desktopName = "Helix";
-    genericName = "Text Editor";
-    comment = "Edit text files";
-    tryExec = "hx";
-    exec = "kitty hx %F";
-    terminal = false; # Until you can globally set a prefered terminal we hardcoding this
-    mimeTypes = [ "ext/english" "text/plain" "text/x-makefile" "text/x-c++hdr" "text/x-c++src" "text/x-chdr" "text/x-csrc" "text/x-java" "text/x-moc" "text/x-pascal" "text/x-tcl" "text/x-tex" "application/x-shellscript" "text/x-c" "text/x-c++" ];
-    categories = [ "Utility" "TextEditor" ];
-    keywords = [ "Text" "editor" ];
-    startupNotify = false;
-  };
 in
 {
   options.machine = {
@@ -60,7 +45,6 @@ in
       unstable.comma
 
       rnix-lsp
-      helixDesktop
 
       openvpn
 
@@ -150,9 +134,9 @@ in
               url = "https://rycee.gitlab.io/home-manager/options.html#opt-%s";
             };
           };
+          extensions = with pkgs.nur.repos.rycee.firefox-addons; [ bitwarden cookies-txt metamask no-pdf-download sponsorblock ublock-origin ];
         };
       };
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [ bitwarden cookies-txt metamask no-pdf-download sponsorblock ublock-origin ];
     };
 
 
