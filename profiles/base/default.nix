@@ -252,15 +252,15 @@ in
       enable = true;
       matchBlocks = {
         "lilith" = {
-          hostname = "lilith-xxk090fp.daniel";
+          hostname = "lilith.daniel";
           user = "dandellion";
         };
         "desktop" = {
-          hostname = "nixos-il0laur2.daniel";
+          hostname = "desktop.daniel";
           user = "dan";
         };
         "laptop" = {
-          hostname = "danixlaptop-q4838soc.daniel";
+          hostname = "laptop.daniel";
           user = "daniel";
         };
         "pvv.ntnu.no" = {
