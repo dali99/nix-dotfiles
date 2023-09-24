@@ -87,6 +87,23 @@ in
 
             "${modifier}+Shift+U" = "exec $HOME/.config/nixpkgs/nix-dotfiles/scripts/dmenuunicode";
             "${modifier}+Shift+s" = "exec $HOME/.config/nixpkgs/nix-dotfiles/scripts/dmenuaudio";
+            "${modifier}+Shift+v" = "exec ${pkgs.writers.writeBash "switch_audio" ''
+              if pw-link -l | grep "^VirtualMic:input_FL" -A 2 | grep FilteredMic; then
+                ${pkgs.pipewire}/bin/pw-link -d "FilteredMic:capture_MONO" "VirtualMic:input_FL"
+                ${pkgs.pipewire}/bin/pw-link -d "FilteredMic:capture_MONO" "VirtualMic:input_FR"
+                ${pkgs.pipewire}/bin/pw-link "VoiceChanger:monitor_FL" "VirtualMic:input_FL"
+                ${pkgs.pipewire}/bin/pw-link "VoiceChanger:monitor_FR" "VirtualMic:input_FR"
+                ${pkgs.pipewire}/bin/pw-link "VoiceChanger:monitor_FL" "VirtualHeadset:playback_FL"
+                ${pkgs.pipewire}/bin/pw-link "VoiceChanger:monitor_FR" "VirtualHeadset:playback_FR"
+              else
+                ${pkgs.pipewire}/bin/pw-link "FilteredMic:capture_MONO" "VirtualMic:input_FL"
+                ${pkgs.pipewire}/bin/pw-link "FilteredMic:capture_MONO" "VirtualMic:input_FR"
+                ${pkgs.pipewire}/bin/pw-link -d "VoiceChanger:monitor_FL" "VirtualMic:input_FL"
+                ${pkgs.pipewire}/bin/pw-link -d "VoiceChanger:monitor_FR" "VirtualMic:input_FR"
+                ${pkgs.pipewire}/bin/pw-link -d "VoiceChanger:monitor_FL" "VirtualHeadset:playback_FL"
+                ${pkgs.pipewire}/bin/pw-link -d "VoiceChanger:monitor_FR" "VirtualHeadset:playback_FR"
+              fi
+            ''}";
 
             "${modifier}+d" = "exec ${dmenu}";
 
