@@ -78,7 +78,7 @@ in
       };
     };
 
-    home.packages = [
+    home.packages = lib.optionals (config.profiles.gui.enable && config ? nixpkgs) [
        pkgs.dan.mesloNFp10k
     ];
   };
