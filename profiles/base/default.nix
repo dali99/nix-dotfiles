@@ -109,7 +109,7 @@ in
       blender
 
       mkvtoolnix
-    ] ++ lib.optionals (config.nixpkgs.config.allowUnfree && config.profiles.gui.enable) [
+    ] ++ lib.optionals (config.profiles.gui.enable && (config ? nixpkgs && config.nixpkgs.config.allowUnfree) ) [
       geogebra
     ];
 

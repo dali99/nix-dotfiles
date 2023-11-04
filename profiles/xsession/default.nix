@@ -108,7 +108,13 @@ in
             titlebar = false;
             hideEdgeBorders = "smart";
           };
+          floating.criteria = [
+            { title = "Steam - Update News"; }
+          ];
         };
+        i3.extraConfig = ''
+          for_window [title="Steam Big Picture Mode"] floating enable, resize set 1920 1080, move position 0 0, border pixel 0
+        '';
       };
     };
 
