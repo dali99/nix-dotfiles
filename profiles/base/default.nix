@@ -269,6 +269,16 @@ in
         "*.pvv.ntnu.no" = {
           user = "danio";
         };
+        "pascal" = {
+          hostname = "wiki.wackattack.eu";
+          port = 1337;
+          user = "dandellion";
+        };
+        "ireul" = {
+          hostname = "62.92.111.85";
+          port = 1337;
+          user = "dandellion";
+        };
         "gitlab.stud.idi.ntnu.no" = {
           proxyJump = "login.pvv.ntnu.no";
         };
