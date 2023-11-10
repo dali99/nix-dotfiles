@@ -282,6 +282,10 @@ in
         "gitlab.stud.idi.ntnu.no" = {
           proxyJump = "login.pvv.ntnu.no";
         };
+        "consolidation" = {
+          hostname = "62.92.111.62";
+          user = "root";
+        };
       };
     };
 
