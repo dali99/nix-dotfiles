@@ -5,7 +5,8 @@
   # nixConfig.exta-trusted-public-keys = "cache.dodsorf.as:FYKGadXTyI2ax8mirBTOjEqS/8PZKAWxiJVOBjESQXc=";
 
   inputs  = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/50aa30a13c4ab5e7ba282da460a3e3d44e9d0eb3";
     
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
