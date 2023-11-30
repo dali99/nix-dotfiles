@@ -74,7 +74,7 @@ in
       ncdu
 
       bat
-      exa
+      eza
       ripgrep
     ] ++ lib.optionals cfg.plus [
       ffmpeg-full

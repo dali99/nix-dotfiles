@@ -21,8 +21,8 @@ in
       };
       shellAliases = {
         cat = "bat";
-        ls = "exa";
-        tree = "exa -T";
+        ls = "eza";
+        tree = "eza -T";
         df = "df -h";
 
         sysu = "systemctl --user";
