@@ -259,6 +259,11 @@ in
           hostname = "desktop.daniel";
           user = "dan";
         };
+        "ubuntu-ai" = {
+          hostname = "100.64.0.2";
+          port = 2222;
+          user = "daniel";
+        };
         "laptop" = {
           hostname = "laptop.daniel";
           user = "daniel";
