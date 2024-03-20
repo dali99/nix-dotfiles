@@ -25,7 +25,6 @@ in {
 #     warsow
 #      xonotic
       # zeroad
-      unstable.osu-lazer
 
 #      nur.repos.ivar.sm64ex
 #     dolphinEmuMaster

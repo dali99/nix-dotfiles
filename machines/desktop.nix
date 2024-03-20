@@ -19,4 +19,8 @@
   profiles.zsh.enable = true;
 
   profiles.games.enable = true;
+
+  home.packages = [
+      pkgs.unstable.osu-lazer
+  ];
 }
