@@ -44,8 +44,6 @@ in
       nix-tree
       unstable.comma
 
-      rnix-lsp
-
       openvpn
 
       ldns
