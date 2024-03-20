@@ -150,10 +150,10 @@ in
         name = "breeze";
       };
     };
-    qt = {
-      enable = true;
-      platformTheme = "gtk";
-    };
+    # qt = {
+    #   enable = true;
+    #   platformTheme = "gtk";
+    # };
 
     xsession.windowManager.command = lib.mkIf non-nixos.enable (lib.mkForce "${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL ${config.xsession.windowManager.i3.package}/bin/i3");
 
