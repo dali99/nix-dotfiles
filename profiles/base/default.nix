@@ -110,7 +110,7 @@ in
 
       mkvtoolnix
     ] ++ lib.optionals (config.profiles.gui.enable && (config ? nixpkgs && config.nixpkgs.config.allowUnfree) ) [
-      geogebra
+      # geogebra
     ];
 
     programs.firefox = {
