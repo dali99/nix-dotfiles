@@ -58,12 +58,17 @@ in
       progress
 
       file
+      bintools
+
+      gh
       tmux
 
       timewarrior
 
       unzip
       p7zip
+
+      yt-dlp
 
       parallel
       sshfs
@@ -79,6 +84,7 @@ in
     ] ++ lib.optionals config.profiles.gui.enable [
       mpv
       sxiv
+      gnome3.eog
 
       dolphin
       plasma5Packages.dolphin-plugins
@@ -241,6 +247,7 @@ in
           # });
           girt = pkgs.git-interactive-rebase-tool;
         in "${girt}/bin/interactive-rebase-tool";
+        branch.sort = "-committerdate";
       };
       delta.enable = true;
     };

@@ -20,7 +20,7 @@ in
         share = false;
       };
       shellAliases = {
-        cat = "bat";
+        cat = "bat -pp";
         ls = "eza";
         tree = "eza -T";
         df = "df -h";
@@ -77,6 +77,8 @@ in
         filter_mode_shell_up_key_binding = "session";
       };
     };
+
+    programs.zoxide.enable = true;
 
     home.packages = lib.optionals (config.profiles.gui.enable && config ? nixpkgs) [
        pkgs.dan.mesloNFp10k
