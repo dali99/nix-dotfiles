@@ -248,6 +248,8 @@ in
           girt = pkgs.git-interactive-rebase-tool;
         in "${girt}/bin/interactive-rebase-tool";
         branch.sort = "-committerdate";
+        gpg.format = "ssh";
+        user.signingKey = "~/.ssh/id_rsa.pub";
       };
       delta.enable = true;
     };
