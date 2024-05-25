@@ -69,6 +69,11 @@ in
             "XF86AudioMute" = "exec --no-startup-id ${pkgs.pulseaudio}/bin/pactl set-sink-mute 0 toggle";
             "XF86AudioMicMute" = "exec --no-startup-id ${pkgs.pulseaudio}/bin/pactl set-source-mute 1 toggle";
 
+            # Georg volume controls
+            "Shift+XF86AudioRaiseVolume" = "exec --no-startup-id ${lib.getExe pkgs.gregctl} set-volume -- +5%";
+            "Shift+XF86AudioLowerVolume" = "exec --no-startup-id ${lib.getExe pkgs.gregctl} set-volume -- -5%";
+            "Shift+XF86AudioMute" = "exec --no-startup-id ${lib.getExe pkgs.gregctl} toggle";
+
             "XF86MonBrightnessUp" = "exec --no-startup-id brightnessctl set +5%";
             "XF86MonBrightnessDown" = "exec --no-startup-id brightnessctl set 5%-";
 

@@ -35,6 +35,26 @@
         "type": "github"
       }
     },
+    "greg-clients": {
+      "inputs": {
+        "nixpkgs": [
+          "unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1716115695,
+        "narHash": "sha256-aI65l4x+U5v3i/nfn6N3eW5IZodmf4pyAByE7vTJh8I=",
+        "ref": "refs/heads/master",
+        "rev": "b9444658fbb39cd1bf1c61ee5a1d5f0641c49abe",
+        "revCount": 73,
+        "type": "git",
+        "url": "https://git.pvv.ntnu.no/Projects/grzegorz-clients"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.pvv.ntnu.no/Projects/grzegorz-clients"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -111,6 +131,7 @@
     "root": {
       "inputs": {
         "dan": "dan",
+        "greg-clients": "greg-clients",
         "home-manager": "home-manager",
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs",

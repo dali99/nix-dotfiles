@@ -16,6 +16,9 @@
 
     dan.url = "git+https://git.dodsorf.as/Dandellion/NUR.git"; #"git+https://git.dodsorf.as/Dandellion/NUR";
     dan.inputs.nixpkgs.follows = "unstable";
+
+    greg-clients.url = "git+https://git.pvv.ntnu.no/Projects/grzegorz-clients";
+    greg-clients.inputs.nixpkgs.follows = "unstable";
     
     # helix.url = "github:helix-editor/helix";
     # helix.inputs.nixpkgs.follows = "unstable";
@@ -70,6 +73,8 @@
           inherit (prev) system config;
         };
         dan = dan.packages.${prev.system};
+        grzegorz-clients = inputs.greg-clients.packages.${prev.system}.grzegorz-clients;
+        gregctl = inputs.greg-clients.packages.${prev.system}.grzegorzctl;
         # helix = inputs.helix.packages.${prev.system}.helix;
       })
       nur.overlay

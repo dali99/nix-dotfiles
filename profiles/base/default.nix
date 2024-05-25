@@ -79,6 +79,8 @@ in
       bat
       eza
       ripgrep
+
+      gregctl
     ] ++ lib.optionals cfg.plus [
       ffmpeg-full
     ] ++ lib.optionals config.profiles.gui.enable [
@@ -126,11 +128,11 @@ in
           };
           bookmarks = {
             "NixOS Options" = {
-              keyword = "no";
+              keyword = "nxo";
               url = "https://search.nixos.org/options?query=%s";
             };
             "NixOS Packages" = {
-              keyword = "np";
+              keyword = "nxp";
               url = "https://search.nixos.org/packages?query=%s";
             };
             "Home-Manager Options" = {
@@ -138,7 +140,7 @@ in
               url = "https://rycee.gitlab.io/home-manager/options.html#opt-%s";
             };
           };
-          extensions = with pkgs.nur.repos.rycee.firefox-addons; [ bitwarden cookies-txt metamask no-pdf-download sponsorblock ublock-origin ];
+          extensions = with pkgs.nur.repos.rycee.firefox-addons; [ cookies-txt no-pdf-download sponsorblock ublock-origin ];
         };
       };
     };
@@ -305,6 +307,7 @@ in
 
     home.sessionVariables = {
       EDITOR = "hx";
+      GRZEGORZ_DEFAULT_API_BASE = "https://georg.pvv.ntnu.no/api";
     };
 
     xdg.mimeApps = {
