@@ -12,7 +12,7 @@ in
     programs.zsh = {
       enable = true;
       dotDir = ".config/zsh";
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       enableCompletion = true;
       history = {
         expireDuplicatesFirst = true;

@@ -97,7 +97,7 @@ in
       krename
       konsole # https://bugs.kde.org/show_bug.cgi?id=407990 reeee
 
-      gnome3.gedit
+      gedit
 
       gimp
     ] ++ lib.optionals (config.profiles.gui.enable && cfg.plus) [
