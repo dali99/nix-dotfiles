@@ -64,7 +64,7 @@
       // mkHomes [ "pvv-terminal" ] { username = "danio"; homeDirectory = "/home/pvv/d/danio"; };
 
     nixosModules = {
-      home-manager = nixlib.genAttrs allMachines (machine: import ./machines/${machine}.nix);
+      home-manager = nixlib.genAttrs allMachines (machine: import ./home/machines/${machine}.nix);
     };
 
     overlays = [
