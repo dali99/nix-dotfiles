@@ -1,0 +1,14 @@
+diff --git a/src/fs/gnunet-service-fs.c b/src/fs/gnunet-service-fs.c
+index 597e89e..aaade99 100644
+--- a/src/fs/gnunet-service-fs.c
++++ b/src/fs/gnunet-service-fs.c
+@@ -1234,7 +1234,8 @@ peer_init_handler (void *cls,
+                           my_identity))
+   {
+     GNUNET_log (GNUNET_ERROR_TYPE_ERROR,
+-                "Peer identity mismatch, refusing to start!\n");
++                "Peer identity mismatch, refusing to start! Core delivered %s.\n",
++                GNUNET_i2s (my_identity));
+     GNUNET_SCHEDULER_shutdown ();
+   }
+ }

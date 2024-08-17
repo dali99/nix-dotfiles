@@ -17,6 +17,9 @@
     dan.url = "git+https://git.dodsorf.as/Dandellion/NUR.git"; #"git+https://git.dodsorf.as/Dandellion/NUR";
     dan.inputs.nixpkgs.follows = "unstable";
 
+    wack-server-conf.url = "github:WackAttackCTF/wack-server-conf";
+    wack-server-conf.inputs.nixpkgs.follows = "nixpkgs";
+
     greg-clients.url = "git+https://git.pvv.ntnu.no/Projects/grzegorz-clients";
     greg-clients.inputs.nixpkgs.follows = "unstable";
     
@@ -62,6 +65,18 @@
     homeConfigurations = mkHomes [ "laptop" "headless" ] { }
       // mkHomes [ "desktop" ] { username = "dan"; }
       // mkHomes [ "pvv-terminal" ] { username = "danio"; homeDirectory = "/home/pvv/d/danio"; };
+
+    nixosConfigurations = {
+      soryu = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          ./hosts/soryu/configuration.nix
+        ];
+      };
+    };
 
     nixosModules = {
       home-manager = nixlib.genAttrs allMachines (machine: import ./home/machines/${machine}.nix);

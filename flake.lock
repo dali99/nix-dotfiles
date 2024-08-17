@@ -20,7 +20,71 @@
         "url": "https://git.dodsorf.as/Dandellion/NUR.git"
       }
     },
+    "dan_2": {
+      "inputs": {
+        "nixpkgs": [
+          "wack-server-conf",
+          "dandellion",
+          "unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1656687988,
+        "narHash": "sha256-2ywoy3wUvFAyxDTw7VPlz5TGh9mk/um2AWOjhJqJxNQ=",
+        "ref": "refs/heads/master",
+        "rev": "7e85f62e40cd585ce81fa1f3debd5385bb0cad03",
+        "revCount": 160,
+        "type": "git",
+        "url": "https://git.dodsorf.as/Dandellion/NUR.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.dodsorf.as/Dandellion/NUR.git"
+      }
+    },
+    "dandellion": {
+      "inputs": {
+        "dan": "dan_2",
+        "home-manager": "home-manager_2",
+        "nixgl": "nixgl_2",
+        "nixpkgs": [
+          "wack-server-conf",
+          "nixpkgs"
+        ],
+        "nur": "nur_2",
+        "unstable": "unstable_2"
+      },
+      "locked": {
+        "lastModified": 1699137267,
+        "narHash": "sha256-cBusl45B1nj9vpwYVLZamNYmSbHeama1IdWMlBl14Jo=",
+        "ref": "23.05",
+        "rev": "760228bcc60e27c94bb295106b7d470b0ebd9feb",
+        "revCount": 241,
+        "type": "git",
+        "url": "https://git.dodsorf.as/Dandellion/dotfiles.git"
+      },
+      "original": {
+        "ref": "23.05",
+        "type": "git",
+        "url": "https://git.dodsorf.as/Dandellion/dotfiles.git"
+      }
+    },
     "flake-utils": {
+      "locked": {
+        "lastModified": 1659877975,
+        "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "c0e246b9b83f637f4681389ecabcb2681b4f3af0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_2": {
       "locked": {
         "lastModified": 1659877975,
         "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
@@ -76,6 +140,51 @@
         "type": "github"
       }
     },
+    "home-manager_2": {
+      "inputs": {
+        "nixpkgs": [
+          "wack-server-conf",
+          "dandellion",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1695108154,
+        "narHash": "sha256-gSg7UTVtls2yO9lKtP0yb66XBHT1Fx5qZSZbGMpSn2c=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "07682fff75d41f18327a871088d20af2710d4744",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-23.05",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager_3": {
+      "inputs": {
+        "nixpkgs": [
+          "wack-server-conf",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1695108154,
+        "narHash": "sha256-gSg7UTVtls2yO9lKtP0yb66XBHT1Fx5qZSZbGMpSn2c=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "07682fff75d41f18327a871088d20af2710d4744",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-23.05",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "nixgl": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -89,6 +198,29 @@
         "owner": "guibou",
         "repo": "nixGL",
         "rev": "310f8e49a149e4c9ea52f1adf70cdc768ec53f8a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "guibou",
+        "repo": "nixGL",
+        "type": "github"
+      }
+    },
+    "nixgl_2": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": [
+          "wack-server-conf",
+          "dandellion",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1685908677,
+        "narHash": "sha256-E4zUPEUFyVWjVm45zICaHRpfGepfkE9Z2OECV9HXfA4=",
+        "owner": "guibou",
+        "repo": "nixGL",
+        "rev": "489d6b095ab9d289fe11af0219a9ff00fe87c7c5",
         "type": "github"
       },
       "original": {
@@ -113,13 +245,44 @@
         "type": "github"
       }
     },
+    "nixpkgs-stable": {
+      "locked": {
+        "lastModified": 1698544399,
+        "narHash": "sha256-vhRmPyEyoPkrXF2iykBsWHA05MIaOSmMRLMF7Hul6+s=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d87c5d8c41c9b3b39592563242f3a448b5cc4bc9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "release-23.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nur": {
       "locked": {
-        "lastModified": 1723849682,
-        "narHash": "sha256-uu7U8afWM5+fpg3ox073GcrCHFXNE5mLg6IpfG2Vr3E=",
+        "lastModified": 1723859387,
+        "narHash": "sha256-1a4zDw0wIH/7Yg0tvIusrkBAZlcQkpQBkqZtPYnBsCw=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "401628ec50d326030e81aa44a37adf8ca876b72a",
+        "rev": "b43ecc46a848d0107b17091e2cd74cb442e28885",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
+    "nur_2": {
+      "locked": {
+        "lastModified": 1699131694,
+        "narHash": "sha256-dKWORPD0ODREKihqCZqEqc1zJ3wACmoMmuf2BGg3DbE=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "6226a48fb329802a63da2babbdd2d375713af333",
         "type": "github"
       },
       "original": {
@@ -136,7 +299,30 @@
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
-        "unstable": "unstable"
+        "unstable": "unstable",
+        "wack-server-conf": "wack-server-conf"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "wack-server-conf",
+          "nixpkgs"
+        ],
+        "nixpkgs-stable": "nixpkgs-stable"
+      },
+      "locked": {
+        "lastModified": 1699021419,
+        "narHash": "sha256-oy2j2OHXYcckifASMeZzpmbDLSvobMGt0V/RvoDotF4=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "275b28593ef3a1b9d05b6eeda3ddce2f45f5c06f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "type": "github"
       }
     },
     "unstable": {
@@ -152,6 +338,62 @@
         "owner": "nixos",
         "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "unstable_2": {
+      "locked": {
+        "lastModified": 1699094435,
+        "narHash": "sha256-YLZ5/KKZ1PyLrm2MO8UxRe4H3M0/oaYqNhSlq6FDeeA=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "9d5d25bbfe8c0297ebe85324addcb5020ed1a454",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "unstable_3": {
+      "locked": {
+        "lastModified": 1698924604,
+        "narHash": "sha256-GCFbkl2tj8fEZBZCw3Tc0AkGo0v+YrQlohhEGJ/X4s0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "fa804edfb7869c9fb230e174182a8a1a7e512c40",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "wack-server-conf": {
+      "inputs": {
+        "dandellion": "dandellion",
+        "home-manager": "home-manager_3",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "sops-nix": "sops-nix",
+        "unstable": "unstable_3"
+      },
+      "locked": {
+        "lastModified": 1699656973,
+        "narHash": "sha256-csFw6I3dhPR9seG+mRnonlWCYm32mfLYb3Ga+vjS9Ak=",
+        "owner": "WackAttackCTF",
+        "repo": "wack-server-conf",
+        "rev": "77551a8f183a503653db3118a97f856af5301ec5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "WackAttackCTF",
+        "repo": "wack-server-conf",
         "type": "github"
       }
     }
