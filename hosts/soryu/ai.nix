@@ -15,8 +15,8 @@
       Bind = [
         "/dev/dri:/dev/dri"
         "/dev/kfd:/dev/kfd"
-        "/mnt/human/llama:/llama"
-        "/mnt/human/sd:/sd"
+        "/mnt/human/llama:/llama:idmap"
+        "/mnt/human/sd:/sd:idmap"
       ];
     };
   };
@@ -27,8 +27,8 @@
     };
     serviceConfig = {
       CPUQuota = "300%";
-      MemoryHigh = "14G";
-      MemoryMax = "15G";
+      MemoryHigh = "29G";
+      MemoryMax = "30G";
       MemorySwapMax = "25G";
       ExecStart = "systemd-nspawn --quiet --keep-unit --boot --link-journal=try-guest --network-veth -U --settings=override --machine=%i -D /mnt/human/machines/ubuntu-ai";
     };
