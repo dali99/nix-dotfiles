@@ -12,6 +12,8 @@
 
     unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     nur.url = "github:nix-community/NUR";
 
     dan.url = "git+https://git.dodsorf.as/Dandellion/NUR.git"; #"git+https://git.dodsorf.as/Dandellion/NUR";
@@ -30,9 +32,23 @@
     nixgl.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {self, nixpkgs, home-manager, unstable, nur, dan, nixgl, ... }@inputs:
+  outputs = {self, nixpkgs, home-manager, unstable, nixos-hardware, nur, dan, nixgl, ... }@inputs:
   let
     nixlib = unstable.lib;
+
+    defaultOverlays = [
+      (final: prev: {
+        unstable = import unstable {
+          inherit (prev) system config;
+        };
+        dan = dan.packages.${prev.system};
+        grzegorz-clients = inputs.greg-clients.packages.${prev.system}.grzegorz-clients;
+        gregctl = inputs.greg-clients.packages.${prev.system}.grzegorzctl;
+        # helix = inputs.helix.packages.${prev.system}.helix;
+      })
+      nur.overlay
+      nixgl.overlay
+    ];
 
     mkHome =
       { machine
@@ -41,7 +57,7 @@
       , username ? "daniel"
       , homeDirectory ? "/home/${username}"
       , stateVersion ? "22.05"
-      , extraSpecialArgs ? { inherit (self) overlays; }
+      , extraSpecialArgs ? { inherit (self) defaultOverlays; }
       }:
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
@@ -67,6 +83,17 @@
       // mkHomes [ "pvv-terminal" ] { username = "danio"; homeDirectory = "/home/pvv/d/danio"; };
 
     nixosConfigurations = {
+      ayanami = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          ./hosts/ayanami/configuration.nix
+          nixos-hardware.nixosModules.lenovo-thinkpad-l480
+        ];
+      };
+
       soryu = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
@@ -82,20 +109,6 @@
       home-manager = nixlib.genAttrs allMachines (machine: import ./home/machines/${machine}.nix);
     };
 
-    overlays = [
-      (final: prev: {
-        unstable = import unstable {
-          inherit (prev) system config;
-        };
-        dan = dan.packages.${prev.system};
-        grzegorz-clients = inputs.greg-clients.packages.${prev.system}.grzegorz-clients;
-        gregctl = inputs.greg-clients.packages.${prev.system}.grzegorzctl;
-        # helix = inputs.helix.packages.${prev.system}.helix;
-      })
-      nur.overlay
-      nixgl.overlay
-    ];
-
     homeActivations = nixlib.genAttrs allMachines (machine: self.homeConfigurations.${machine}.activationPackage);
 
     apps.x86_64-linux = nixlib.genAttrs allMachines (machine: {
@@ -103,9 +116,9 @@
       program = "${self.homeActivations.${machine}}/activate";
     });
     
-    hydraJobs = {
-      laptop.x86_64-linux = self.homeActivations.laptop;
-      desktop.x86_64-linux = self.homeActivations.desktop;
-    };
+    # hydraJobs = {
+    #   laptop.x86_64-linux = self.homeActivations.laptop;
+    #   desktop.x86_64-linux = self.homeActivations.desktop;
+    # };
   };
 }
