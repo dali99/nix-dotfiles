@@ -119,6 +119,8 @@
       type = "app";
       program = "${self.homeActivations.${machine}}/activate";
     });
+
+    inherit defaultOverlays;
     
     # hydraJobs = {
     #   laptop.x86_64-linux = self.homeActivations.laptop;
