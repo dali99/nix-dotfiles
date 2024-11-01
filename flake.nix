@@ -22,6 +22,9 @@
     wack-server-conf.url = "github:WackAttackCTF/wack-server-conf";
     wack-server-conf.inputs.nixpkgs.follows = "nixpkgs";
 
+    wack-ctf.url = "github:WackAttackCTF/wack-ctf-flake";
+    wack-ctf.inputs.nixpkgs.follows = "nixpkgs";
+
     greg-clients.url = "git+https://git.pvv.ntnu.no/Projects/grzegorz-clients";
     greg-clients.inputs.nixpkgs.follows = "unstable";
     
@@ -45,6 +48,7 @@
         grzegorz-clients = inputs.greg-clients.packages.${prev.system}.grzegorz-clients;
         gregctl = inputs.greg-clients.packages.${prev.system}.grzegorzctl;
         # helix = inputs.helix.packages.${prev.system}.helix;
+        wack = inputs.wack-ctf.packages.${prev.system}.wack;
       })
       nur.overlay
       nixgl.overlay
@@ -57,7 +61,7 @@
       , username ? "daniel"
       , homeDirectory ? "/home/${username}"
       , stateVersion ? "22.05"
-      , extraSpecialArgs ? { inherit (self) defaultOverlays; }
+      , extraSpecialArgs ? { overlays = defaultOverlays; }
       }:
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};

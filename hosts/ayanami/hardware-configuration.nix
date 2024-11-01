@@ -19,8 +19,10 @@
       options = [ "subvol=root" ];
     };
 
-  boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/27c2e6ae-d9ec-4bbd-9ebe-6ec2e63dd139";
-
+  boot.initrd.luks.devices."enc" = {
+    allowDiscards = true;
+    device = "/dev/disk/by-uuid/27c2e6ae-d9ec-4bbd-9ebe-6ec2e63dd139";
+  };
   fileSystems."/home" =
     { device = "/dev/disk/by-uuid/276d0801-34f7-4d40-aa24-bfc43ea4ff51";
       fsType = "btrfs";

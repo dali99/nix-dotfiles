@@ -81,6 +81,7 @@ in
       ripgrep
 
       gregctl
+      wack
     ] ++ lib.optionals cfg.plus [
       ffmpeg-full
     ] ++ lib.optionals config.profiles.gui.enable [
