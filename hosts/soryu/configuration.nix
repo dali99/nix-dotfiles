@@ -178,17 +178,16 @@
 #    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
 #  ];
 
-
-  hardware.opengl.driSupport = true;
-  hardware.opengl.driSupport32Bit = true;
-  hardware.opengl.extraPackages = with pkgs; [
+  hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
+  hardware.graphics.extraPackages = with pkgs; [
     libva
-    rocmPackages.clr.icd
   ];
+  hardware.amdgpu.opencl.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.layout = "no";
+  services.xserver.xkb.layout = "no";
   # services.xserver.xkbOptions = "eurosign:e";
 
   services.xserver.displayManager.lightdm.enable = true;

@@ -87,7 +87,7 @@ in
     ] ++ lib.optionals config.profiles.gui.enable [
       mpv
       sxiv
-      gnome3.eog
+      eog
 
       dolphin
       plasma5Packages.dolphin-plugins
@@ -205,7 +205,7 @@ in
       extensions = with pkgs.vscode-extensions; [
         bbenoist.nix
         
-        matklad.rust-analyzer
+        rust-lang.rust-analyzer
         vadimcn.vscode-lldb
       ] ++ lib.optionals config.nixpkgs.config.allowUnfree [
         ms-vsliveshare.vsliveshare
@@ -262,20 +262,20 @@ in
       enable = true;
       matchBlocks = {
         "lilith" = {
-          hostname = "lilith.daniel";
+          hostname = "lilith.tn.dodsorf.as";
           user = "dandellion";
         };
         "desktop" = {
-          hostname = "desktop.daniel";
+          hostname = "soryu.tn.dodsorf.as";
           user = "dan";
         };
         "ubuntu-ai" = {
-          hostname = "100.64.0.2";
+          hostname = "soryu.tn.dodsorf.as";
           port = 2222;
           user = "daniel";
         };
         "laptop" = {
-          hostname = "laptop.daniel";
+          hostname = "ayanami.tn.dodsorf.as";
           user = "daniel";
         };
         "login.pvv.ntnu.no" = {
