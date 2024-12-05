@@ -29,6 +29,10 @@
     "fs.file-max" = 524288;
   };
 
+  zramSwap = {
+    enable = true;
+    memoryMax = 32 * 1024 * 1024 * 1024;  # 16 GB ZRAM
+  };
 
   disabledModules = [
     "services/network-filesystems/tahoe.nix"

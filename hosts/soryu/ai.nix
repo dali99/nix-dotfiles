@@ -29,7 +29,7 @@
       CPUQuota = "300%";
       MemoryHigh = "29G";
       MemoryMax = "30G";
-      MemorySwapMax = "25G";
+      MemorySwapMax = "50G";
       ExecStart = "systemd-nspawn --quiet --keep-unit --boot --link-journal=try-guest --network-veth -U --settings=override --machine=%i -D /mnt/human/machines/ubuntu-ai";
     };
   #  overrideStrategy = "asDropin";
