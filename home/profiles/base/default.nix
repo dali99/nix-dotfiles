@@ -278,11 +278,16 @@ in
           hostname = "laptop.daniel";
           user = "daniel";
         };
-        "pvv.ntnu.no" = {
+        "login.pvv.ntnu.no" = {
           user = "danio";
         };
-        "*.pvv.ntnu.no" = {
+        "pvv.ntnu.no" = {
           user = "danio";
+          proxyJump = "login.pvv.ntnu.no";
+        };
+        "*.pvv.ntnu.no !login.pvv.ntnu.no" = {
+          user = "danio";
+          proxyJump = "login.pvv.ntnu.no";
         };
         "pascal" = {
           hostname = "wiki.wackattack.eu";
