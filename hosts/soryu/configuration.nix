@@ -199,6 +199,7 @@
 
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
 
 
 #  networking.nameservers = lib.mkForce [ "192.168.0.25" ];
