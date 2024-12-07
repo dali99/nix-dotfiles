@@ -21,6 +21,6 @@
   profiles.games.enable = true;
 
   home.packages = [
-      pkgs.unstable.osu-lazer
+      pkgs.unstable.osu-lazer-bin
   ];
 }
