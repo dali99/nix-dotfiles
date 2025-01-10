@@ -78,11 +78,11 @@
 
       mkHomes = machines: extraArgs: nixlib.genAttrs machines (machine: mkHome ({inherit machine; } // extraArgs));
       
-      allMachines = [ "laptop" "desktop" "headless" "pvv-terminal" ];
+      allMachines = [ "laptop" "desktop" "headless" "pvv-terminal" "ikari" ];
   in
   {
     
-    homeConfigurations = mkHomes [ "laptop" "headless" ] { }
+    homeConfigurations = mkHomes [ "laptop" "headless" "ikari" ] { }
       // mkHomes [ "desktop" ] { username = "dan"; }
       // mkHomes [ "pvv-terminal" ] { username = "danio"; homeDirectory = "/home/pvv/d/danio"; };
 
@@ -105,6 +105,16 @@
         };
         modules = [
           ./hosts/soryu/configuration.nix
+        ];
+      };
+
+      ikari = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          ./hosts/ikari/configuration.nix
         ];
       };
     };
