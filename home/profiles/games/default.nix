@@ -12,13 +12,10 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       fortune
-      lolcat
-      neofetch
-      pipes
     ] ++ lib.optionals config.profiles.gui.enable [
       steam
 
-      unstable.prismlauncher
+      prismlauncher
 #     minetest
 #     dwarf-fortress-packages.dwarf-fortress-full
 #     superTuxKart

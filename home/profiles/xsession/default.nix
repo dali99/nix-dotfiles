@@ -173,7 +173,7 @@ in
       pkgs.dmenu
 
       pkgs.scrot
-      pkgs.neofetch
+      # pkgs.neofetch
       #pkgs.dan.colors
       pkgs.xclip
 

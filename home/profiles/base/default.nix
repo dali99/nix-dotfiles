@@ -38,11 +38,12 @@ in
 
 
     home.packages = with pkgs; [
-      unstable.nix-output-monitor
+      nix-output-monitor
       nix-top
       nix-index
       nix-tree
-      unstable.comma
+      # unstable.comma
+      nixd
 
       openvpn
 
@@ -95,7 +96,6 @@ in
       plasma5Packages.kdegraphics-thumbnailers
       plasma5Packages.kio
       plasma5Packages.kio-extras
-      krename
       konsole # https://bugs.kde.org/show_bug.cgi?id=407990 reeee
 
       gedit
@@ -112,7 +112,7 @@ in
       kdenlive
       frei0r
       audacity
-      inkscape
+      # inkscape
       blender
 
       mkvtoolnix
@@ -199,22 +199,43 @@ in
       };
     };
 
-    programs.vscode = {
+    programs.zed-editor = {
       enable = config.profiles.gui.enable;
-      package = pkgs.vscodium;
-      extensions = with pkgs.vscode-extensions; [
-        bbenoist.nix
-        
-        rust-lang.rust-analyzer
-        vadimcn.vscode-lldb
-      ] ++ lib.optionals config.nixpkgs.config.allowUnfree [
-        ms-vsliveshare.vsliveshare
+      package = pkgs.unstable.zed-editor;
+      extensions = [
+        "nix"
       ];
       userSettings = {
-        "editor.insertSpaces" = false;
-        "terminal.integrated.fontFamily" = "MesloLGS NF";
+        telemetry.metrics = false;
+        telemetry.diagnostics = false;
+        features = {
+          copilot = false;
+        };
+        buffer_font_family = "MesloLGS NF";
+        base_keymap = "VSCode";
+        language_overrides = {
+          Rust = {
+            inlay_hints.enabled = true;
+          };
+        };
       };
     };
+
+    # programs.vscode = {
+    #   enable = config.profiles.gui.enable;
+    #   package = pkgs.vscodium;
+    #   extensions = with pkgs.vscode-extensions; [
+    #     bbenoist.nix        
+    #     rust-lang.rust-analyzer
+    #     vadimcn.vscode-lldb
+    #   ] ++ lib.optionals config.nixpkgs.config.allowUnfree [
+    #     ms-vsliveshare.vsliveshare
+    #   ];
+    #   userSettings = {
+    #     "editor.insertSpaces" = false;
+    #     "terminal.integrated.fontFamily" = "MesloLGS NF";
+    #   };
+    # };
 
     programs.git = {
       enable = true;
