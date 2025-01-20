@@ -5,10 +5,36 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
+
+
+  services.restic.backups."main" = {
+    repositoryFile = "/root/restic-main-repo";
+    passwordFile = "/root/restic-main-password";
+    pruneOpts = [
+      "--keep-daily 7"
+      "--keep-weekly 5"
+      "--keep-monthly 12"
+      "--keep-yearly 2"
     ];
+    paths = [
+      "/var/lib"
+      "/home/daniel"
+    ];
+    exclude = [
+      "/home/*/.cache"
+    
+      "/home/*/.local/Trash"
+      
+      "/home/*/.local/share/Steam/*"
+      "!/home/*/.local/share/Steam/steamapps/compatdata"
+
+      "/home/*/.cargo"
+    ];
+  };
+
 
   services.postgresql.enable = true;
   services.postgresql.package = pkgs.postgresql_15;
