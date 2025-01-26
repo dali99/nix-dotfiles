@@ -32,6 +32,7 @@
       "!/home/*/.local/share/Steam/steamapps/compatdata"
 
       "/home/*/.cargo"
+      "/home/*/**/target"
     ];
   };
 
