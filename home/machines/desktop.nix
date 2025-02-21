@@ -20,6 +20,8 @@
 
   profiles.games.enable = true;
 
+  profiles.timetracking.enable = true;
+
   home.packages = [
       pkgs.unstable.osu-lazer-bin
   ];

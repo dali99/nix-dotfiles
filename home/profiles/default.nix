@@ -7,5 +7,6 @@
     ./gui.nix
     ./non-nixos.nix
     ./games
+    ./timetracking
   ];
 }
