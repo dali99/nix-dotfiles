@@ -55,24 +55,24 @@
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark;
 
- #  services.mysql.enable = true;
- #  services.mysql.package = pkgs.mariadb;
- #  services.mysql.settings.mysqld = {
- #    bind-address = "127.0.0.1";
- #    port = 3306;
- #  };
- #  services.mysql.ensureUsers = [
- #    {
- #      name = "daniel";
- #      ensurePermissions = {
- #        "lab1.*" = "ALL PRIVILEGES";
- #        "lab2.*" = "ALL PRIVILEGES";
- #        "lab3.*" = "ALL PRIVILEGES";
-	# "lab4.*" = "ALL PRIVILEGES";
- #        "lab5.*" = "ALL PRIVILEGES";
- #      };
- #    }
- #  ];
+  services.mysql.enable = true;
+  services.mysql.package = pkgs.mariadb;
+  services.mysql.settings.mysqld = {
+    bind-address = "127.0.0.1";
+    port = 3306;
+  };
+  services.mysql.ensureUsers = [
+    {
+      name = "daniel";
+      ensurePermissions = {
+        "lab1.*" = "ALL PRIVILEGES";
+        "lab2.*" = "ALL PRIVILEGES";
+        "lab3.*" = "ALL PRIVILEGES";
+        "lab4.*" = "ALL PRIVILEGES";
+        "lab5.*" = "ALL PRIVILEGES";
+      };
+    }
+  ];
 
   # services.create_ap.enable = false;
   # services.create_ap.settings = {
