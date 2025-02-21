@@ -14,6 +14,38 @@
    # "10.10.111.103" = [ "snowbell.htb" "legacy.snowbell.htb" "management.snowbell.htb" ];
   };
 
+  services.restic.backups."main" = {
+    repositoryFile = "/root/restic-main-repo";
+    passwordFile = "/root/restic-main-password";
+    pruneOpts = [
+      "--keep-last 2"
+      "--keep-within 3d"
+      "--keep-daily 7"
+      "--keep-weekly 5"
+      "--keep-monthly 12"
+      "--keep-yearly 5"
+    ];
+    paths = [
+      "/home/daniel"
+      "/var/lib"
+    ];
+    exclude = [
+      "/home/*/.cache"
+
+      "/home/*/.local/share/Trash"
+
+      "/home/*/.cargo"
+
+      "/home/*/.local/share/Steam/*"
+      "!/home/*/.local/share/Steam/compatdata"
+
+      "/home/*/mnt"
+    ];
+    extraBackupArgs = [
+      "--one-file-system"
+    ];
+  };
+
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   virtualisation.podman.enable = true;
