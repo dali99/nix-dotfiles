@@ -31,7 +31,7 @@
 
   zramSwap = {
     enable = true;
-    memoryMax = 32 * 1024 * 1024 * 1024;  # 16 GB ZRAM
+    memoryMax = 96 * 1024 * 1024 * 1024;  # 96 GB ZRAM
   };
 
   disabledModules = [

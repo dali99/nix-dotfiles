@@ -26,10 +26,10 @@
       SYSTEMD_NSPAWN_TMPFS_TMP = "0";
     };
     serviceConfig = {
-      CPUQuota = "300%";
-      MemoryHigh = "29G";
-      MemoryMax = "30G";
-      MemorySwapMax = "50G";
+      CPUQuota = "1400%";
+      MemoryHigh = "90G";
+      MemoryMax = "94G";
+      MemorySwapMax = "40G";
       ExecStart = "systemd-nspawn --quiet --keep-unit --boot --link-journal=try-guest --network-veth -U --settings=override --machine=%i -D /mnt/human/machines/ubuntu-ai";
     };
   #  overrideStrategy = "asDropin";
