@@ -1,12 +1,12 @@
 {
   description = "dandellion's home-manager profiles";
-  
+
   # nixConfig.extra-substituters = ["https://cache.dodsorf.as"];
   # nixConfig.exta-trusted-public-keys = "cache.dodsorf.as:FYKGadXTyI2ax8mirBTOjEqS/8PZKAWxiJVOBjESQXc=";
 
   inputs  = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    
+
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -27,7 +27,7 @@
 
     greg-clients.url = "git+https://git.pvv.ntnu.no/Projects/grzegorz-clients";
     greg-clients.inputs.nixpkgs.follows = "unstable";
-    
+
     # helix.url = "github:helix-editor/helix";
     # helix.inputs.nixpkgs.follows = "unstable";
 
@@ -50,8 +50,8 @@
         # helix = inputs.helix.packages.${prev.system}.helix;
         wack = inputs.wack-ctf.packages.${prev.system}.wack;
       })
-      nur.overlay
-      nixgl.overlay
+      nur.overlays.default
+      nixgl.overlays.default
     ];
 
     mkHome =
@@ -77,11 +77,11 @@
       };
 
       mkHomes = machines: extraArgs: nixlib.genAttrs machines (machine: mkHome ({inherit machine; } // extraArgs));
-      
+
       allMachines = [ "laptop" "desktop" "headless" "pvv-terminal" "ikari" ];
   in
   {
-    
+
     homeConfigurations = mkHomes [ "laptop" "headless" "ikari" ] { }
       // mkHomes [ "desktop" ] { username = "dan"; }
       // mkHomes [ "pvv-terminal" ] { username = "danio"; homeDirectory = "/home/pvv/d/danio"; };
@@ -105,6 +105,25 @@
         };
         modules = [
           ./hosts/asuka/soryu-old/configuration.nix
+        ];
+      };
+      soryu = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = false;
+            home-manager.useUserPackages = true;
+            home-manager.users.daniel = import ./home/machines/soryu.nix;
+            home-manager.extraSpecialArgs = {
+              overlays = defaultOverlays;
+            };
+          }
+
+          ./hosts/asuka/soryu/configuration.nix
         ];
       };
       # langley = nixpkgs.lib.nixosSystem {
@@ -140,7 +159,7 @@
     });
 
     inherit defaultOverlays;
-    
+
     # hydraJobs = {
     #   laptop.x86_64-linux = self.homeActivations.laptop;
     #   desktop.x86_64-linux = self.homeActivations.desktop;

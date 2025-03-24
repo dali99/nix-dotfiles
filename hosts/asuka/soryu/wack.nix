@@ -31,11 +31,11 @@
       hostPath = "/dev/dri";
       isReadOnly = false;
     };
-    bindMounts."/dev/kfd" = {
+    bindMounts."/dev/kfd" = {          
       hostPath = "/dev/kfd";
       isReadOnly = false;
     };
-    bindMounts."/run/opengl-driver" = {
+    bindMounts."/run/opengl-driver" = {          
       hostPath = "/run/opengl-driver";
       isReadOnly = false;
     };
@@ -64,8 +64,9 @@
       programs.zsh.enable = true;
       imports = [ (inputs.wack-server-conf + /users/default.nix) ];
 
-      system.stateVersion = "24.11";
+      system.stateVersion = "23.05";
     };
   };
 
 }
+
