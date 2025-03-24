@@ -98,15 +98,24 @@
         ];
       };
 
-      soryu = nixpkgs.lib.nixosSystem {
+      soryu-old = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
         };
         modules = [
-          ./hosts/soryu/configuration.nix
+          ./hosts/asuka/soryu-old/configuration.nix
         ];
       };
+      # langley = nixpkgs.lib.nixosSystem {
+      #   system = "x86_64-linux";
+      #   specialArgs = {
+      #     inherit inputs;
+      #   };
+      #   modules = [
+      #     ./hosts/asuka/langley/configuration.nix
+      #   ];
+      # };
 
       ikari = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
