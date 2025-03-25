@@ -82,7 +82,7 @@ in
       ripgrep
 
       gregctl
-      wack
+#      wack
     ] ++ lib.optionals cfg.plus [
       ffmpeg-full
     ] ++ lib.optionals config.profiles.gui.enable [
@@ -200,7 +200,7 @@ in
     };
 
     programs.zed-editor = {
-      enable = config.profiles.gui.enable;
+#      enable = config.profiles.gui.enable;
       package = pkgs.unstable.zed-editor;
       extensions = [
         "nix"

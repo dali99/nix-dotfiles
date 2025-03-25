@@ -16,7 +16,7 @@
 
     nur.url = "github:nix-community/NUR";
 
-    dan.url = "git+https://git.dodsorf.as/Dandellion/NUR.git"; #"git+https://git.dodsorf.as/Dandellion/NUR";
+    dan.url = "git+https://git.dodsorf.as/Dandellion/NUR.git?ref=master"; #"git+https://git.dodsorf.as/Dandellion/NUR";
     dan.inputs.nixpkgs.follows = "unstable";
 
     wack-server-conf.url = "github:WackAttackCTF/wack-server-conf";
@@ -25,7 +25,7 @@
     wack-ctf.url = "github:WackAttackCTF/wack-ctf-flake";
     wack-ctf.inputs.nixpkgs.follows = "nixpkgs";
 
-    greg-clients.url = "git+https://git.pvv.ntnu.no/Projects/grzegorz-clients";
+    greg-clients.url = "git+https://git.pvv.ntnu.no/grzegorz/grzegorz-clients";
     greg-clients.inputs.nixpkgs.follows = "unstable";
 
     # helix.url = "github:helix-editor/helix";

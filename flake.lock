@@ -9,13 +9,14 @@
       "locked": {
         "lastModified": 1656687988,
         "narHash": "sha256-2ywoy3wUvFAyxDTw7VPlz5TGh9mk/um2AWOjhJqJxNQ=",
-        "ref": "refs/heads/master",
+        "ref": "master",
         "rev": "7e85f62e40cd585ce81fa1f3debd5385bb0cad03",
         "revCount": 160,
         "type": "git",
         "url": "https://git.dodsorf.as/Dandellion/NUR.git"
       },
       "original": {
+        "ref": "master",
         "type": "git",
         "url": "https://git.dodsorf.as/Dandellion/NUR.git"
       }
@@ -205,11 +206,11 @@
         "rev": "fde738910de1fd8293535a6382c2f0c2749dd7c1",
         "revCount": 79,
         "type": "git",
-        "url": "https://git.pvv.ntnu.no/Projects/grzegorz-clients"
+        "url": "https://git.pvv.ntnu.no/grzegorz/grzegorz-clients"
       },
       "original": {
         "type": "git",
-        "url": "https://git.pvv.ntnu.no/Projects/grzegorz-clients"
+        "url": "https://git.pvv.ntnu.no/grzegorz/grzegorz-clients"
       }
     },
     "greg-clients_2": {

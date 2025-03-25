@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./wack.nix
+#      ./wack.nix
     ];
 
 
@@ -107,8 +107,8 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 8000 6007 5001 config.services.murmur.port ];
-  networking.firewall.allowedUDPPorts = [ 5001 21977 config.services.murmur.port ];
+  networking.firewall.allowedTCPPorts = [ config.services.murmur.port ];
+  networking.firewall.allowedUDPPorts = [ config.services.murmur.port ];
 
 
 
@@ -134,6 +134,15 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.xserver.displayManager = {
+    defaultSession = "xsession";
+    session = [
+      { manage = "desktop";
+        name = "xsession";
+        start = "exec $HOME/.xsession";
+      }
+    ];
+  };
   services.xserver.xkb.layout = "no";
   # services.xserver.xkbOptions = "eurosign:e";
 
