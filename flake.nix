@@ -1,9 +1,6 @@
 {
   description = "dandellion's home-manager profiles";
 
-  # nixConfig.extra-substituters = ["https://cache.dodsorf.as"];
-  # nixConfig.exta-trusted-public-keys = "cache.dodsorf.as:FYKGadXTyI2ax8mirBTOjEqS/8PZKAWxiJVOBjESQXc=";
-
   inputs  = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
 
@@ -28,8 +25,7 @@
     greg-clients.url = "git+https://git.pvv.ntnu.no/grzegorz/grzegorz-clients";
     greg-clients.inputs.nixpkgs.follows = "unstable";
 
-    # helix.url = "github:helix-editor/helix";
-    # helix.inputs.nixpkgs.follows = "unstable";
+    warez.url = "git+https://git.pvv.ntnu.no/tnug/nix-warez";
 
     nixgl.url = "github:guibou/nixGL";
     nixgl.inputs.nixpkgs.follows = "nixpkgs";
@@ -52,6 +48,7 @@
       })
       nur.overlays.default
       nixgl.overlays.default
+      inputs.warez.overlays.default
     ];
 
     mkHome =

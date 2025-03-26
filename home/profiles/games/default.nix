@@ -16,6 +16,7 @@ in {
       steam
 
       prismlauncher
+      fjordlauncher
 #     minetest
 #     dwarf-fortress-packages.dwarf-fortress-full
 #     superTuxKart

@@ -545,6 +545,18 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 0,
+        "narHash": "sha256-8XfURTDxOm6+33swQJu/hx6xw1Tznl8vJJN5HwVqckg=",
+        "path": "/nix/store/qjmsdak7fhqc7pi922i2mgm45f7af9h8-source",
+        "type": "path"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -606,7 +618,8 @@
         "nur": "nur",
         "unstable": "unstable",
         "wack-ctf": "wack-ctf",
-        "wack-server-conf": "wack-server-conf"
+        "wack-server-conf": "wack-server-conf",
+        "warez": "warez"
       }
     },
     "sops-nix": {
@@ -848,6 +861,24 @@
         "owner": "WackAttackCTF",
         "repo": "wack-server-conf",
         "type": "github"
+      }
+    },
+    "warez": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1738103614,
+        "narHash": "sha256-EvaKn0vfvvX/rtRGFXim+JOQLLAr/1Y4igQrmnLI1CE=",
+        "ref": "refs/heads/master",
+        "rev": "c3bb59ee5cc6d700f6edf98c65a853efa09993ef",
+        "revCount": 6,
+        "type": "git",
+        "url": "https://git.pvv.ntnu.no/tnug/nix-warez"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.pvv.ntnu.no/tnug/nix-warez"
       }
     }
   },
