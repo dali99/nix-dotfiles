@@ -200,7 +200,7 @@ in
     };
 
     programs.zed-editor = {
-#      enable = config.profiles.gui.enable;
+      enable = config.profiles.gui.enable;
       package = pkgs.unstable.zed-editor;
       extensions = [
         "nix"
