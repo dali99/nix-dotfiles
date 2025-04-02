@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
 #      ./wack.nix
+      ../../common/builder.nix
     ];
 
 
