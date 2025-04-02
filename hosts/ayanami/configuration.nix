@@ -205,7 +205,7 @@
   nix.settings.trusted-users = [ "daniel" ];
 
   nix.buildMachines = [
-    { hostname = "soryu";
+    { hostName = "soryu";
       system = "x86_64-linux";
       maxJobs = 16;
       supportedFeatures = [ "big-parallel" ];
