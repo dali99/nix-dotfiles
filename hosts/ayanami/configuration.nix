@@ -205,46 +205,34 @@
   nix.settings.trusted-users = [ "daniel" ];
 
   nix.buildMachines = [
-#    { hostName = "bob.pvv.ntnu.no";
-#      system = "x86_64-linux";
-#      maxJobs = 12;
-#      supportedFeatures = [ "big-parallel" ];
-#      speedFactor = 129270;
-#    }
-    { hostName = "bolle.pbsds.net";
+    { hostname = "soryu";
       system = "x86_64-linux";
-      maxJobs = 6;
-      speedFactor = 12857;
+      maxJobs = 16;
+      supportedFeatures = [ "big-parallel" ];
+      speedFactor = 66317;
     }
-    { hostName = "garp.pbsds.net";
-      system = "x86_64-linux";
-      maxJobs = 4;
-      # i7-6700
-      speedFactor = 8088;
-    }
-    { hostName = "lilith";
-      system = "x86_64-linux";
-      # if the builder supports building for multiple architectures, 
-      # replace the previous line by, e.g.,
-      # systems = ["x86_64-linux" "aarch64-linux"];
-      maxJobs = 6;
-      #speedFactor = 13199;
-      speedFactor = 6000;
-      supportedFeatures = [ ];
-      mandatoryFeatures = [ ];
-    }
-    { hostName = "desktop";
-      system = "x86_64-linux";
-      maxJobs = 4;
-      #speedFactor = 8066;
-      speedFactor = 4000;
-      supportedFeatures = [ ];
-      mandatoryFeatures = [ ];
-    }
-    # { hostName = "sachiel";
+    # { hostName = "bob.pvv.ntnu.no";
     #   system = "x86_64-linux";
-    #   maxJobs = 1;
-    #   #speedfactor = 
+    #   maxJobs = 12;
+    #   supportedFeatures = [ "big-parallel" ];
+    #   speedFactor = 129270;
+    # }
+    # { hostName = "bolle.pbsds.net";
+    #   system = "x86_64-linux";
+    #   maxJobs = 6;
+    #   speedFactor = 12857;
+    # }
+    # { hostName = "garp.pbsds.net";
+    #   system = "x86_64-linux";
+    #   maxJobs = 4;
+    #   # i7-6700
+    #   speedFactor = 8088;
+    # }
+    # { hostName = "lilith";
+    #   system = "x86_64-linux";
+    #   maxJobs = 6;
+    #   #speedFactor = 13199;
+    #   speedFactor = 6000;
     # }
     # {
     #   hostName = "isvegg.pvv.ntnu.no";
