@@ -83,6 +83,8 @@ in
 
       gregctl
 #      wack
+#
+      unstable.ollama
     ] ++ lib.optionals cfg.plus [
       ffmpeg-full
     ] ++ lib.optionals config.profiles.gui.enable [
@@ -335,6 +337,7 @@ in
     home.sessionVariables = {
       EDITOR = "hx";
       GRZEGORZ_DEFAULT_API_BASE = "https://georg.pvv.ntnu.no/api";
+      OLLAMA_HOST="100.64.0.19";
     };
 
     xdg.mimeApps = {

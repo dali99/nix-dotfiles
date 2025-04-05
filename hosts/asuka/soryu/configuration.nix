@@ -9,9 +9,14 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
 #      ./wack.nix
+      ./ollama.nix
       ../../common/builder.nix
     ];
 
+  nixpkgs.config = {
+    allowUnfree = true;
+    rocmSupport = true;
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
@@ -65,12 +70,8 @@
 
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = false; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = false; # Open ports in the firewall for Source Dedicated Server
-  };
-
-  nixpkgs.config = {
-    allowUnfree = true;
+    remotePlay.openFirewall = false;
+    dedicatedServer.openFirewall = false;
   };
 
   services.tailscale.enable = true;
@@ -129,9 +130,24 @@
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
   hardware.graphics.extraPackages = with pkgs; [
-    libva
+    libva rocmPackages.clr.icd
   ];
   hardware.amdgpu.opencl.enable = true;
+
+  systemd.tmpfiles.rules = 
+  let
+    rocmEnv = pkgs.symlinkJoin {
+      name = "rocm-combined";
+      paths = with pkgs.rocmPackages; [
+        rocblas
+        hipblas
+        clr
+      ];
+    };
+  in [
+    "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+  ];
+
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
